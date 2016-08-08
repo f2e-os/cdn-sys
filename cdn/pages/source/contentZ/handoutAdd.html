@@ -1,0 +1,93 @@
+<div class="host">
+	<div class="col-sm-12">
+		资源配置 -&gt; 内容注入、分发 -&gt;<span class="detail">新增</span>
+	</div>
+	<div class="col-sm-12">
+		<div class="panel handoutadd">
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiContentPortInjectXml/reqContentInjection" method="post" data-target="source_contentZ" >
+          <div class="form-group">
+            <label class="col-sm-2 control-label">URL或目录<span class="ZUI-require"></span>:</label>
+            <div class="col-sm-10">
+                <input type="text" class="ZUI-input " name="Url" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">CP<span class="ZUI-require"></span>:</label>
+            <div class="col-sm-10">
+                <select name="Cp_Id" class="ZUI-input " data-list>	</select>
+        		<script type="template">{{{global_show_select "Cp_Id" "/ApiDomainGroup/listDomainGroup" "GroupName" "Id" Cp_Id}}}</script>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">内容ID:</label>
+            <div class="col-sm-10">
+               <input type="text" class="ZUI-input " name="Content_Id" placeholder="" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">内容名称:</label>
+            <div class="col-sm-10">
+               <input type="text" class="ZUI-input " name="Content_Name" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">选择内容中心<span class="ZUI-require"></span>:</label>
+            <div class="col-sm-10">
+            	<span data-title="请选择内容中心" data-param="type=2" data-url="/ApiCommon/getNodeByType?type=2" class="ZUI-input Node-selector"></span>
+              	<input type="hidden" name="Inject_Node" value="" require/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">注入任务优先级:</label>
+            <div class="col-sm-10">
+                <select name="Priority" class="ZUI-input " >
+	                <option value="1">1</option>
+	                <option value="2">2</option>
+	                <option value="3">3</option>
+	                <option value="4">4</option>
+	                <option value="5">5</option>
+	            </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">注入方式:</label>
+            <div class="col-sm-10">
+	           <div class="radioBox" >
+	           	 <input type="radio" class="ZUI-radio" name="Inject_Type" value="0" id="global_show_25" checked="checked">
+	           	 <label for="global_show_25">
+	           	 	<span class="ZUI-radio-btn"></span>
+	           	 	<span class="ZUI-radio-txt">即时注入</span>
+           	 	 </label>
+           	 	 <input type="radio" class="ZUI-radio" name="Inject_Type" value="1" id="global_show_26">
+           	 	 <label for="global_show_26">
+           	 	 	<span class="ZUI-radio-btn"></span>
+           	 	 	<span class="ZUI-radio-txt">定时注入</span>
+       	 	 	 </label>
+   	 	 	   </div>
+            </div>
+          </div>
+          <div class="form-group Inject_TimeCon">
+            <label class="col-sm-2 control-label">定时注入时间:</label>
+            <div class="col-sm-10">
+                <input type="text" id="datetimepicker" class="ZUI-input" name="Inject_Time" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" placeholder="">
+	   			<!--<input type="number" class="start-hour" max="23" min="0"> 小时
+	   			<input type="number" class="start-min" max="59" min="0"> 分钟
+	   			-->
+	          	 <script type="text/javascript">
+					var curDate = new Date();  
+					var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes();
+					var cd =  y+"-"+m+"-"+d+" "+h+":"+mm
+					$("input[name='Inject_Time']").val(cd);
+				 </script>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="source_contentZ">取消</a>
+            </div>
+          </div>
+      </form>
+		</div>
+	</div>
+</div>

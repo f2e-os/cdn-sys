@@ -1,0 +1,188 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; 节点管理 -&gt;<span class="detail">设备管理</span>
+    </div>
+    <div class="col-sm-12 source pdt15">
+    	<ul class="nav nav-tabs" id="myTab"> 
+	      <li><a href="#region" data-menu="source">区域管理</a></li> 
+	      <li><a  href="#packing" data-menu="source/node/packing">节点管理</a></li> 
+	      <li class="active"><a class="active" href="#device" data-menu="source/node/device">设备管理</a></li> 
+	      <li><a href="#structure" data-menu="source/node/structure">拓扑结构</a></li> 
+	    </ul> 
+	   	<div class="tab-content"> 
+	      <div class="panel" id="device">
+	      	<div class="row">
+	                <div class="col-sm-4">
+	                    <a href="#" class="btn btn-primary device-add" data-menu="source/node/deviceAdd">+ 添加</a>
+	                    <a href="#" class="btn btn-primary device-delM">- 批量删除</a>
+	                     <script type="template/html" id="device-addInfo" data-method="get">
+	                     	   <form id="device-add" class="row">
+			                        <div class="col-sm-10">
+			                        	<div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">主机名称<span class="ZUI-require"></span></label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" name="HostName" placeholder="" value="{{HostName}}">
+										    </div>
+									    </div>
+									     <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">主机说明</label>
+										    <div class="col-sm-8">
+											   <textarea type="text" class="form-control" name="HostDesc" placeholder="" value="{{HostDesc}}"></textarea>
+										    </div>
+									    </div>
+									    <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">主机IP<span class="ZUI-require"></span></label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" name="IP" placeholder="" value="{{IP}}">
+										    </div>
+									    </div>
+									    <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">设备类型<span class="ZUI-require"></span></label>
+										    <div class="col-sm-8">
+											    <select name="Type" class="form-control" value="{{Type}}">
+											    	<option value="">请选择</option>
+					                            	{{{global_show_select "Type" "/ApiHost/listHostType" "Name" "Id" Type "info"}}}
+					                            </select>
+										    </div>
+									    </div>
+									    <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">所属节点<span class="ZUI-require"></span></label>
+										    <div class="col-sm-8">
+											    <select name="DepartId" class="form-control" value="{{DepartId}}">
+											    	<option value="">请选择</option>
+					                                 {{{global_show_select "DepartId" "/ApiDepartment/listDepartment" "DepartName" "Id" DepartId}}}
+					                            </select>
+										    </div>
+									    </div>
+			                            <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">协议类型<span class="ZUI-require"></span></label>
+										    <div class="col-sm-8">
+											    <select name="ProtocalId" class="form-control" value="{{ProtocalId}}">
+											    	<option value="">请选择</option>
+					                                <option value="1">HTTP</option>
+					                                <option value="2">WEB</option>
+					                            </select>
+										    </div>
+									    </div>
+									    <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">是否骨干<span class="ZUI-require"></span></label>
+										    <div class="col-sm-8">
+											    <select name="Backbone" class="form-control" value="{{Backbone}}">
+											    	<option value="">请选择</option>
+					                                <option value="1">是</option>
+					                                <option value="0">否</option>
+					                            </select>
+										    </div>
+									    </div>
+									    <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">设备组标识</label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" name="Group" placeholder="" value="{{Group}}">
+										    </div>
+									    </div>
+									    <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">厂商名称</label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" name="FacName" placeholder="" value="{{FacName}}">
+										    </div>
+									    </div>
+									    <div class="form-group clearfix">
+										    <label for="inputPassword" class="col-sm-4 control-label">系统版本</label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" name="SysVersion" placeholder="" value="{{SysVersion}}">
+										    </div>
+									    </div>
+			                        </div>
+		                       </form>
+						</script>
+	                </div>
+	                <div class="col-sm-8 text-right">
+	         
+	                    <form id="system-searchUser-device" class="row form-inline">
+	                    	<input type="hidden" name="Pagesize" value="15">
+	                    	<!--
+	                        <input type="hidden" name="Pagesize" value="15">
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                        -->
+	                        <div class="col-sm-5">
+								<input type="text" class="form-control" id="deviceIp" name="IP" placeholder="IP">
+							</div>
+							<div class="col-sm-2">
+								<select name="Type" class="form-control" value="{{Type}}" data-list>
+	                            </select>
+                            	<script type="template"><option value="">设备类型</option>{{{global_show_select "Type" "/ApiHost/listHostType" "Name" "Id" Type "info"}}}</script>
+							</div>
+							<div class="col-sm-2">
+								<select name="Status" id="deviceStatus" class="form-control" value="{{departTypeId}}">
+									<option value="">状态</option>
+	                                <!--<option value="0">全部</option>-->
+	                                <option value="1">正常</option>
+	                                <option value="-1">故障</option>
+	                            </select>
+							</div>
+							<div class="col-sm-2">
+						    	<div class="btn-submit btn btn-default">搜索</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="table-holder" data-list data-url="/ApiHost/listHost" data-pager="#pager-system-device" data-method="post" data-form="#system-searchUser-device" data-totalshow="#systemUser-total-device"></div>
+	            <script type="template">
+	            	<form id="source-listC">
+		                <table class="table table-hover">
+		                    <tr>
+		                    	<th>
+		                    		<input type="checkbox" class="ZUI-checkbox" id="packing-all" data-check-all=".host-source">
+						            <label for="packing-all">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+		                    	</th>
+		                        <th>主机名称</th>
+		                        <th>IP</th>
+		                        <th>所属节点</th>
+		                        <th>设备类型</th>
+		                        <th>状态</th>
+		                        <th>操作</th>
+		                    </tr>
+		                    {{#each rows}}
+		                    <tr data-id="{{Id}}">
+		                    	<td>
+									<input type="checkbox" name="Id" class="ZUI-checkbox host-source" id="device{{Id}}" data-id="{{Id}}" value="{{Id}}"/>
+						            <label for="device{{Id}}">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+								</td>
+		                        <td class="HostName">{{HostName}}</td>
+		                        <td class="IP" data-value="{{DepartName}}">{{IP}}</td>
+		                        
+		                        <td class="DepartName">{{DepartName}}</td>
+		                        <td class="device-Type">{{Type}}</td>
+		                        <td class="deviceStatus" data-value="{{Status}}">{{device_status State}}</td>
+		                        <td>
+						            <a href="#" class="ZUI-operate device-edit" data-menu="source/node/deviceEdit:Id={{Id}}"><span class="iconfont">&#xe602;</span>修改</a>
+		                        	<a href="#" class="ZUI-operate device-del"><span class="iconfont">&#xe603;</span>删除</a>
+		                        	{{#if is_pps}}
+		                        	 <a href="#" class="ZUI-operate device-set" data-menu="source/node/devicePpsSet:host_id={{Id}}" ><span class="iconfont">&#xe602;</span>配置</a>
+		                        	{{/if}}
+		                        </td>
+		                    </tr>
+		                    {{/each}}
+		                </table>
+	                </form>																					
+	            </script>
+	            <div class="pager row">
+	                <div class="col-sm-4">共<span id="systemUser-total-device">0</span>条记录</div>
+	                <div id="pager-system-device" class="col-sm-8"></div>
+	            </div>
+	      </div> 
+	    </div> 
+    </div>
+</div>

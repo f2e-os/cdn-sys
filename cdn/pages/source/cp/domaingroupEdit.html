@@ -1,0 +1,84 @@
+<div class="FUI source-cp">
+	<div class="col-sm-12">
+		资源配置 -&gt; CP管理 -&gt; <span id="subTabDetail"></span> -&gt; 编辑域名
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="source_cp"><a href="javascript:void(0);">CP配置</a></li>
+			<li data-menu="source_cp_domain"><a href="javascript:void(0);">域名配置</a></li>
+			<li data-menu="source_cp_domaingroup" class="active"><a href="javascript:void(0);">域名组配置</a></li>
+		</ul>
+		<div class="panel">
+			<form class="form-horizontal col-sm-12 auto-submit" action="/ApiDomainChannel/updateDomainChannel" method="post" data-target="source_cp_domaingroup" data-list="param" data-url="/ApiDomainChannel/getDomainChannel"></form>
+			<script type="template">
+			{{#with info.[0]}}
+				<input type="hidden" name="Id" value="{{id}}">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">URL前缀</label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="DomainGPrefix" value="{{DomainGPrefix}}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">域名组名称<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="DomainGName" value="{{DomainGName}}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">所属CP<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<select name="CPId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id' CPId}}}
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">所属域名<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="ParentDomain" readonly="readonly" value="{{ParentDomain}}" title="{{ParentDomain}}" />
+						<input type="hidden" name="ParentDomainId" value="{{ParentDomainId}}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">回源策略</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio 'SourceStrategy' 'SourceStrategy' '' '' SourceStrategy}}}</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">内容Id解析规则</label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="AnalysisRule" value="{{AnalysisRule}}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">缓存优先级</label>
+					<div class="col-sm-10">
+						<select name="CachePriorityId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomainChannel/listCachePriority' 'CachePriority' 'id' CachePriorityId}}}
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">服务优先级</label>
+					<div class="col-sm-10">
+						<select name="ServicePriorityId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomainChannel/listServicePriority' 'ServicePriority' 'id' ServicePriorityId}}}
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+						<a href="javascript:;" class="btn btn-default" role="button" data-menu="source_cp_domaingroup">取消</a>
+					</div>
+				</div>
+			{{/with}}
+			</script>
+		</div>
+	</div>
+</div>

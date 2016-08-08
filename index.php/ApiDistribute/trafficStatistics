@@ -1,0 +1,18 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "内容列表",
+    "total": "1",
+    "rows": [
+        {
+		"ContentType": "2",
+		"SUM_sum_flow_out": "31192375.84",
+		"ContentTypeName": "小文件"
+		}, 
+		{
+		"ContentType": "1",
+		"SUM_sum_flow_out": "31192375.84",
+		"ContentTypeName": "大文件"
+		}
+    ]
+}

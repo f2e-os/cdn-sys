@@ -1,0 +1,162 @@
+<div id="trend" class="trend">                         
+	<div class="col-sm-12">
+		数据统计 -&gt; 趋势分析统计 
+	</div>
+	<div class="col-sm-12 trend mgt15">
+		 <div class="">
+		  <!-- Nav tabs aria-controls属性用于 tab切换、生成href和及显示模块 请求接口-->
+		  <ul class="nav nav-tabs" role="tablist">
+			  <li role="presentation" class="active"><a aria-controls="website-ranking" role="tab" data-toggle="tab">网站排行榜</a></li>
+			  <li role="presentation"><a aria-controls="domain-ranking" role="tab" data-toggle="tab">域名排行榜</a></li>
+		  </ul>
+		  <!-- Tab panes -->
+		  <div class="tab-content trend-cont">						  
+			 <div role="tabpanel" class="tab-pane active" id="website-ranking">
+				<form class="tab-formtab-form form-container clearfix" id="search-bar">
+					<!--<a class="ZUI-btn btnicon03"><span>统计</span></a>-->
+					<a class="ZUI-btn btnicon01 trend-export" data-href="/ApiStatisAnaly/websiteRankExport"><span>导出</span></a>
+					<span class="float-r clearfix">
+						<input type="text" name="StartTime" class="start-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">  至
+						<input type="text" name="EndTime" class="end-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+						
+						<script type="text/javascript">
+						var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+            var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+            var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm = preDate.getMinutes()-(curDate.getMinutes())%5;
+            mm=(mm<10)?('0'+mm):mm;pmm=(pmm<10)?('0'+pmm):pmm;
+            var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+						$(".start-date").val(pd);
+						$(".end-date").val(cd);
+						</script>
+            
+						<select name="Order" id="" class="d-select ZUI-select">
+							<!--<option value="">网站排行榜</option>-->
+							<option value="1">按出流量排行</option>
+							<option value="2">按点击次数排行</option>
+						</select>
+            <span class="select-area field-name">topN</span>
+						<input type="number"  name="Top" class="d-input ZUI-input top-val" placeholder="请输入top值" value="15">
+						<a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+						<input type="hidden" name="Pagesize" value="15">
+					</span>
+				</form>
+
+				<div class="table-holder" data-list data-url="/ApiStatisAnaly/websiteRank" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+
+			  <script type="template">
+				<table class="table table-hover">
+					<tr>
+						<th>排序</th>
+						<th>网站</th>
+						<th>出流量</th>
+                        <th>入流量</th>
+						<th>点击次数 (次)</th>
+						<th>百分比 (%)</th>
+					</tr>
+					{{#each rows}}
+						<tr>
+							<td>{{_ @index}}</td>
+							<td>{{WebsiteName}}</td>
+							<td>{{Flow}}</td>
+                            <td>{{flow_in}}</td>
+							<td>{{Visit}}</td>
+							<td>{{ellipsis_number Percent}}</td>
+						</tr>
+					{{/each}}
+				</table>
+			  </script>
+			  <div class="pager row">
+				  <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+				  <div id="pager-bar" class="col-sm-8"></div>
+			  </div>
+			 </div>
+			 <div role="tabpanel" class="tab-pane" id="domain-ranking">
+          <form class="tab-formtab-form form-container clearfix" id="search-bar2">
+            <!--<a class="ZUI-btn btnicon03"><span>统计</span></a>-->
+            <a class="ZUI-btn btnicon01 trend-export" data-href="/ApiStatisAnaly/domainRankExport"><span>导出</span></a>
+            <span class="float-r clearfix">
+              <span class="select-area">
+                <select name="ScheduleId" class="ZUI-select d-select">
+                  <option value="3">请选择调度方式</option>
+                  <option value="2">全局调度</option>
+                  <option value="1">本地调度</option>
+                </select>
+              </span>
+              <span class="select-area">
+                <select name="SignId" class="ZUI-select d-select">
+                  <option value="3">请选择签约方式</option>
+                  <option value="1">签约</option>
+                  <option value="0">非签约</option>
+                </select>
+              </span>
+
+              <select name="Order" id="" class="d-select ZUI-select">
+                <!--<option value="">网站排行榜</option>-->
+                <option value="1">按出流量排行</option>
+                <option value="2">按点击次数排行</option>
+              </select>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="CPId" class="ZUI-select d-select">
+                  <option value="">请选择CP</option>
+                  {{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id'}}}
+                </select>
+              </script>
+              <input type="text" name="StartTime" class="start-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">  至
+              <input type="text" name="EndTime" class="end-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+
+              <script type="text/javascript">
+              var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+              var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+              var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm = preDate.getMinutes()-(curDate.getMinutes())%5;
+              mm=(mm<10)?('0'+mm):mm;pmm=(pmm<10)?('0'+pmm):pmm;
+              var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+              $("#domain-ranking .start-date").val(pd);
+              $("#domain-ranking .end-date").val(cd);
+              </script>
+              <!--
+              <span class="select-area">
+                <select name="Order" id="" class="ZUI-select d-select">
+                  <option value="1">按流量排行</option>
+                  <option value="2">按点击次数排行</option>
+                </select>
+              </span>
+              -->
+              <span class="select-area field-name">topN</span>
+              <input type="number"  class="d-input ZUI-input top-val" placeholder="请输入top值" name="Top" value="15">
+              <input type="hidden" name="Pagesize" value="15">
+              <a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+            </span>
+          </form>
+				  <div class="table-holder" data-list data-url="/ApiStatisAnaly/domainRank" data-pager="#pager-bar2" data-method="post" data-form="#search-bar2" data-totalshow="#total-bar2"></div>
+          <script type="template">
+            <table class="table table-hover">
+              <tr>
+                <th>排序</th>
+                <th>域名</th>
+                <th>出流量</th>
+                <th>入流量</th>
+                <th>点击次数 (次)</th>
+                <th>百分比 (%)</th>
+              </tr>
+              {{#each rows}}
+                <tr>
+                  <td>{{_ @index}}</td>
+                  <td style="word-wrap:break-word;">{{DomainName}}</td> 
+                  <td>{{Flow}}</td>
+                  <td>{{flow_in}}</td>
+                  <td>{{Visit}}</td>
+                  <td>{{ellipsis_number Percent}}</td>
+                </tr>
+              {{/each}}
+            </table>
+          </script>
+          <div class="pager row">
+            <div class="col-sm-4">共<span id="total-bar2">0</span>条记录</div>
+            <div id="pager-bar2" class="col-sm-8"></div>
+          </div>
+			 </div>
+		  </div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,252 @@
+<div class="hostDispatch hostDispatch_add" id="hostDispatch_edit">
+    <div class="col-sm-12">
+        设备配置 -&gt; 调度策略管理 -&gt; 修改调度策略
+    </div>
+    <div class="col-sm-12 hostDispatch_addBody">
+        <div class="panel clearfix">
+          <form class="form-horizontal col-sm-12 auto-submit" action="/ApiScheduleStrategy/editSchStrategy" method="post" data-target="host_dispatch" data-list="param" data-url="/ApiScheduleStrategy/getSchStrategy" id="editHostDispath_form">
+            
+          </form>
+          <script type="template/html">
+          {{#each info}}
+            <div class="form-group">
+              <label class="col-sm-2 control-label">策略名称<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input forSub" name="StrategyName" value="{{Name}}"/>
+                <input type="hidden" class="ZUI-input forSub" name="Id" value="{{Id}}"/>
+              </div>
+            </div>
+            <div class="col-sm-6 topBar">
+              <a href="javascript:;" class="btn btn-primary hostDispatchEdit-add">+ 添加</a>
+              <a href="javascript:;" class="btn btn-primary hostDispatchEdit-del">- 删除</a>
+            </div>
+            <div class="form-group">
+              <table class="table">
+                <thead>
+                
+                  <tr>
+                    <th>
+                    <input type="checkbox" class="ZUI-checkbox" id="sys-allUser-check" data-check-all=".delCheck">
+                    <label for="sys-allUser-check">
+                        <span class="ZUI-checkbox-btn"></span>
+                        <span class="ZUI-checkbox-txt">全选</span>
+                    </label>
+                    </th>
+                    <th>序列号</th>
+                    <th>DNS域</th>
+                    <th>探测方式</th>
+                    <th>策略</th>
+                    <th>ip返回个数</th>
+                    <th>ttl(s)</th>
+                    <th>ip</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="table_body" class="host_tbody">
+                
+                {{#each location}}
+                 <tr data-status="false">
+			        <td>
+			        <input type="checkbox" class="ZUI-checkbox delCheck" id="sys-user-check{{_ @index}}">
+			        <label for="sys-user-check{{_ @index}}">
+			            <span class="ZUI-checkbox-btn"></span>
+			            <span class="ZUI-checkbox-txt"></span>
+			        </label>
+			        </td>
+			        <td>{{_ @index}}</td>
+			        <td><select name="TerritoryNameId[]" class="ZUI-select forSub"><option value="0">default</option>{{{global_show_select "" "/ApiScheduleStrategy/listTerritoryStrategy" "name" "id" TerritoryNameId "info"}}}</select></td>
+			        <td class="hasRadio">
+
+			          <div class="notInput_host_dispatch" data-type="radio">
+			            {{{global_show_radio (concat 'ProbeType_' @index) "ProbeTypeData" "" "" ProbeType}}}
+			          </div>
+
+			        </td>
+			        <td class="hasRadio">
+
+			          <div class="notInput_host_dispatch" data-type="radio">
+			            {{{global_show_radio (concat 'StrategyType_' @index) "StrategyType" "" "" StrategyType}}}
+			          </div>
+
+			        </td>
+			        <td>
+			        <input type="text" class="ZUI-input forSub" name="MaxIPNum[]" value="{{max_ip_num}}"/>
+			        </td>
+			        <td>
+			        <input type="text" class="ZUI-input forSub" name="Ttl[]" value="{{ttl}}"/>
+			        </td>
+			        <td>
+			        
+			        <input type="hidden" class="forSub" name="IPs[]" data-type="IPs" value="{{joinArr ip_pripory 'host_id'}}" />
+			        <input type="hidden" class="forSub" name="Priority[]" data-type="Priority" value="{{joinArr ip_pripory 'priority'}}" />
+			        <input type="hidden" class="forSub" name="Nodes[]" data-type="Nodes" value="{{joinArr ip_pripory 'DepartId'}}" />
+			        
+			        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn ipconfig" data-save="true">配置服务地址</a>
+			        </td>
+			        <td>
+			        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn editTr">修改</a>
+			        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn subTr" >保存</a>
+			        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn deleteTr">删除</a>
+			        </td>
+			      </tr>
+			      {{/each}}
+			      
+              </tbody>
+            </table>
+          </div>
+
+
+            <div class="sys-btns">
+              <a href="javascript:;" class="btn btn-primary" role="button" id="hostDispatchEdit-sub">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="host_dispatch">取消</a>
+            </div>
+            {{/each}}
+          </script>
+        </div>
+        <!-- panel end -->
+    </div>
+    <!-- col-sm-12 end -->
+
+
+    <!-- 增加策略下级  -->
+    <script type="template/html" id="add_dispatchTpl">
+      <tr data-status="false">
+        <td>
+        <input type="checkbox" class="ZUI-checkbox delCheck" id="sys-user-check{{index}}">
+        <label for="sys-user-check{{index}}">
+            <span class="ZUI-checkbox-btn"></span>
+            <span class="ZUI-checkbox-txt"></span>
+        </label>
+        </td>
+        <td>{{index}}</td>
+        <td><select name="TerritoryNameId[]" class="ZUI-select forSub"><option value="0">default</option>{{{global_show_select "" "/ApiScheduleStrategy/listTerritoryStrategy" "name" "id" "" "info"}}}</select></td>
+        <td class="hasRadio">
+
+          <div class="notInput_host_dispatch" data-type="radio">
+            {{{global_show_radio (concat 'ProbeType_' index) "ProbeTypeData"}}}
+          </div>
+
+        </td>
+        <td class="hasRadio">
+
+          <div class="notInput_host_dispatch" data-type="radio">
+            {{{global_show_radio (concat 'StrategyType_' index) "StrategyType" "" "" "2"}}}
+          </div>
+
+        </td>
+        <td>
+        <input type="text" class="ZUI-input forSub" name="MaxIPNum[]"/>
+        </td>
+        <td>
+        <input type="text" class="ZUI-input forSub" name="Ttl[]"/>
+        </td>
+        <td>
+        <input type="hidden" class="forSub" name="IPs[]" data-type="IPs" value="" />
+        <input type="hidden" class="forSub" name="Priority[]" data-type="Priority" value="" />
+        <input type="hidden" class="forSub" name="Nodes[]" data-type="Nodes" value="" />
+        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn ipconfig">配置服务地址</a>
+        </td>
+        <td>
+        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn editTr">修改</a>
+        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn subTr">保存</a>
+        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn deleteTr">删除</a>
+        </td>
+      </tr>
+    </script>
+    <!-- 增加策略下级 -->
+
+    <script type="template" id="ipDialog">
+    <div class="col-sm-12 dialogTop_dis">
+      <a href="javascript:;" class="btn btn-primary hostDispatch-ipAdd">+ 添加</a>
+      <a href="javascript:;" class="btn btn-primary hostDispatch-ipDel">- 删除</a>
+    </div>
+    <table class="table dialogTable_dis">
+      <thead>
+        <th>
+        <input type="checkbox" class="ZUI-checkbox" id="host-ip-check" data-check-all=".delIpCheck" onclick="$('#host_ipBody :checkbox').prop({checked:this.checked});">
+        <label for="host-ip-check" id="selectAll_dis_label">
+            <span class="ZUI-checkbox-btn"></span>
+            <span class="ZUI-checkbox-txt">全选</span>
+        </label>
+        </th>
+        <th>
+        序列号
+        </th>
+        <th>
+        所属节点
+        </th>
+        <th>
+        设备名称
+        </th>
+        <th>
+        优先级
+        </th>
+        <th>
+        操作
+        </th>
+      </thead>
+      <tbody id="host_ipBody" class="host_tbody">
+
+      </tbody>
+    </table>
+    </script>
+    <script type="template" id="ipTr">
+    <tr>
+      <td>
+        <input type="checkbox" class="ZUI-checkbox delIpCheck" id="host-ip-check{{index}}">
+        <label for="host-ip-check{{index}}">
+            <span class="ZUI-checkbox-btn"></span>
+            <span class="ZUI-checkbox-txt"></span>
+        </label>
+      </td>
+      <td>
+      {{index}}
+      </td>
+      <td>
+      <select class="sForSelect ZUI-select" style="width:180px;" data-type="Nodes">{{{global_show_select "" "/ApiDepartment/listDepartment" "DepartName" "Id"}}}</select>
+      </td>
+      <td>
+      <select class="sForSelect ZUI-select" style="width:80px;" data-type="IPs">{{{global_show_select ""  (concat '/ApiHost/listHost?test=' index) "HostName" "Id"}}}</select>
+      </td>
+      <td>
+      <select class="sForSelect ZUI-select" style="width:80px;" data-type="Priority">{{{global_show_select "" "Priority"}}}</select>
+      </td>
+      <td>
+      <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn editTr">修改</a>
+      <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn subTr">保存</a>
+      <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn deleteTr">删除</a>
+      </td>
+    </tr>
+    
+    </script>
+    <script type="template" id="ipEditTr">
+    {{#each row}}
+    <tr>
+      <td>
+        <input type="checkbox" class="ZUI-checkbox delCheck" id="host-ip-check{{index}}">
+        <label for="host-ip-check{{index}}">
+            <span class="ZUI-checkbox-btn"></span>
+            <span class="ZUI-checkbox-txt"></span>
+        </label>
+      </td>
+      <td>
+      {{index}}
+      </td>
+      <td>
+      <select class="sForSelect ZUI-select" style="width:180px;" data-type="Nodes">{{{global_show_select "" "/ApiDepartment/listDepartment" "DepartName" "Id" Nodes}}}</select>
+      </td>
+      <td>
+      <select class="sForSelect ZUI-select" style="width:80px;" data-type="IPs">{{{global_show_select ""  (concat '/ApiMonitor/getHostByNodeId?NodeId=' Nodes) "HostName" "Id" IPs "info"}}}</select>
+      </td>
+      <td>
+      <select class="sForSelect ZUI-select" style="width:80px;" data-type="Priority">{{{global_show_select "" "Priority" "" "" Priority}}}</select>
+      </td>
+      <td>
+      <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn editTr">修改</a>
+      <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn subTr">保存</a>
+      <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn deleteTr">删除</a>
+      </td>
+    </tr>
+    {{/each}}
+    </script>
+</div>

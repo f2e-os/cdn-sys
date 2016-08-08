@@ -1,0 +1,61 @@
+<div id="whitelist" class="other">
+	<div class="col-sm-12">
+		溯源评估 -&gt; 各省缓存溯源白名单
+	</div>
+	<div class="col-sm-12 other mgt15">
+		  <div class="tab-content whitelist">
+        	<!--文件类型统计-->
+				<div class="row">
+	                <div class="col-sm-12 text-right">
+	                    <form id="whitelist-form" class="row">
+	                        <input type="hidden" name="Pagesize" value="15">
+	                    	<!--
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                       -->
+                            <div class="col-sm-3">
+                        	  	<label class="col-sm-4 control-label" style="line-height: 32px;min-width: 90px;">省缓存:</label>
+                        	  	<div class="col-sm-6">
+	                            	<span data-title="选择省缓存节点"  data-param="type=2" data-url="/ApiCommon/getCacheSysList" class="form-control Node-selector" style="text-align: left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"></span>
+	              					<input type="hidden" name="CacheSysID" value="" placeholder="选择省缓存节点" require/>
+              					</div>
+                            </div>
+                        	<div class="col-sm-9">
+						    	<div class="btn-submit btn btn-default">查询</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="show-area clearfix" style="margin-top: 15px;">
+	            	<div class="table-holder col-sm-12" style="padding: 0px;" data-list data-url="/ApiTrace/whitelist" data-pager="#pager-bar" data-method="post" data-form="#whitelist-form" data-totalshow="#total-bar"></div>
+		            <script type="template">
+		              <table class="table table-hover ">
+		                <tr>
+		                  <th>省公司</th>
+		                  <th>域名</th>
+		                  <th>文件类型</th>
+		                </tr>
+		                {{#each rows}}
+		                  <tr data-id="{{CacheSysID}}">
+		                    <td>{{CompanyName}}</td>
+		                    <td>{{url}}</td>
+		                    <td>{{FileType}}</td>
+		                  </tr>
+		                {{/each}}
+		              </table>
+		            </script>
+		          </div>
+		          <div class="show-area clearfix">
+		              <div class="pager row whitelist">
+			              <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+			              <div id="pager-bar" class="col-sm-8"></div>
+		              </div>
+		          </div>
+		  </div>
+	</div>
+</div>

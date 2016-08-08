@@ -1,0 +1,96 @@
+<div class="FUI source-cp">
+	<div class="col-sm-12">
+		资源配置 -&gt; CP管理 -&gt; <span id="subTabDetail"></span>
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="source_cp"><a href="javascript:void(0);">CP配置</a></li>
+			<li data-menu="source_cp_domain" class="active"><a href="javascript:void(0);">域名配置</a></li>
+			<li data-menu="source_cp_domaingroup"><a href="javascript:void(0);">域名组配置</a></li>
+		</ul>
+		<div class="panel">
+			<div class="row">
+				<div class="col-sm-6">
+					<a href="javascript:void(0);" class="btn btn-primary btn-add" data-menu="source_cp_domain_add">+ 添加域名</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-del">- 批量删除</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-send">鉴权下发</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-sendClose">鉴权关闭</a>
+				</div>
+				<div class="col-sm-6 text-right">
+					<form id="search-bar" class="row">
+						<input type="hidden" name="Pagesize" value="15">
+						<div class="col-sm-4" data-list></div>
+						<script type="template">
+							<select name="CPId" class="form-control" id="search-CP">
+								<option value="">请选择CP</option>
+								{{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id'}}}
+							</select>
+						</script>
+						<div class="col-sm-4" data-list></div>
+						<script type="template">
+							<select name="DomainDispatchId" class="form-control" id="search-Dispatch">
+								<option value="">请选择调度策略</option>
+								{{{global_show_select '' '/ApiDomain/listDomainStrategy?is_trace=0' 'StrategyName' 'id'}}}
+							</select>
+						</script>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<input type="text" class="form-control" name="DomainName" placeholder="请输入域名">
+								<div class="input-group-addon btn-submit">搜索</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="table-holder" data-list data-url="/ApiDomain/listDomain" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+			<script type="template">
+				<table class="table table-hover">
+					<tr>
+						<th>
+							<input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+							<label for="host-distribute-check-all">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</th>
+						
+						<th>域名名称</th>
+						<th>所属CP</th>
+						<th>域名类型</th>
+						<th>工作模式</th>
+						<th>调度策略</th>
+						<th>回源策略</th>
+						<th>鉴权方式</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+					{{#each rows}}
+					<tr data-ID="{{Id}}">
+						<td>
+							<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{Id}}" id="host-distribute-check{{Id}}" data-id="{{Id}}">
+							<label for="host-distribute-check{{Id}}">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</td>
+						
+						<td>{{DomainName}}</td>
+						<td>{{CPName}}</td>
+						<td>{{DomainType}}</td>
+                        <td>{{source_cp_domain_DomainSign DomainSign}}</td>
+						<td>{{DomainDispatch}}</td>
+						<td>{{DomainTrace}}</td>
+                        <td>{{source_cp_domain_DomainAuth DomainAuth}}</td>
+                        <td>{{source_cp_domain_Status Status}}</td>
+						<td><a href="javascript:void(0);" class="ZUI-operate list-update" data-menu="source_cp_domain_edit:&Id={{Id}}"><span class="iconfont">&#xe602;</span>编辑</a><a href="javascript:void(0);" class="ZUI-operate list-del"><span class="iconfont">&#xe603;</span>删除</a></td>
+					</tr>
+					{{/each}}
+				</table>
+			</script>
+			<div class="pager row">
+				<div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+				<div id="pager-bar" class="col-sm-8"></div>
+			</div>
+		</div>
+	</div>
+</div>

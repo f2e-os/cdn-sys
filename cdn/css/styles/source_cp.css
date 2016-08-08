@@ -1,0 +1,34 @@
+/*source_cp*/
+.FUI-title { margin-bottom:10px;}
+.FUI .panel{
+	margin-top:0;
+	padding: 15px;
+	min-height: 400px;
+	overflow:hidden;
+}
+.FUI #subTab{
+	margin-top:15px;
+}
+.FUI-text-right{
+	text-align:right;
+}
+.FUI .table-holder td{
+	word-break:break-all;
+　　word-wrap:break-word;
+}
+/*source_cp*/
+.FUI .ZUI-switch-text:checked + label > .ZUI-switch-info:after { content:'激活';}
+.FUI .ZUI-switch-text + label > .ZUI-switch-info:after { content:'去激活';}
+/*host_httpcache*/
+.FUI .ppc-group .col-sm-2 .btn-auto { margin-right:0;}
+.FUI .ppc-group strong, .FUI .ppc-group label { vertical-align:middle;}
+.FUI .limit-block .ZUI-input,.FUI .clientpool-block .ZUI-input, .FUI .clientpool-block .clientpool-reg { display:inline-block; margin-right:10px; width:100px}
+.dialog-beforeTip { position:absolute; top:0; left:0; width:100%; color:#f00; font-weight:normal}
+/*host_pps*/
+
+.FUI #myTab{
+	margin-top:15px;
+}
+.FUI .tab-content {
+	border:none;
+}

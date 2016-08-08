@@ -1,0 +1,13 @@
+.record .panel{
+	padding: 15px;
+	min-height: 400px;
+	margin-top: 15px;
+}
+
+.record .form-style{
+	padding: 0 16px;
+}
+.record .form-style .ipt-style{
+	border: none;
+	padding-left: 10px;
+}

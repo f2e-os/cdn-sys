@@ -1,0 +1,74 @@
+.fork-holder{
+    text-align: center;
+    font: normal 12px/1.5 "Microsoft Yahei";
+}
+.fork-holder *{
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+.fork-holder dl{
+    position: absolute;
+    height: 140px;
+}
+.fork-holder dt{
+    background: #2cac93;
+    color: #fff;
+    width: 90px;
+    padding: 2px;
+    cursor: pointer;
+    margin: 0 auto;
+    position: relative;
+}
+.fork-holder dt:only-child{
+    overflow: hidden;
+}
+.fork-holder dt:after{
+    position: absolute;
+    content: " ";
+    width: 1px;
+    height: 36px;
+    background: #999;
+    left: 50%;
+    z-index: 0;
+    top: 20px;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+.fork-holder dd{
+    position: absolute;
+    top: 90px;
+}
+.fork-holder dd i{
+    position: relative;
+    top: -20px;
+    background: #fff;
+    z-index: 1;
+}
+.fork-holder dd:after{
+    position: absolute;
+    content: " ";
+    width: 2000px;
+    height: 48px;
+    border-left: 1px solid #999;
+    border-top: 1px solid #999;
+    left: 50%;
+    z-index: 0;
+    top: -34px;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+.fork-holder dd:last-child:after{
+    border-top: 1px solid #fff;
+}
+.fork-holder .dt-empty{
+    background: #d2d2d2;
+}

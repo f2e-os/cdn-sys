@@ -1,0 +1,178 @@
+<div class="FUI host-BfPlayercache">
+	<div class="col-sm-12">
+		设备配置 -&gt;暴风配置&gt; <span id="subTabDetail"></span>
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="host_BfPlayercache_conf" class="active"><a href="javascript:void(0);">BF-暴风配置</a></li>
+		</ul>
+
+<!--
+     /**
+      *  Mr Du  2016.4.21
+      *  BF操作模块 
+      */
+ -->
+	<div class="panel">
+		<form class="form-horizontal col-sm-12" action="/ApiBfPlayerCacheBaseConfig/listHostGroup" method="post" data-target="host_BfPlayercache_conf" data-list="param" data-url="/ApiBfPlayerCacheBaseConfig/getBfPlayerConfig"></form>
+     <script type="template">
+				<div class="row FUI-title ppc-group">
+  	               <div class="col-sm-10">
+		        <strong>获取LBE设备列表：</strong>{{{global_show_checkbox 'lbe' '/ApiBfPlayerCacheBaseConfig/GetLBEConfig' 'lbe_name' 'id'}}}
+
+					</div> 
+
+					<div class="col-sm-10">
+					<strong>获取设备列表：</strong>{{{global_show_checkbox 'ppc_group' '/ApiBfPlayerCacheBaseConfig/listHostGroup' 'GroupName' 'Id'}}}
+					</div>
+					<div class="col-sm-2 FUI-text-right">
+						<a href="javascript:void(0);" class="btn btn-primary btn-autoCalc">自动计算</a>
+					</div>
+				</div>
+				<table class="table table-hover ppc-block">
+					<tbody>
+					<tr>
+					<th>
+					<input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+					<label for="host-distribute-check-all">
+					<span class="ZUI-checkbox-btn"></span>
+					<span class="ZUI-checkbox-txt"></span>
+					</label>
+					</th>
+						<th>Id</th>
+						<th>所在组</th>
+						<th>PPC</th>
+						<th>起始范围</th>
+						<th>结束范围</th>
+					</tr>
+					{{{host_BfPlayercache_Conf_ppcList info.bf}}}
+					</tbody>
+				</table>
+
+				<div class="row FUI-title">
+					<div class="col-sm-12">
+					<strong>用户网段：</strong>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select class="ZUI-select clientpool-list" multiple="multiple" size="10">
+						{{{host_BfPlayercache_Conf_clientpoolOptioning info.client_pool}}}
+						</select>
+					</div>
+				</div>
+				<div class="form-group clientpool-block">
+					<div class="col-sm-12">
+						<span>起始地址：</span><input type="text" class="ZUI-input clientpool-start" name="ClientPoolStartAddr"/><span>结束地址：</span><input type="text" class="ZUI-input clientpool-end" name="ClientPoolEndAddr" />规则：<select class="ZUI-select clientpool-reg" name="ClientPooltype" >{{{global_show_select '' 'Reg' '' ''}}}</select><a href="javascript:void(0);" class="btn btn-primary btn-add-clientpool">添加</a><a href="javascript:void(0);" class="btn btn-primary btn-del-clientpool">删除</a>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a href="javascript:;" class="btn btn-primary btn-set"  role="button">保存</a>
+						<a href="javascript:;" class="btn btn-default btn-sending" role="button">下发</a>
+						<a href="javascript:;" class="btn btn-default btn-rollbacking" role="button">回滚</a>
+					</div>
+				</div>
+			</script>
+			
+	       <script type="template/html" id="ppclist-template">
+			{{#each data}}
+			<tr data-ID="{{id}}" data-group="{{group_id}}">
+				<td>
+					<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{id}}" id="host-distribute-check{{id}}" data-id="{{id}}"{{#if checked}} checked="checked"{{/if}}>
+					<label for="host-distribute-check{{id}}">
+						<span class="ZUI-checkbox-btn"></span>
+						<span class="ZUI-checkbox-txt"></span>
+					</label>
+				</td>
+				<td>{{id}}</td>
+				<td>{{group_name}}</td>
+				<td>{{bf_name}}</td>
+				<td><input type="text" class="ZUI-input ZUI-w140 ppc-start" value="{{start}}" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 ppc-end" value="{{end}}" /></td>
+			</tr>
+			{{/each}}
+			</script>
+
+
+<!--
+     /**
+      *  Mr Du  2016.4.21
+      *  此处以下是控制限速模板
+      */
+
+ -->
+
+			<script type="template/html" id="limitlist-template">
+			{{#each data}}
+			<tr data-ID="{{@index}}">
+				<td>
+					<input type="checkbox" class="ZUI-checkbox limit-distribute" value="{{@index}}" id="limit-distribute-check{{@index}}" data-id="{{@index}}"{{#if checked}} checked="checked"{{/if}}>
+					<label for="limit-distribute-check{{@index}}">
+						<span class="ZUI-checkbox-btn"></span>
+						<span class="ZUI-checkbox-txt"></span>
+					</label>
+				</td>
+				<td>
+				<input type="text" class="ZUI-input limit-start" value="{{start}}" onfocus="WdatePicker({dateFmt:'H:m:s'})" />
+				<input type="text" class="ZUI-input limit-end" value="{{end}}" onfocus="WdatePicker({dateFmt:'H:m:s'})" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-task"      value="{{single_task_limit}}" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-tasktotal" value="{{total_limit}}" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-user"      value="{{single_user_limit}}" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-usertotal" value="{{service_total_limit}}" /></td>
+			</tr>
+			{{/each}}
+			</script>
+
+
+<!--
+     /**
+      *  Mr Du  2016.4.21
+      *  此处以下是控制限速模板
+      */
+
+ -->
+			<script type="template/html" id="limittr-template">
+	{{#with data}}
+			<tr data-ID="{{index}}">
+				<td>
+					<input type="checkbox" class="ZUI-checkbox limit-distribute" value="{{index}}" id="limit-distribute-check{{index}}" data-id="{{index}}" checked="checked">
+					<label for="limit-distribute-check{{index}}">
+						<span class="ZUI-checkbox-btn"></span>
+						<span class="ZUI-checkbox-txt"></span>
+					</label>
+				</td>
+				<td>
+				<input type="text" class="ZUI-input limit-start" value="{{start}}" onfocus="WdatePicker({dateFmt:'H:m:s'})" />
+				<input type="text" class="ZUI-input limit-end" value="{{end}}" onfocus="WdatePicker({dateFmt:'H:m:s'})" />
+				</td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-task" value="{{single_task_limit}}" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-tasktotal" value="{{total_limit}}" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-user" value="{{single_user_limit}}" /></td>
+				<td><input type="text" class="ZUI-input ZUI-w140 limit-usertotal" value="{{service_total_limit}}" /></td>
+			</tr>
+			{{/with}}
+			</script>
+
+
+<!--
+     /**
+      *  Mr Du  2016.4.21
+      *  此处以下是起始地址和结束地址 添加模板
+      */
+
+ -->
+
+
+
+			<script type="template/html" id="clientpooloption-template">
+
+			{{#each data}}
+			<option value="{{start_ip}}--{{end_ip}}--{{reg}}">{{start_ip}}--{{end_ip}}--{{host_BfPlayercache_Conf_Reging reg}}</option>
+			{{/each}}
+
+			</script>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+<div class="host">
+    <div class="col-sm-12">
+        设备配置 -&gt; 缓存策略管理
+    </div>
+    <div class="col-sm-12">
+        <div class="panel">
+          <form class="form-horizontal fm-inline ZUI-fm-140 col-sm-12 auto-submit" action="/ApiCacheManage/editCachePolicy" method="post" data-target="host/manage/policy" data-list data-url="/ApiCacheManage/getCachePolicy">
+              
+          </form>
+
+          <script type="template">
+            {{#each info}}
+            <input type="hidden" name="Id" value="{{Id}}">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">内容更换周期：</label>
+                <div class="col-sm-9">
+                  <input type="text" class="ZUI-input" name="UpdatePeriod" value="{{updatePeriod}}" require/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">磁盘占用百分比（上限）：</label>
+                <div class="col-sm-9">
+                  <input type="text" class="ZUI-input" name="DiskUp" value="{{diskUp}}" require/> <em>%</em>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">缓存内容大小范围：</label>
+                <div class="col-sm-4">
+                  <label >最小值:</label>
+                  <input type="text" class="ZUI-input" name="MinCache" value="{{minCache}}" require/>
+                  <em>KB</em>
+                </div>
+                <div class="col-sm-4">
+                  <label>最大值:</label>
+                  <input type="text" class="ZUI-input" name="MaxCache" value="{{maxCache}}" require/>
+                  <em>KB</em>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">缓存内容热点阀值：</label>
+                <div class="col-sm-9">
+                  <input type="text" class="ZUI-input" name="HotThr" value="{{hotThr}}" require/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">DNS解析模式，是否强制解析：</label>
+                <div class="col-sm-9">
+                  <div class="radioBox">{{{global_show_radio "DNSModel" "Yes_No" "" "" DNSModel}}}</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">压缩功能：</label>
+                <div class="col-sm-9">
+                  <div class="radioBox">{{{global_show_radio "Compress" "SwitchCompress" "" "" Compress}}}</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+                  <a href="javascript:;" class="btn btn-default" role="button" >取消</a>
+                  <a href="javascript:;" class="btn btn-primary Device-selector" data-type="1,2,7" data-url="/ApiCacheManage/setCachePolicy" data-form=".auto-submit" data-title="下发设备(necache,ppc,lbe)">下发</a>
+                  
+                </div>
+              </div>
+            {{/each}}
+          </script>
+        </div>
+    </div>
+</div>

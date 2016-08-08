@@ -1,0 +1,82 @@
+<div class="host">
+    <div class="col-sm-12">
+        设备配置 -&gt; 分发策略管理
+    </div>
+    <div class="col-sm-12 host">
+        <div class="panel">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="javascript:;" class="btn btn-primary" data-menu="host/policy/add">+ 添加</a>
+                    <a href="javascript:;" class="btn btn-primary" data-delete-batch=".host-distribute" data-url="/ApiDispatchStrategy/deleteDisStrategy">- 删除</a>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <form id="search-bar" class="row">
+                        <input type="hidden" name="Pagesize" value="15">
+                        <div class="col-sm-3">
+                        </div>
+                        <script type="template">
+                            <input type="text" name="StartTime" class="form-control" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="开始时间" value="{{global_show_date -1 'yy-MM-dd hh:mm:ss'}}">
+                        </script>
+                        <div class="col-sm-3">
+                        </div>
+                        <script type="template">
+                            <input type="text" name="EndTime" class="form-control" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="结束时间" value="{{global_show_date 0 'yy-MM-dd hh:mm:ss'}}">
+                        </script>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="StrategyName" placeholder="请输入名称搜索">
+                              <div class="input-group-addon btn-submit">搜索</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-holder" data-list data-url="/ApiDispatchStrategy/listDisStrategy" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+            <script type="template">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+                            <label for="host-distribute-check-all">
+                                <span class="ZUI-checkbox-btn"></span>
+                                <span class="ZUI-checkbox-txt"></span>
+                            </label>
+                        </th>
+                        <th>名称</th>
+                        <th>内容热度阈值</th>
+                        <th>节点</th>
+                        <th>优先级</th>
+                        <th>分发方式</th>
+                        <th>分发时间</th>
+                        <th>操作</th>
+                    </tr>
+                    {{#each rows}}
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="ZUI-checkbox host-distribute" value="{{Id}}" id="host-distribute-check{{Id}}" data-id="{{Id}}">
+                            <label for="host-distribute-check{{Id}}">
+                                <span class="ZUI-checkbox-btn"></span>
+                                <span class="ZUI-checkbox-txt"></span>
+                            </label>
+                        </td>
+                        <td>{{StrategyName}}</td>
+                        <td>{{HotThr}}</td>
+                        <td>{{NodeName}}</td>
+                        <td>{{Priority}}</td>
+                        <td>{{host_disway DisWay}}</td>
+                        <td> {{DisTime}} </td>
+                        <td>
+                            <a href="#" class="ZUI-operate region-edit" data-menu="host/policy/edit:Id={{Id}}"><span class="iconfont">&#xe602;</span>修改</a>
+                            <a href="#" class="ZUI-operate region-del" data-id="{{Id}}" data-delete data-url="/ApiDispatchStrategy/deleteDisStrategy" ><span class="iconfont">&#xe603;</span>删除</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+            <div class="pager row">
+                <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+                <div id="pager-bar" class="col-sm-8"></div>
+            </div>
+        </div>
+    </div>
+</div>

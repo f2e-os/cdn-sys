@@ -1,0 +1,82 @@
+<div class="FUI host-httpcache">
+	<div class="col-sm-12">
+		设备配置 -&gt; HTTP缓存配置 -&gt; <span id="subTabDetail"></span>
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="host_httpcache"><a href="javascript:void(0);">PPC分组</a></li>
+			<li data-menu="host_httpcache_conf"><a href="javascript:void(0);">PPC配置</a></li>
+			<li data-menu="host_httpcache_file" class="active"><a href="javascript:void(0);">文件配置</a></li>
+			<li data-menu="host_httpcache_domain"><a href="javascript:void(0);">基于域名放行</a></li>
+			<li data-menu="host_httpcache_cache"><a href="javascript:void(0);">HTTP缓存文件大小</a></li>
+		</ul>
+		<div class="panel">
+			<div class="row">
+				<div class="col-sm-8">
+					<a href="javascript:void(0);" class="btn btn-primary btn-add" data-menu="host_httpcache_file_add">+ 添加文件配置</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-del">- 批量删除</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-send">下发</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-rollback">回滚</a>
+				</div>
+				<div class="col-sm-4 text-right">
+					<form id="search-bar" class="row">
+						<input type="hidden" name="Pagesize" value="15">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<input type="text" class="form-control" name="file_ext" placeholder="请输入文件扩展名">
+								<div class="input-group-addon btn-submit">搜索</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="table-holder" data-list data-url="/ApiHttpCache/listFileExt" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+			<script type="template">
+				<table class="table table-hover">
+					<tr>
+						<th>
+							<input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+							<label for="host-distribute-check-all">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</th>
+						<th>Id</th>
+						<th>文件扩展名</th>
+						<th>分组</th>
+						<th>工作方式</th>
+						<th>缺省动作</th>
+						<th>验证refer</th>
+						<th width="25%">网站黑名单</th>
+						<th width="25%">网站白名单</th>
+						<th>操作</th>
+					</tr>
+					{{#each rows}}
+					<tr data-ID="{{id}}" data-HostIds="{{HostIds}}">
+						<td>
+							<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{id}}" id="host-distribute-check{{id}}" data-id="{{id}}">
+							<label for="host-distribute-check{{id}}">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</td>
+						<td>{{id}}</td>
+						<td>{{file_ext}}</td>
+						<td>{{ppc_gname}}</td>
+						<td>{{host_httpcache_file_Proxy proxy}}</td>
+						<td>{{host_httpcache_file_CheckPolicy check_policy}}</td>
+						<td>{{host_httpcache_file_CheckRefer check_refer}}</td>
+						<td>{{blacklist_name}}</td>
+						<td>{{whitelist_name}}</td>
+						<td><a href="javascript:void(0);" class="ZUI-operate list-update" data-menu="host_httpcache_file_edit:file_ext_id={{id}}"><span class="iconfont">&#xe602;</span>编辑</a><a href="javascript:void(0);" class="ZUI-operate list-del"><span class="iconfont">&#xe603;</span>删除</a></td>
+					</tr>
+					{{/each}}
+				</table>
+			</script>
+			<div class="pager row">
+				<div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+				<div id="pager-bar" class="col-sm-8"></div>
+			</div>
+		</div>
+	</div>
+</div>

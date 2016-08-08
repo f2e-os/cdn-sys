@@ -1,0 +1,40 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "total": 1,
+    "rows": [
+   		{
+		"SUM_sum_num_log": 51810,
+		"SUM_focu_yes_num": 25358,
+		"SUM_focu_yin_flow": 0,
+		"SUM_focu_yout_flow": 543596045.92,
+		"tm_insert": "2015-06-09 00:00:00",
+		"hitRate": 0.26
+		},
+		{
+		"SUM_sum_num_log": 68162,
+		"SUM_focu_yes_num": 34419,
+		"SUM_focu_yin_flow": 0,
+		"SUM_focu_yout_flow": 778210848.03,
+		"tm_insert": "2015-06-09 00:05:00",
+		"hitRate": 0.25
+		},
+		{
+		"SUM_sum_num_log": 68162,
+		"SUM_focu_yes_num": 34419,
+		"SUM_focu_yin_flow": 0,
+		"SUM_focu_yout_flow": 778210848.03,
+		"tm_insert": "2015-06-09 00:05:00",
+		"hitRate": 0.25
+		},
+		{
+		"SUM_sum_num_log": 68162,
+		"SUM_focu_yes_num": 34419,
+		"SUM_focu_yin_flow": 0,
+		"SUM_focu_yout_flow": 778210848.03,
+		"tm_insert": "2015-06-09 00:05:00",
+		"hitRate": 0.25
+		}
+    ]
+}

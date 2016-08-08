@@ -1,0 +1,61 @@
+<div class="system">
+    <div class="col-sm-12">
+        资源配置 -&gt; 节点管理 -&gt;<span class="detail">区域管理</span>
+    </div>
+    <div class="col-sm-12 system">
+        <div class="panel">
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="#" class="btn btn-primary system-add">+ 添加</a>
+                  <!--  <a href="#" class="btn btn-primary system-del">- 删除</a>-->
+                </div>
+                <div class="col-sm-6 text-right">
+            	   <!--
+                    <form id="system-searchUser" class="row">
+                        <input type="hidden" name="Pagesize" value="15">
+                        <div class="col-sm-4">
+                            <select name="CP" class="form-control">
+                                <option value="">是否CP</option>
+                                <option value="1">是</option>
+                                <option value="0">不是</option>
+                            </select>
+                        </div>
+                       
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="UserName" placeholder="请输入用户名搜索">
+                              <div class="input-group-addon btn-submit">搜索</div>
+                            </div>
+                        </div>
+                    </form>
+                    -->
+                </div>
+            </div>
+            <div class="table-holder" data-list data-url="/ApiSystem/listUser" data-pager="#pager-system" data-method="post" data-form="#system-searchUser" data-totalshow="#systemUser-total"></div>
+            <script type="template">
+                <table class="table table-hover">
+                    <tr>
+                        <th>区域名称</th>
+                        <th>区域描述</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                        <th>操作</th>
+                    </tr>
+                    {{#each rows}}
+                    <tr>
+                        <td>{{UserName}}</td>
+                        <td>{{LevelName}}</td>
+                        <td>{{system_user_status Status}}</td>
+                        <td>{{yes_no CP}}</td>
+                        <td><a href="#">修改</a><a href="#">删除</a></td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+            <div class="pager row">
+                <div class="col-sm-4">共<span id="systemUser-total">0</span>条记录</div>
+                <div id="pager-system" class="col-sm-8"></div>
+            </div>
+        </div>
+    </div>
+</div>

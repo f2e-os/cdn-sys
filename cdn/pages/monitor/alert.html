@@ -1,0 +1,121 @@
+<div id="m-alert" class="m-alert">
+	<div class="col-sm-12">
+		监控告警 -&gt; 告警 
+	</div>
+	<div class="col-sm-12 mgt15">
+    <form class="container-fluid form-select" id="search-bar">
+      <span class="select-area">
+      <input type="text"  name="DateFrom" class="start-date data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+      </span>
+      <span class="select-area date-to">至</span>
+      <span class="select-area">
+      <input type="text"  name="DateTo" class="end-date data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" >
+      </span>
+      <span class="select-area">
+      <input type="text" name="DevName" class="d-input ZUI-input dev-name" placeholder="设备名称">
+      </span>
+      <script type="text/javascript">
+        var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+				var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+				var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm = preDate.getMinutes()-(curDate.getMinutes())%5;
+				mm=(mm<10)?('0'+mm):mm;pmm=(pmm<10)?('0'+pmm):pmm;
+				var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+				$(".start-date").val(pd);
+				$(".end-date").val(cd);
+      </script>
+
+      <span class="select-area" data-list></span>
+      <script type="template">
+        <select name="WarnLevelId" class="ZUI-select d-select">
+          <option value="">告警级别</option>
+          {{{global_show_select '' '/ApiMonitor/listWarnLevel' 'WarnLevel' 'Id'}}}
+        </select>
+      </script>
+      <!--WarnTypeId	Int	可选			故障分类的Id-->
+       <span class="select-area" data-list></span>
+        <script type="template">
+        <select name="WarnTypeId" class="ZUI-select d-select">
+          <option value="">故障分类</option>
+          {{{global_show_select '' '/ApiMonitor/getAlarmType' 'WarnType' 'Id'}}}
+        </select>                                              
+      </script>
+
+      <span class="select-area" data-list></span>
+        <script type="template">
+        <select name="WarnMoldId" class="ZUI-select d-select">
+          <option value="">告警类型</option>
+          {{{global_show_select '' '/ApiMonitor/listWarnMold' 'warnMold' 'idx'}}}
+        </select>                    
+      </script>
+
+      <span class="select-area" style="width:20px;">
+        <a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+      </span>
+
+      <input type="hidden" name="Pagesize" value="15">	
+    </form>
+
+    <div class="show-area clearfix">
+      <div class="table-holder" data-list data-url="/ApiMonitor/searchMonitor" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+      <script type="template">
+				<table class="table table-hover alert-table">
+					<tr>
+            <th>
+              <input type="checkbox" class="ZUI-checkbox" id="alert-table-check-all" data-check-all=".alert-table">
+              <label for="alert-table-check-all">
+                  <span class="ZUI-checkbox-btn"></span>
+                  <span class="ZUI-checkbox-txt"></span>
+              </label>
+            </th>
+			<th>序列</th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="Ctime">日期时间</a></th>
+			<th><a href="javascript:void(0);" class="t-sort-item" data-sort="DevName">设备</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="DevType">设备类型</a></th>
+			<th><a href="javascript:void(0);" class="t-sort-item" data-sort="DevIP">IP</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="WarnType">故障分类</a></th>
+			<th><a href="javascript:void(0);" class="t-sort-item" data-sort="WarnMold">告警类型</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="WarnLevel">告警级别</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="WarnMsg">告警内容</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="confirm">状态</a></th>
+            <th>专家库</th>
+					</tr>
+					{{#each rows}}
+						<tr data-id="{{Idx}}" class="alert-table-tr">
+							<td>
+                <input type="checkbox" name="Idx" class="ZUI-checkbox alert-table" id="alert{{Idx}}" data-id="{{Idx}}" value="{{Idx}}"/>
+                <label for="alert{{Idx}}">
+                    <span class="ZUI-checkbox-btn"></span>
+                    <span class="ZUI-checkbox-txt"></span>
+                </label>
+              </td>
+              <td>{{_ @index}}</td>
+              <td>{{Ctime}}</td>
+              <td>{{DevName}}</td>
+              <td>{{DevType}}</td>
+              <td>{{DevIP}}</td>
+              <td>{{WarnType}}</td>
+              <td>{{WarnMold}}</td>
+              <td class="{{WarnLevelColor WarnLevel}}" style="{{judgeStatus Status}}">{{WarnLevel}}</td>
+              <td>{{WarnMsg}}</td>
+              <td style="width:100px;"><a class="ZUI-btn ZUI-noneicon-btn alert-confirm" data-idx="{{Idx}}">
+                <span>{{doStatus Status}}</span></a>
+              </td>
+              <td style="width: 130px">
+                <a class="ZUI-btn ZUI-noneicon-btn alert-search" data-idx="{{Idx}}" ><span >查看专家库</span></a>
+                <a class="ZUI-btn ZUI-noneicon-btn alert-edit" data-idx="{{Idx}}"><span >修改专家库</span></a>
+              </td>
+						</tr>
+					{{/each}}
+				</table>
+      </script>
+      <div>
+        <a class="ZUI-btn ZUI-noneicon-btn batch-confirm"><span>批量确认</span></a>
+        <a class="ZUI-btn ZUI-noneicon-btn batch-del"><span>批量删除</span></a>
+      </div>
+      <div class="pager row">
+        <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+        <div id="pager-bar" class="col-sm-8"></div>
+      </div>
+    </div>
+	</div>
+</div>

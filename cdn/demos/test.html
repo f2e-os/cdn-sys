@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>RunJS</title>
+		<script src="../js/base.min.js"></script>
+	    <script src="../js/bootstrap.min.js"></script>
+	    <script src="../js/handlebars.min.js"></script>
+	    <script src="../js/sea.min.js"></script>
+		<link rel="stylesheet" href="../css/bootstrap.css">
+    	<link rel="stylesheet" href="../css/combine.css">
+	</head>
+	<body>
+		<button onclick="$.alert(123);">alert</button><br/>
+		<button onclick="$.confirm('你是土豪吗？').yes(function(str){alert(str)}).yes(function(str){alert(str)}).no(function(str){alert('土鳖！')});">confirm</button><br/>
+		<button onclick="$.prompt('哈哈', 'x', function(str){alert(str)});">prompt</button><br/>
+		<button onclick="$.dialog('哈哈', {title:'哈哈个P呀！'}).yes(function(){alert(1)});">dialog</button><br/>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="col-sm-3">
+					<form id="form-cascade">
+						<select name="type" onchange="$(this).parent().submit();" data-list></select>
+						<script type="template"><option value="">设备类型</option>{{{global_show_select "Type" "/ApiHost/listHostType" "Name" "Id" Type "info"}}}</script>
+					</form>
+				</div>
+				<div class="col-sm-3">
+					<select data-list data-url="/ApiCommon/getHostByType" data-form="#form-cascade"></select>
+					<script type="template">
+						<option value="">设备</option>
+						{{{global_show_select "" this "HostName" "Id" "" "info"}}}
+					</script>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-12" data-list data-url="/ApiSystem/listUser">
+			</div>
+		    <script type="template">
+		    	{{#each rows}}
+				<select class="ZUI-select" id="select_users_{{Id}}">
+		    		{{{global_show_select "" "/ApiSystem/listUser" "UserName" "Id" Id}}}
+				</select>
+				{{/each}}
+		    </script>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-12" data-list data-url="/ApiSystem/listUser">
+			</div>
+		    <script type="template">
+		    	{{#each rows}}
+		    	<br/>
+		    	{{{global_show_radio (concat 'user-' @index) "/ApiSystem/listUser" "UserName" "Id" Id}}}
+				{{/each}}
+		    </script>
+		</div>
+		
+		<div class="row">
+		    <div class="col-sm-12" data-list>
+			</div>
+		    <script type="template">
+		    	{{{global_show_checkbox "name1" "/ApiSystem/listUser" "UserName" "Id" "3,4,7"}}}
+		    </script>
+		</div>
+
+
+		<div class="row">
+		    <div class="col-sm-12" data-list>
+			</div>
+		    <script type="template">
+		    	{{{global_show_radio "name1" "/ApiSystem/listUser" "UserName" "Id" "4"}}}
+		    </script>
+		</div>
+		
+		<div class="row">
+		    <div class="col-sm-12">
+		    	<a href="#" class="btn btn-primary" id="frame-upload">批量上传</a>
+			</div>
+		</div>
+
+
+		<div>
+			<h2>测试storage_number</h2>
+			<div class="" data-list>
+			</div>
+		    <script type="template">
+		    	{{storage_number 1024}} <br>
+		    	{{storage_number 10241024}} <br>
+		    	{{storage_number 102410241024}} <br>
+		    	{{storage_number 10241000130054}} <br>
+		    </script>
+		</div>
+
+
+
+		<script src="../js/combine.js"></script>
+	    <script>
+	    	seajs.use(["global","T","frameUpload"], function(global,T,FrameUpload){
+	    		$("[data-list]").each(function(){
+	    			new T( $(this) );
+	    		});
+
+	    		var fu = new FrameUpload({
+	    			el: $("#frame-upload")[0],
+	    			src: "misc/upload.html",
+	    			action: "/upload",
+	    			afterUpload: function(json){
+	    				console.log( json );
+	    			},
+	    			onchange: function(){
+	    				this.submit();
+	    			},
+	    			ready: function(){
+	    				this.name = "files";
+	    				this.multiple = "multiple";
+	    			}
+	    		});
+	    	});
+	    </script>
+	</body>
+</html>

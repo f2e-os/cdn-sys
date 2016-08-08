@@ -1,0 +1,94 @@
+.hostDispatch .topBar{
+	margin-bottom: 10px;
+}
+
+.hostDispatch .tab-pane{
+	padding-top:20px; 
+}
+.hostDispatch .panel{
+	margin-top: 10px;
+	padding:0 15px;
+	overflow-x:auto; 
+}
+#hostDispatch .panel{
+	margin: 0;
+	padding-top: 0;
+}
+#hostDispatch .navBox{
+	padding: 15px;
+	padding-bottom: 0;
+}
+#hostDispatch .mbx ,.host-trace-w .mbx{
+	margin-bottom: 10px;
+}
+.hostDispatch_add table td , .hostDispatch_add table th{
+	text-align: center;
+}
+.hostDispatch_add table .ZUI-input , .hostDispatch_add table .ZUI-select {
+	width: 100px;
+}
+.hostDispatch_add .hasRadio > div{
+	display: inline-block;
+}
+.host_trace_ae table td , .host_trace_ae table th{
+	text-align: center;
+}
+.host_trace_ae table .ZUI-input , .host_trace_ae table .ZUI-select {
+	width: 100px;
+}
+.host_trace_ae .hasRadio > div{
+	display: inline-block;
+}
+.hostDispatch_addBody{
+	overflow-x: hidden;
+}
+.hostDispatch_addBody table{
+	min-width: 1300px;
+}
+.host_tbody .editTr{
+	display: none;
+}
+.host_tbody .showInLine{
+	display: inline-block;
+}
+
+.hostDispatch_add .panel , .host_trace_ae .panel{
+	padding-top: 20px;
+}
+
+.hostDispatch .dispatchName {
+	width: 110px;
+}
+
+.host_trace_ae .dispatchName{
+	width: 130px;
+}
+.dialogTop_dis{
+	padding-bottom: 10px;
+}
+.dialogTable_dis{
+	margin-top: 10px;
+
+}
+
+.dialogTable_dis tr th ,.dialogTable_dis *{
+	font-size: 14px;
+    font-weight: normal;
+}
+
+#selectAll_dis_label{
+	top: 0;
+}
+
+.host-trace-w .table-holder{
+	margin-top: 10px;
+}
+.hostDispatch_addBody form{
+	padding-bottom: 10px;
+}
+.territory_addBody .panel{
+	padding:20px;
+}
+#dispatch_healthy form{
+	padding-bottom: 20px;
+}

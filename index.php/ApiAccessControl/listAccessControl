@@ -1,0 +1,16 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "内容列表",
+    "total": "1",
+    "rows": [
+        {
+		"Id":"1",
+		"UrlIp":"www.aqiyi.com",
+		"RedirStop":"1",
+		"RedirUrl":"20.20.20.20",
+		"Status":"1",
+		"IsIp":"0"
+		}
+    ]
+}

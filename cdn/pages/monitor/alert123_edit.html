@@ -1,0 +1,18 @@
+<div id="m-alert" class="m-alert">
+	<div class="col-sm-12">
+		监控告警 -&gt; 告警123 -&gt; 新增
+	</div>
+	<div class="alert123">
+    <form action="/ApiArea/updateArea" class="auto-submit" data-list="param" data-url="/ApiArea/getArea" data-target="monitor/alert123">
+    </form>
+    <script type="template">
+        {{#with info}}
+        <input type="hidden" name="Id" value="{{Id}}">
+        <input type="text" name="Name" placeholder="輸入名稱" value="{{name}}">
+        <input type="text" name="content" placeholder="輸入描述" value="{{content}}">
+        
+        {{/with}}
+        <a href="javascript:;" class="btn btn-primary btn-submit" role="button">保存</a>
+    </script>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div id="data-traffic" class="data-traffic">
+	<div class="col-sm-12">
+		数据分析 -&gt; 数据流量统计 
+	</div>
+
+	<div class="col-sm-12 data-traffic mgt15">
+		<!--
+    <form action="/ApiStream/getDomainStream" method="post" class="container-fluid form-select" id="data-traffic-form" data-target="dt-chart">
+    -->
+    <form class="container-fluid form-select" id="data-traffic-form" data-target="dt-chart">
+        <span class="select-area">
+        <input type="text"  name="StartTime" class="start-date data-picker ZUI-input" placeholder="请选择时间"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+        </span>
+        <span class="select-area" style="width:10px;text-align: center;line-height: 36px;">至</span>
+				<span class="select-area">
+        <input type="text"  name="EndTime" class="end-date data-picker ZUI-input"   placeholder="请选择时间"onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+        </span>
+        <script type="text/javascript">
+        var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+				var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+				var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm = preDate.getMinutes()-(curDate.getMinutes())%5;
+				mm=(mm<10)?('0'+mm):mm;pmm=(pmm<10)?('0'+pmm):pmm;
+				var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+        
+        $(".start-date").val(pd);
+        $(".end-date").val(cd);
+        </script>
+				<span class="select-area">
+					<select name="TypeId" class="ZUI-select d-select">
+						<option value="">请选择显示方式</option>
+						<option value="1">按带宽显示</option>
+						<option value="2">按字节显示</option>
+					</select>
+				</span>
+				<span class="select-area">
+					<select name="ScheduleId" class="ZUI-select d-select">
+						<option value="3">请选择调度方式</option>
+						<!--<option value="3">全部</option>-->
+						<option value="2">全局调度</option>
+						<option value="1">本地调度</option>
+					</select>
+				</span>
+				
+				<span class="select-area">
+					<select name="SignId" class="ZUI-select d-select">
+						<option value="3">请选择签约方式</option>
+						<!--<option value="3">全部</option>-->
+						<option value="1">签约</option>
+						<option value="0">非签约</option>
+					</select>
+				</span>
+				<span class="select-area" data-list></span>
+			    <script type="template">
+					<select name="CPId" class="ZUI-select d-select">
+						<option value="">请选择CP</option>
+						{{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id'}}}
+					</select>
+				</script>
+				<span class="select-area" data-list></span>
+			    <script type="template">
+            <select name="DomainGroupId" class="ZUI-select d-select">
+              <option value="">请选择域名组</option>
+              {{{global_show_select '' '/ApiDomainChannel/listDomainChannel' 'DomainGName' 'id'}}}
+            </select>
+          </script>
+				<span class="select-area" data-list></span>
+			    <script type="template">
+					<select name="DomainId" class="ZUI-select d-select">
+						<option value="">请选择域名</option>
+						{{{global_show_select '' '/ApiDomain/listDomain' 'DomainName' 'Id'}}}
+					</select>
+				</script>
+        <input type="hidden" name="HostId" id="HostId">
+        <span class="select-area" style="width:20px;">
+				  <a class="ZUI-btn btnicon04 form-submit">&nbsp;</a>
+        </span>
+		</form>	
+		
+		<div class="show-area clearfix">
+			<div class="float-l show-img col-sm-8" id="">
+				<div class="show-chart" id="dt-chart"></div>
+			</div>
+			<div class="float-l show-tree col-sm-4">
+        <div class="show-tree">
+          <ul class="ztree render-tree" id="traffic-tree"></ul>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>

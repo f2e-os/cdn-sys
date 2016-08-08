@@ -1,0 +1,49 @@
+<div class="hostDispatch territory_add" id="territory_Edit">
+    <div class="col-sm-12">
+        设备配置 -&gt; 调度策略管理 -&gt; 修改territory
+    </div>
+    <div class="col-sm-12 territory_addBody">
+        <div class="panel clearfix">
+          <form class="form-horizontal col-sm-12 auto-submit" action="/ApiScheduleStrategy/updateTerritoryStrategy" method="post" data-target="host_dispatch:index=1" data-list="param" data-url="/ApiScheduleStrategy/getTerritoryStrategy">
+            
+          </form>
+          <script type="template">
+          {{#with info}}
+          <input type="hidden" value="{{id}}" name="Id" />
+          <div class="form-group">
+              <label class="col-sm-2 control-label">名称<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="Name" value="{{name}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">级别<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="Grade" value="{{grade}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">权重<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="Weight" value="{{weight}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">父节点</label>
+              <div class="col-sm-10">
+                <select name="Father" class="ZUI-select">{{{global_show_select "" "/ApiScheduleStrategy/listTerritoryStrategy"  "name" "id" "father" "info"}}}</select>
+              </div>
+            </div>
+            {{/with}}
+
+
+            <div class="sys-btns">
+              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="host_dispatch:index=1">取消</a>
+            </div>
+          </script>
+        </div>
+        <!-- panel end -->
+    </div>
+    <!-- col-sm-12 end -->
+</div>

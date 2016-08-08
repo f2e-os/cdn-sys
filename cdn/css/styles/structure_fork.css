@@ -1,0 +1,26 @@
+.structure-fork-holder{
+	position: relative;
+	width: 100%;
+	overflow-x: scroll;
+	background: #fff;
+}
+#structure-fork{
+	min-height: 300px;
+	position:relative;
+	background: #fff;
+	overflow: hidden;
+	margin: 10px auto;
+}
+#structure-fork dt{
+	background-color: #fff;
+}
+#structure-fork > dl > dt{
+	background-color: #3d98df;
+}
+#structure-fork img{
+	display: block;
+	max-height: 54px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 2;
+}

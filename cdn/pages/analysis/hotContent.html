@@ -1,0 +1,112 @@
+<div id="" class="">
+	<div class="col-sm-12">
+		数据分析 -&gt; 热点内容统计 
+	</div>
+	<div class="col-sm-12 mgt15">
+		 <form class="container-fluid form-select hc-form" id="search-bar">
+      <span class="select-area">
+      <input type="text"  name="StartTime" class="start-date data-picker ZUI-input" placeholder="请选择时间"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+      </span>
+      <span class="select-area date-to">至</span>
+      <span class="select-area">
+      <input type="text"  name="EndTime"   class="end-date data-picker ZUI-input"   placeholder="请选择时间"onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+      </span>
+      <script type="text/javascript">
+      var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+      var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+      var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm = preDate.getMinutes()-(curDate.getMinutes())%5;
+      mm=(mm<10)?('0'+mm):mm;pmm=(pmm<10)?('0'+pmm):pmm;
+      var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+      $(".start-date").val(pd);
+      $(".end-date").val(cd);
+      </script>
+				<span class="select-area">
+					<select name="ScheduleId" class="ZUI-select d-select">
+						<option value="3">请选择调度方式</option>
+						<option value="2">全局调度</option>
+						<option value="1">本地调度</option>
+					</select>
+				</span>
+				
+				<span class="select-area">
+					<select name="SignId" class="ZUI-select d-select">
+						<option value="3">请选择签约方式</option>
+						<option value="1">签约</option>
+						<option value="0">非签约</option>
+					</select>                                                                      
+				</span>
+				<span class="select-area" data-list></span>
+			    <script type="template">                                                                                         
+					<select name="CPId" class="ZUI-select d-select">
+						<option value="">请选择CP</option>
+						{{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id'}}}
+					</select>
+				</script>
+				
+				<span class="select-area" data-list></span>
+			    <script type="template">
+					<select name="DomainGroupId" class="ZUI-select d-select">
+						<option value="">请选择域名组</option>
+						{{{global_show_select '' '/ApiDomainChannel/listDomainChannel' 'DomainGName' 'id'}}}
+					</select>
+				</script>
+				<span class="select-area" data-list></span>
+			    <script type="template">
+					<select name="DomainId" class="ZUI-select d-select">
+						<option value="">请选择域名</option>
+						{{{global_show_select '' '/ApiDomain/listDomain' 'DomainName' 'Id'}}}
+					</select>
+				</script>
+        <span class="select-area field-name">topN</span>
+				<span class="select-area">
+          <input type="text"  name="Top" class="d-input ZUI-input top-val" placeholder="排名的TOP" value="15">
+        </span>
+        <span class="select-area" style="width:20px;padding-right: 60px;">
+				  <a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+        </span>
+        <span class="select-area" style="width:100px;">
+          <a class="ZUI-btn ZUI-noneicon-btn hc-export"><span>导出</span></a>
+				</span>
+        <input type="hidden" name="Pagesize" value="15">
+		 </form>
+     <div class="show-area clearfix">
+        <div class="table-holder" data-list data-url="/ApiStatisAnaly/hotContentStatis" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+        <script type="template">
+        <table class="table table-hover" style="table-layout:fixed;">
+          <tr>
+            <th width="60px">排序</th>
+            <th width="300px" style="word-wrap:break-word;">内容名称</th>
+            <th>签约方式</th>
+            <th>内容大小</th>
+            <th>内容类型</th>
+            <th>下载流量</th>
+            <th>请求数 (次)</th>
+            <th>请求命中率 (%)</th>
+            <th>平均响应时间 (s)</th>
+            <th>平均下载速率</th>
+          </tr>
+          {{#each rows}}
+            <tr>
+              <td width="60px">{{{_ @index}}}</td>
+              <td width="200px" style="word-wrap:break-word;" >
+                <span class="ZUI-url" title="{{name}}">{{name}}</span>
+              </td>
+              <td>{{sign}}</td>
+              <td>{{filesize}}</td>
+              <td>{{resource_type}}</td>
+              <td>{{flow_count}}</td>
+              <td>{{visit_count}}</td>
+              <td>{{ellipsis_number hit_rate}}</td>
+              <td>{{ellipsis_number response_avg}}</td>
+              <td>{{dspeed_avg}}</td>
+            </tr>
+          {{/each}}
+        </table>
+        </script>
+        <div class="pager row">
+          <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+          <div id="pager-bar" class="col-sm-8"></div>
+        </div>
+		</div>
+	</div>
+</div>

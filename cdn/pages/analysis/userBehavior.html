@@ -1,0 +1,86 @@
+<div id="behavior" class="">
+  <div class="col-sm-12">
+  数据分析 -&gt; 用户行为统计 
+  </div>
+  <div class="col-sm-12 behavior mgt15">
+    <form class="container-fluid form-select" id="search-bar">
+      
+      <span class="select-area">
+      <input type="text"  name="StartTime" class="start-date data-picker ZUI-input" placeholder="请选择时间"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+      </span>
+      <span class="select-area date-to">至</span>
+      <span class="select-area">
+      <input type="text"  name="EndTime"   class="end-date data-picker ZUI-input"   placeholder="请选择时间"onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+      </span>
+      <script type="text/javascript">
+      var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+      var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+      var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm = preDate.getMinutes()-(curDate.getMinutes())%5;
+      mm=(mm<10)?('0'+mm):mm;pmm=(pmm<10)?('0'+pmm):pmm;
+      var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+      $(".start-date").val(pd);
+      $(".end-date").val(cd);
+      </script>
+     <!--
+      <span class="select-area" data-list></span>
+			    <script type="template">
+            <select name="DomainGroupId" class="ZUI-select d-select">
+              <option value="">请选择资源类型</option>
+              {{{global_show_select '' '/ApiDomainChannel/listDomainChannel' 'DomainGName' 'Id'}}}
+            </select>
+          </script>
+      -->
+      <span class="select-area field-name">topN</span>
+      <span class="select-area">
+        <input type="text"  name="Top" class="d-input ZUI-input top-val" placeholder="排名的TOP" value="15">
+        <input type="hidden" name="Pagesize" value="15">
+      </span>
+      <span class="select-area" style="width:20px;">
+        <a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+      </span>
+    </form>
+    <div class="show-area clearfix">
+    <div class="table-holder" data-list data-url="/ApiStatisAnaly/resourceStatis" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+    <script type="template">
+      <table class="table table-hover">
+      <tr>
+        <th>排序</th>
+        <th>资源类型</th>
+        <th>服务节点</th>
+        <th>时长 (s)</th>
+        <th>流量</th>
+        <th>流量占比 (%)</th>
+      </tr>
+      {{#each rows}}
+        <tr>
+          <td>{{{_ @index}}}</td>
+          <td>{{resource_type}}</td>
+          <td id="{{nodeId}}" class="rChart" style="color:#3E98DF;cursor:pointer;">{{CompanyName}}</td>
+          <td>{{duration}}</td>
+          <td>{{resource_flow}}</td>
+          <td>{{percent}}</td>
+        </tr>
+      {{/each}}
+      </table>
+    </script>
+    <div class="pager row">
+      <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+      <div id="pager-bar" class="col-sm-8"></div>
+    </div>
+    <div class="col-sm-12 behavior mgt15 behavior-charts" style="display:none;">
+      <div class="chart-show-area show-area clearfix">
+        <div class="col-sm-12 behavior-show mgt15">
+          <div class="chart-name">浏览器类型占比</div>
+          <div class="col-sm-6 show-part" id="userBrowserStatis"></div>
+        </div>
+        <div class="col-sm-12" style="border:1px solid #F4F4F4;margin:0 auto;"></div>
+        <div class="col-sm-12 behavior-show mgt15">
+          <div class="chart-name">终端类型占比</div>
+          <div class="col-sm-6 show-part" id="userTerminalStatis"></div>
+        </div>
+      </div>
+    </div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,83 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; CP节点查看 -&gt;<span class="detail">节点查看</span>
+    </div>
+    <div class="col-sm-12 source pdt15">
+    	<ul class="nav nav-tabs" id="myTab"> 
+	      <li><a href="#region" data-menu="source/node/regionL">区域查看</a></li> 
+	      <li class="active"><a class="active"  href="#packing" data-menu="source/node/packingL">节点查看</a></li> 
+	    </ul> 
+	   	<div class="tab-content"> 
+	      <div class="panel" id="packing">
+	      	 <div class="row">
+	                <div class="col-sm-12 text-right">
+	         
+	                    <form id="system-searchUser-packing" class="row">
+	                        <input type="hidden" name="Pagesize" value="15">
+	                    	<!--
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                        -->
+	                        <div class="col-sm-6" style="padding-left: 20px;">
+                              	<input type="text" class="form-control" name="DepartName" placeholder="节点名称">
+                            </div>
+                        	<div class="col-sm-6">
+						    	<div class="btn-submit btn btn-default">搜索</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="table-holder" data-list data-url="/ApiDepartment/listCPDeaprtment" data-pager="#pager-system-packing" data-method="post" data-form="#system-searchUser-packing" data-totalshow="#systemUser-total-packing"></div>
+	            <script type="template">
+	            	<form id="source-listC">
+		                <table class="table table-hover">
+		                    <tr>
+		                    	<th>
+		                    		<input type="checkbox" class="ZUI-checkbox" id="packing-all" data-check-all=".host-source">
+						            <label for="packing-all">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+		                    	</th>
+		                        <th>节点名称</th>
+		                        <th>所属区域</th>
+		                        <th>节点等级</th>
+		                        <th>节点类型</th>
+		                        <th>节点说明</th>
+		                        <th>状态</th>
+		                        <th>总负载能力</th>
+		                    </tr>
+		                    {{#each rows}}
+		                    <tr data-id="{{Id}}">
+		                    	<td>
+									<input type="checkbox" name="Id" class="ZUI-checkbox host-source" id="packing{{Id}}" data-id="{{Id}}" value="{{Id}}">
+						            <label for="packing{{Id}}">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+								</td>
+		                        <td class="packingName">{{DepartName}}</td>
+		                        <td class="packingDepartName" data-value="{{AreaName}}">{{AreaName}}</td>
+		                        <td class="packingLevel">{{Level}}</td>
+		                        <td class="packing-departTypeId">{{departType}}</td>
+		                        <td class="packing-DepartDesc">{{DepartDesc}}</td>
+		                        <td class="packingStatus" data-value="{{Status}}">{{system_user_status Status}}</td>
+		                        <td>{{capacity}}</td>
+		                    </tr>
+		                    {{/each}}
+		                </table>
+	                </form>																					
+	            </script>
+	            <div class="pager row">
+	                <div class="col-sm-4">共<span id="systemUser-total-packing">0</span>条记录</div>
+	                <div id="pager-system-packing" class="col-sm-8"></div>
+	            </div>
+	      </div>
+	    </div> 
+    </div>
+</div>

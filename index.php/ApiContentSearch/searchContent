@@ -1,0 +1,21 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "内容列表",
+    "total": "1",
+    "rows": [
+		{
+		"id":22,
+		"tm_insert": "2015-08-29 15:18:43",
+		"visit_count": "100",
+		"flow_count": "356",
+		"filesize_type": "2",
+		"url": null,
+		"url_hash": null,
+		"content_name": null,
+		"ip": "",
+		"status": "缓存",
+		"filesize": "1000"
+		}
+    ]
+}

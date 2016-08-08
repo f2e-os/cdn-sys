@@ -1,0 +1,11 @@
+#menu-holder{
+	padding: 0;
+}
+#menu-holder a{
+	color: #777;
+	text-indent: 2em; 
+}
+#menu-holder a:hover, #menu-holder a.active{
+	background-color: #3e9bdf; 
+	color: #fff;
+}

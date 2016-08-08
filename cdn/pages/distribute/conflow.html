@@ -1,0 +1,85 @@
+<div id="conflow" class="other">
+	<div class="col-sm-12">
+		分发评估 -&gt; 分发内容流量统计
+	</div>
+	<div class="col-sm-12 other mgt15">
+		  <div class="tab-content conflow">
+        	<!--文件类型统计-->
+        	
+				<div class="row">
+	                <div class="col-sm-12 text-right">
+	                    <form id="conflow-form" class="row">
+	                    	<!--
+	                        <input type="hidden" name="Pagesize" value="15">
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                       -->
+	                        <div class="col-sm-2">
+	                       		<input type="text" name="StartTime" class="start-date d-input data-picker form-control" placeholder="开始时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+          				    </div>
+          				    <div class="col-sm-2">
+          				   		 <input type="text" name="EndTime" class="end-date d-input data-picker form-control" placeholder="结束时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+                            </div>
+                            <script type="text/javascript">
+								var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+								var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+								var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm =preDate.getMinutes()-(preDate.getMinutes())%5;
+								mm=(mm<10)?('0'+mm):mm;
+								pmm=(pmm<10)?('0'+pmm):pmm;
+								var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+								$(".start-date").val(pd);
+								$(".end-date").val(cd);
+							</script>
+                         	<div class="col-sm-2">
+                              	<select name="ContentType" class="form-control">
+                              		<option value="">内容类型</option>
+	                                <option value="1">大文件</option>
+	                                <option value="2">小文件</option>
+	                            </select>
+                         	</div>
+                        	<div class="col-sm-6">
+						    	<div class="btn-submit btn btn-default">查询</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="show-area clearfix" style="margin-top: 15px;">
+	            	<div class="table-holder col-sm-12" style="padding: 0px;" data-list data-url="/ApiDistribute/trafficStatistics" data-pager="#pager-bar" data-method="post" data-form="#conflow-form" data-totalshow="#total-bar"></div>
+		            <script type="template">
+		              <table class="table table-hover">
+		                <tr>
+		                  <th>内容类型</th>
+		                  <th>流量</th>
+		                </tr>
+		                {{#each rows}}
+		                  <tr>
+		                    <td>{{ContentTypeName}}</td>
+		                    <td>{{SUM_sum_flow_out}}M</td>
+		                  </tr>
+		                {{/each}}
+		              </table>
+		            </script>
+		            <div class="table-holder col-sm-10" style="height:600px;">
+	            		<h4 style="text-align: center">分发内容流量统计</h4>
+		            	<div class="other-chart conflow-chart1"></div>
+		            </div>
+		            <div  data-list data-url="/ApiDistribute/trafficStatistics" data-method="post" data-form="#conflow-form" ></div>
+		            <script type="template">
+		              {{_conflowPie rows ".conflow-chart1"}}
+		            </script>
+		          </div>
+		          <!--<div class="show-area clearfix">
+		              <div class="pager row">
+			              <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+			              <div id="pager-bar" class="col-sm-8"></div>
+		              </div>
+		          </div>
+		          -->
+		  </div>
+	</div>
+</div>

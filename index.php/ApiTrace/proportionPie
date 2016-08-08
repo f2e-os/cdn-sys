@@ -1,0 +1,27 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "total": 1,
+    "rows": [
+       {
+		"CompanyName":"河南缓存",
+		"SUM_sum_flow_out":"78654"
+		},
+		{
+		"CompanyName":"河南缓存",
+		"SUM_sum_flow_out":"78654"
+		},
+		{		"CompanyName":"河南缓存",
+		"SUM_sum_flow_out":"78654"
+		},
+		{
+		"CompanyName":"河南缓存",
+		"SUM_sum_flow_out":"78654"
+		},
+		{
+		"CompanyName":"河南缓存",
+		"SUM_sum_flow_out":"78654"
+		}
+    ]
+}

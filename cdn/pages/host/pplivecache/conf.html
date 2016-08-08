@@ -1,0 +1,145 @@
+<div class="FUI host-pplivecache">
+	<div class="col-sm-12">
+		设备配置 -&gt; PPLive配置&gt; <span id="subTabDetail"></span>
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="host_pplivecache_conf" class="active"><a href="javascript:void(0);">PPLive-配置</a></li>
+		</ul>
+		
+
+
+
+
+<!--
+     /**
+      *  Mr Du  2016.3.28
+      *  获取缓存文件大小限制模块
+      */
+ -->
+	<form class="form-horizontal col-sm-12 auto-submit" action="/ApiPpLiveCacheBaseConfig/setFileLimit" method="post" data-target="host_pplivecache_cache" data-list="param" data-url="/ApiPpLiveCacheBaseConfig/getFileLimit"></form>
+
+		<script type="template" id="pplivecache-file">
+			{{#with info}}
+					<div class="form-group">
+					<label class="col-sm-2 control-label">PPLive/文件最小值(KB)</label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" id="min_size" name="min_size" value="{{min_size}}"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">PPLive/文件最大值(KB)</label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" id="max_size" name="max_size" value="{{max_size}}" />
+					</div>
+				</div>
+			
+			{{/with}}
+		</script> 
+
+
+
+
+
+
+
+
+
+
+<!--
+     /**
+      *  Mr Du  2016.3.28
+      *  pplive 获取设备列表
+      *  操作模块
+      */
+ -->
+
+
+
+		<div class="panel">
+			<form class="form-horizontal col-sm-12" action="/ApiPpLiveCacheBaseConfig/listHostGroup" method="post" data-target="host_httpcache_conf" data-list="param" data-url="/ApiPpLiveCacheBaseConfig/getPpLiveConfig"></form>
+
+	<script type="template">
+		   <div class="row FUI-title ppc-group">
+					<div class="col-sm-10">
+					
+					<strong>获取设备列表：</strong>{{{global_show_checkbox 'ppc_group' '/ApiPpLiveCacheBaseConfig/listHostGroup' 'GroupName' 'Id'}}}
+					</div>
+
+					<div class="col-sm-2 FUI-text-right">
+						<a href="javascript:void(0);" class="btn btn-primary btn-autoCalc">自动计算</a>
+					</div>
+			</div>
+
+
+			<table class="table table-hover ppc-block">
+					<tbody>
+					<tr>
+						<th>
+							<input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+							<label for="host-distribute-check-all">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</th>
+						<th>Id</th>
+						<th>所在组</th>
+						<th>PPC</th>
+						<th>起始范围</th>
+						<th>结束范围</th>
+					</tr>
+					{{{host_pplivecache_Conf_ppcList info.pplive}}}
+					</tbody>
+			</table>
+
+	</script>
+			
+
+
+
+
+
+
+
+
+<!--
+     /**
+      *  Mr Du  2016.3.28
+      *  pplive 获取设备列表值
+      *  操作模块
+      */
+ -->
+
+       <script type="template/html" id="ppclist-template">
+			{{#each data}}
+			<tr data-ID="{{id}}" data-group="{{group_id}}">
+				<td>
+					<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{id}}" id="host-distribute-check{{id}}" data-id="{{id}}"{{#if checked}} checked="checked"{{/if}}>
+					<label for="host-distribute-check{{id}}">
+						<span class="ZUI-checkbox-btn"></span>
+						<span class="ZUI-checkbox-txt"></span>
+					</label>
+				</td>
+					<td>{{id}}</td>
+					<td>{{group_name}}</td>
+					<td>{{pplive_name}}</td>
+					<td><input type="text" class="ZUI-input ZUI-w140 ppc-start" value="{{start}}" /></td>
+					<td><input type="text" class="ZUI-input ZUI-w140 ppc-end" value="{{end}}" /></td>
+			</tr>
+			{{/each}}
+			</script>
+	
+
+		<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a href="javascript:;" class="btn btn-primary btn-set"  role="button">保存</a>
+						<a href="javascript:;" class="btn btn-default btn-sending" role="button">下发</a>
+						<a href="javascript:;" class="btn btn-default btn-rollbacking" role="button">回滚</a>
+					</div>
+				</div>
+
+		</div>
+	</div>
+</div>
+
+

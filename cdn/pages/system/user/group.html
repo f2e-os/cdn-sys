@@ -1,0 +1,82 @@
+<div class="system-group" id="sys-group">
+    <div class="col-sm-12">
+        系统设置 -&gt; 用户组管理 
+    </div>
+    <div class="col-sm-12 system">
+        <div class="panel">
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="javascript:;" class="btn btn-primary system-add">+ 添加</a>
+                    <a href="javascript:;" class="btn btn-primary system-del">- 删除</a>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <form id="system-searchUser" class="row">
+                        <input type="hidden" name="Pagesize" value="15">
+                        <div class="col-sm-4">
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="LevelName" placeholder="请输入用户组搜索">
+                              <a class="input-group-addon btn-submit" href="javascript:;">搜索</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-holder" data-list data-url="/ApiSystem/listUserGroup" data-pager="#pager-system" data-method="post" data-form="#system-searchUser" data-totalshow="#systemUser-total"></div>
+            <script type="template">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                        <input type="checkbox" class="ZUI-checkbox" id="sys-allgroup-check" data-check-all=".delCheck">
+                        <label for="sys-allgroup-check">
+                            <span class="ZUI-checkbox-btn"></span>
+                            <span class="ZUI-checkbox-txt"></span>
+                        </label>
+                        </th>
+                        <th>用户组名</th>
+                        <th>用户组描述</th>
+                        <th>操作</th>
+                    </tr>
+                    {{#each rows}}
+                    <tr>
+                        <td>
+                        <input type="checkbox" class="ZUI-checkbox delCheck" id="sys-group-check{{Id}}" data-id="{{Id}}">
+                        <label for="sys-group-check{{Id}}">
+                            <span class="ZUI-checkbox-btn"></span>
+                            <span class="ZUI-checkbox-txt"></span>
+                        </label>
+                        </td>
+                        <td>{{LevelName}}</td>
+                        <td>{{LevelDesc}}</td>
+                        <td data-id="{{Id}}" data-name="{{LevelName}}" data-desc="{{LevelDesc}}">
+                        <a href="javascript:;" class="ZUI-operate sys-edit"><span class="iconfont">&#xe602;</span>
+                        </a>
+                        <a href="javascript:;" class="ZUI-operate sys-delete"><span class="iconfont">&#xe603;</span>
+                        </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+            <div class="pager row">
+                <div class="col-sm-4">共<span id="systemUser-total">0</span>条记录</div>
+                <div id="pager-system" class="col-sm-8"></div>
+            </div>
+        </div>
+    </div>
+    <script type="template/html" id="groupTpl" data-method="get">
+        <form id="group-form" class="clearfix form-inline">
+            <div class="input-group clearfix">
+                <span>用户组名称<span class="ZUI-require"></span></span>
+                <input type="text" class="ZUI-input" name="LevelName" value="{{LevelName}}" />
+            </div>
+            <div class="input-group clearfix">
+                <span>用户组说明</span>
+                <input type="text" class="ZUI-input" name="LevelDesc" value="{{LevelDesc}}"/>
+            </div>
+            <input type="hidden" name="Id" id="idInput" value="{{Id}}"/>
+        </form>
+    </script>
+</div>

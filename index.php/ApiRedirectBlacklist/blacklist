@@ -1,0 +1,53 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "获取黑名单成功",
+    "total": 1,
+    "rows": [
+        {
+            "id": "2",
+            "infohash": "111",
+            "protocol": "56",
+            "strategy": "3",
+            "redirecturl": "999",
+            "httpurl": null,
+            "refer": "22",
+            "urlkey": "--",
+            "checkmethod": "1",
+            "tbl": "black_list"
+        },{
+            "id": "3",
+            "infohash": "111",
+            "protocol": "56",
+            "strategy": "-2",
+            "redirecturl": "999",
+            "httpurl": null,
+            "refer": "22",
+            "urlkey": "--",
+            "checkmethod": "1",
+            "tbl": "black_list"
+        },{
+            "id": "4",
+            "infohash": "111",
+            "protocol": "56",
+            "strategy": "-2",
+            "redirecturl": "999",
+            "httpurl": null,
+            "refer": "22",
+            "urlkey": "--",
+            "checkmethod": "1",
+            "tbl": "black_list"
+        },{
+            "id": "5",
+            "infohash": "111",
+            "protocol": "56",
+            "strategy": "-2",
+            "redirecturl": "999",
+            "httpurl": null,
+            "refer": "22",
+            "urlkey": "--",
+            "checkmethod": "1",
+            "tbl": "black_list"
+        }
+    ]
+}

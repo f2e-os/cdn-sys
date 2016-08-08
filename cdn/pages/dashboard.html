@@ -1,0 +1,115 @@
+<div class="dashboard col-sm-12">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="panel" style="height: 330px;">
+        <h4>最近24小时流量显示</h4>
+        <div class="dashboard-last24h" style="height: 280px;"></div>
+      </div>
+      <div class="alert-panel" style="height: 70px;">
+          <h4>告警信息</h4>
+          <ul class="list-unstyled" style="line-height:1.5;" data-list data-url="/ApiRunStatus/getWarnStatus">
+          </ul>
+          <script type="template">
+          {{#with info}}
+          <li><div class="inner"><label>告警总数</label><span>{{total_warn_num}}</span></div></li>
+          <li><div class="inner"><label>高级告警</label><span>{{high_warn_num}}</span></div></li>
+          <li><div class="inner"><label>中级告警</label><span>{{mid_warn_num}}</span></div></li>
+          <li><div class="inner"><label>低级告警</label><span>{{low_warn_num}}</span></div></li>
+          <li><div class="inner"><label>未知告警</label><span>{{unconfirm_warn_num}}</span></div></li>
+          {{/with}}
+          </script>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="col-sm-12 col-xs-12 panel" style="height: 430px;">
+        <h4>系统状态</h4>
+        <ul class="list-unstyled" style="line-height:2;" data-list data-url="/ApiRunStatus/getSystemStatus">
+        </ul>
+        <script type="template">
+        {{#with info}}
+        <li class="row" style="border-bottom:solid #e1e1e1 1px;"><label class="col-xs-6" style="padding-right: 10px;margin-right: 10px;width: 130px;display: inline-block;">服务器个数</label>&nbsp;<b style="font-weight: normal; color: #ccc;">|</b><span style="margin-left: 80px;">{{host_num}}</span></li></hr>
+        <li class="row" style="border-bottom:solid #e1e1e1 1px;"><label class="col-xs-6" style="padding-right: 10px;margin-right: 10px;width: 130px;display: inline-block;">异常服务器个数</label> &nbsp;<b style="font-weight: normal; color: #ccc;">|</b><span style="margin-left:80px;">{{err_host_num}}</span></li>
+        <li class="row" style="border-bottom:solid #e1e1e1 1px;"><label class="col-xs-6" style="padding-right: 10px;margin-right: 10px;width: 130px;display: inline-block;">磁盘总容量</label> &nbsp;<b style="font-weight: normal; color: #ccc;">|</b><span style="margin-left: 80px;">{{total_disk}}</span></li>
+        <li class="row" style="border-bottom:solid #e1e1e1 1px;"><label class="col-xs-6" style="padding-right: 10px;margin-right: 10px;width: 130px;display: inline-block;">吐流能力</label> &nbsp;<b style="font-weight: normal; color: #ccc;">|</b><span style="margin-left: 80px;">{{flow_ability}}</span></li>
+        <li class="row" style="border-bottom:solid #e1e1e1 1px;"><label class="col-xs-6" style="padding-right: 10px;margin-right: 10px;width: 130px;display: inline-block;">监控上行流量</label> &nbsp;<b style="font-weight: normal; color: #ccc;">|</b><span style="margin-left: 80px;">{{up_flow}}</span></li>
+        <li class="row" style="border-bottom:solid #e1e1e1 1px;"><label class="col-xs-6" style="padding-right: 10px;margin-right: 10px;width: 130px;display: inline-block;">总重定向数</label> &nbsp;<b style="font-weight: normal; color: #ccc;">|</b><span style="margin-left: 80px;">{{redirect_num}}</span></li>
+        {{/with}}
+        </script>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="height: 340px;">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#tabs-browser" aria-controls="tabs-browser" role="tab" data-toggle="tab">浏览器类型占比</a></li>
+        <li role="presentation" class=""><a href="#tabs-terminal" aria-controls="tabs-terminal" role="tab" data-toggle="tab">终端类型占比</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tabs-browser">
+          <div class="dashboard-browser"></div>
+          <div class="dashboard-column-browser"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tabs-terminal">
+          <div class="dashboard-terminal"></div>
+          <div class="dashboard-column-terminal"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row rank-panel">
+    <div class="col-sm-6">
+      <div class="panel" style="min-height: 300px;">
+        <h4>CP排行榜 TOP10</h4>
+        <form id="websiteRank"><input type="hidden" name="Pagesize" value="15"></form>
+        <div class="table-holder" data-list data-url="/ApiStatisAnaly/websiteRank?Top=10" data-form="#websiteRank"></div>
+        <script type="template">
+          <table class="table table-hover">
+            <tr>
+              <th>排序</th>
+              <th>CP</th>
+              <th>流量</th>
+              <th>点击次数</th>
+              <th>百分比</th>
+            </tr>
+            {{#each rows}}
+            <tr>
+              <td>{{_ @index}}</td>
+              <td>{{WebsiteName}}</td>
+              <td>{{Flow}}</td>
+              <td>{{Visit}}</td>
+              <td>{{Percent}}%</td>
+            </tr>
+            {{/each}}
+          </table>
+        </script>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel" style="min-height: 300px;">
+        <h4>域名排行榜 TOP10</h4>
+        <form id="websiteRank"><input type="hidden" name="Pagesize" value="15"></form>
+        <div class="table-holder" data-list data-url="/ApiStatisAnaly/domainRank?Top=10" data-form="#websiteRank"></div>
+        <script type="template">
+          <table class="table table-hover">
+            <tr>
+              <th>排序</th>
+              <th>域名</th>
+              <th>流量</th>
+              <th>点击次数</th>
+              <th>百分比</th>
+            </tr>
+            {{#each rows}}
+            <tr>
+              <td>{{_ @index}}</td>
+              <td>{{DomainName}}</td>
+              <td>{{Flow}}</td>
+              <td>{{Visit}}</td>
+              <td>{{Percent}}%</td>
+            </tr>
+            {{/each}}
+          </table>
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

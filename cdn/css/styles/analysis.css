@@ -1,0 +1,165 @@
+/*analysis*/
+.mgt15{margin-top:15px;}
+
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.clearfix{*zoom:1;}
+
+.d-input,.d-select{
+	padding:2px 6px;
+	height:30px;
+	border:1px solid #E7E6E6;
+	border-radius:2px;	
+}
+
+.d-input.top-val{
+	display:inline-block;
+	width:140px;
+}
+
+/*表单按钮左排列样式*/
+.form-container.position-left{
+	padding:10px 0;
+	background-color:#FFF;
+	border-bottom:1px solid #CCE6FF;
+}
+.form-container.position-left >*{
+	margin:8px 5px;
+	display:inline-block;
+	width:120px;
+}
+.form-container.position-left a{
+	width:auto;
+}
+.float-l{
+	float:left;
+}
+.float-r{
+	float:right;
+}
+
+
+/*趋势分析统计*/
+.form-container{
+	padding:10px 0;
+	/*min-width:950px;*/
+	background-color:#FFF;
+	border-bottom:1px solid #CCE6FF;
+}
+.form-container >a{
+	margin:8px 0;
+}
+.form-container .float-r >  *{
+	margin:8px 5px;
+	width:120px;
+}
+.form-container .float-r >  *{
+	margin:8px 5px;
+	width:140px;
+}
+
+.form-container .float-r .d-select{
+	width:152px;
+}
+
+.form-container .float-r .data-picker{
+	width: 150px;
+}
+
+.form-container .float-r a{
+	width:60px;
+}
+.form-container .float-r select{
+	width:130px;
+	display:inline-block;
+}
+.form-container .float-r input{
+	display:inline-block;
+}
+.trend .show-par .table{
+	background-color:#FFF;
+}
+.trend .show-par .table-header{
+	color:#6DACE4;
+	background-color:#EBF1F7;
+}
+.trend .table-holder{
+	background-color:#FFF;
+}
+
+/*数据流量统计*/
+.form-select{
+	padding: 20px 0;
+	background-color:#FFF;			
+}
+.form-select *{
+	margin: 4px 8px;
+}
+.form-select .data-picker{
+	padding: 0 5px;
+	width: 150px;
+	height:30px;
+	display:inline-block;
+}
+.form-select .select-area.date-to{
+	width:0px;
+	text-align:center;
+	line-height: 36px;
+}
+.form-select .select-area.field-name{
+	width:auto;
+	padding-left:25px;
+	margin-right:0;
+	text-align:right;
+	line-height: 36px;
+}
+
+.form-select  .span{
+	width:;	
+}
+
+.form-select .select-area{
+	display:inline-block;
+	width:150px;
+	float:left;
+}
+.form-select .select-area .ZUI-select{
+	width:100%;
+}
+
+.show-area{
+	background-color:#FFF;
+	border-top:1px solid #EAEAEA;
+}
+						   
+.show-area .show-tree, .show-area .show-img{
+	height:590px;
+}
+.show-area .show-tree{
+    border-left:1px solid #EAEAEA;
+	overflow:auto;
+}
+
+/*其他统计*/
+.other-cont{
+	background-color:#FFF;
+}
+.other .other-chart1 , .other .other-chart2{
+	/*
+	margin:0 auto;
+	width:260px;
+	height:300px;
+	*/
+	background-color:#F3F3F3;
+}
+/*用户行为统计*/
+.chart-show-area .behavior-show{
+	height:320px;
+}
+.chart-show-area .behavior-show .show-part{
+	height:290px;
+}
+.select-area input.s-time{
+	position:relative;
+	top:-4px;
+	left:-10px;
+}

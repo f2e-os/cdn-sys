@@ -1,0 +1,53 @@
+<div class="host_pps host_pps_add" id="host_pps_add">
+    <div class="col-sm-12">
+        策略管理 -&gt; PPS白名单配置 -&gt; 添加设备组
+    </div>
+    <div class="col-sm-12">
+        <div class="panel clearfix">
+          <form class="form-horizontal col-sm-12 auto-submit" action="/ApiPPSWhiteList/addHostGroup" method="post" data-target="host_pps">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">设备分组名称<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="group_name"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">序列号<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="group_order"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">设备分组描述</label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="group_desc"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">选择设备</label>
+              <div class="col-sm-10" id="host_pps_add_checkBoxs">
+                <input type="checkbox" class="ZUI-checkbox" id="pps_add-check" data-check-all="input[name='hostList']">
+                <label for="pps_add-check">
+                    <span class="ZUI-checkbox-btn"></span>
+                    <span class="ZUI-checkbox-txt">全选</span>
+                </label>
+                <div data-list>
+                </div>
+                <script type="template">
+                <div id="pps_host_list">
+                {{{global_show_checkbox "hostList" "/ApiPPSWhiteList/listHost"  "host_name" "host_id" "" "info"}}}
+                </div>
+                </script>
+                <input type="hidden" class="ZUI-input" name="host_ids" id="host_add_ids"/>
+              </div>
+            </div>
+            <div class="sys-btns">
+              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="host_pps">取消</a>
+            </div>
+          </form>
+        </div>
+        <!-- panel end -->
+    </div>
+    <!-- col-sm-12 end -->
+</div>

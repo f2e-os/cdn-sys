@@ -1,0 +1,77 @@
+<div class="host" id="host">
+    <div class="col-sm-12">
+        设备配置 -&gt;重定向黑名单管理
+    </div>
+    <div class="col-sm-12 host pdt15">
+	    <div class="tab-content"> 
+	        <div class="blacklist-panel">
+	            <div class="row">
+	                <div class="col-sm-6">
+	                    <a href="#" data-menu="host/blacklist/host_blacklist-add" class="btn btn-primary host-blacklist-add">+ 添加黑名单</a>
+	                    <a href="#" class="btn btn-primary host-blacklist-delM">- 移除黑名单</a>
+	                    <a href="#" class="btn btn-primary host-blacklist-in" id="frame-upload">- 导入黑名单</a>
+	                    <a href="#" class="btn btn-primary host-blacklist-out">- 导出黑名单</a>
+	                </div>
+	                <div class="col-sm-6 text-right">
+	                    <form id="search-bar" class="row">
+	                        <input type="hidden" name="Pagesize" value="15">
+	                        <div class="col-sm-6">
+	                            <input type="text" name="infohash" class="form-control" placeholder="按infohash搜索">
+	                        </div>
+	                        <div class="col-sm-6">
+							    	<div class="btn-submit btn btn-default">搜索</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="table-holder" data-list data-url="/ApiRedirectBlacklist/blacklist" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+	            <script type="template">
+	                <table class="table table-hover" style="table-layout:fixed;">
+	                    <tr>
+	                        <th width="60px">
+	                            <input type="checkbox" class="ZUI-checkbox" id="host-blacklist-check-all" data-check-all=".host-blacklist">
+	                            <label for="host-blacklist-check-all">
+	                                <span class="ZUI-checkbox-btn"></span>
+	                                <span class="ZUI-checkbox-txt"></span>
+	                            </label>
+	                        </th>
+	                        <th width="150px">索引</th>
+	                        <th width="120px">访问类型</th>
+	                        <th width="120px" style="word-wrap:break-word;">策略</th>
+	                        <th>重定向url</th>
+	                        <th>refer</th>
+	                        <th width="120px">操作</th>
+	                    </tr>
+	                    {{#each rows}}
+	                    <tr data-id="{{id}}">
+	                        <td width="60px">
+	                            <input type="checkbox" class="ZUI-checkbox host-blacklist" value="{{id}}" id="host-blacklist-check{{id}}" data-id="{{id}}" checkmethod="{{checkmethod}}">
+	                            <label for="host-blacklist-check{{id}}">
+	                                <span class="ZUI-checkbox-btn"></span>
+	                                <span class="ZUI-checkbox-txt"></span>
+	                            </label>
+	                        </td>
+	                        <td width="150px"><span class="ZUI-url" title="{{infohash}}">{{infohash}}</span></td>
+	                        <td width="120px">{{protocol_status protocol}}</td>
+	                        <td width="120px" style="word-wrap:break-word;">
+	                        	<select name="strategy" id="strategy" class="ZUI-select" style="width: auto;" value="{{strategy}}" data-list>
+	                        		{{{global_show_select "strategy" "strategy" "" "" strategy}}}
+	                            </select>
+                        	</td>
+	                        <td><span class="ZUI-url" title="{{redirecturl}}" style="max-width: 400px;">{{redirecturl}}</span></td>
+	                        <td><span class="ZUI-url" title="{{refer}}" style="max-width: 400px;">{{refer}}</span></td>
+	                        <td width="120px">
+	                            <a href="#"  data-menu="host/blacklist/host_blacklist-edit:Id={{id}}&checkmethod={{checkmethod}}" class="ZUI-operate region-edit blacklist-edit"><span class="iconfont">&#xe602;</span>修改</a>
+	                        </td>
+	                    </tr>
+	                    {{/each}}
+	                </table>
+	            </script>
+	            <div class="pager row">
+	                <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+	                <div id="pager-bar" class="col-sm-8"></div>
+	            </div>
+	       </div>
+    	</div>
+	</div>
+</div>

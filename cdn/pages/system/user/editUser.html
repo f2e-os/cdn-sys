@@ -1,0 +1,183 @@
+<div class="system-addUser col-sm-12" id="sys-editUserBox">
+  <div class="col-sm-12">
+    系统设置 -&gt; 用户管理 -&gt; 修改用户
+  </div>
+  <div class="col-sm-12">
+    <div class="panel clearfix">
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiSystem/updateUser" method="post" data-target="system" data-list="param" data-url="/ApiSystem/getUser">
+          
+      </form>
+      <!-- 添加用户 -->
+  <script type="template" id="sys-editUser">
+    <div class="sys-formBox clearfix">
+      <form id="sys-addUser-form" class="form-horizontal col-sm-12">
+        
+        
+          {{#each info}}
+          <input type="hidden" name="Id" value="{{Id}}" />
+          <fieldset>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">用户名<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="UserName" require value="{{UserName}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">所属用户组<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <select name="UserLevel" class="ZUI-select" id="userLevel" data-value="{{levelId}}">{{{global_show_select "" "/ApiSystem/listUserGroup" "LevelName" "Id" LevelId}}}</select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">节点权限<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <span data-title="请选择节点" class="ZUI-input Node-selector">{{{global_show "" "/ApiDepartment/listDepartment" "DepartName" "Id" DepartId "rows"}}}</span>
+                <input type="hidden" name="DepartId" value="{{DepartId}}" require/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">是否CP</label>
+              <div class="col-sm-10">
+                <div class="form-control radioBox">
+                    <span>
+                      <input type="radio" class="ZUI-radio iscp" name="CP"  value="1" id="sys-CP1" {{sys_isCheck CP 1}}>
+                      <label for="sys-CP1">
+                          <span class="ZUI-radio-btn"></span>
+                          <span class="ZUI-radio-txt">是</span>
+                      </label>
+                    </span>
+                    <span>
+                      <input type="radio" class="ZUI-radio iscp"  name="CP" value="0" id="sys-CP2" {{sys_isCheck CP 0}}>
+                      <label for="sys-CP2">
+                          <span class="ZUI-radio-btn"></span>
+                          <span class="ZUI-radio-txt">否</span>
+                      </label>
+                    </span>
+                </div>
+              </div>
+            </div>
+            <div class="sys-addHtml">
+            {{#isCp CP}}
+              <div class="form-group">
+                <label class="col-sm-2 control-label">CP</label>
+                <div class="col-sm-10">
+                  <select name="CPId" class="ZUI-select">
+                  {{{global_show_select "" "/ApiDomainGroup/listDomainGroup" "GroupName" "Id" CPId}}}
+                </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+              <label class="col-sm-2 control-label">是否激活</label>
+              <div class="col-sm-10">
+                <div class="form-control radioBox">
+                    <span>
+                      <input type="radio" class="ZUI-radio" name="CPAct"  value="1" id="sys-CPAct1" {{sys_isCheck CPAct 1}}>
+                      <label for="sys-CPAct1">
+                          <span class="ZUI-radio-btn"></span>
+                          <span class="ZUI-radio-txt">是</span>
+                      </label>
+                    </span>
+                    <span>
+                      <input type="radio" class="ZUI-radio" name="CPAct" value="0" id="sys-CPAct2" {{sys_isCheck CPAct 0}}>
+                      <label for="sys-CPAct2">
+                          <span class="ZUI-radio-btn"></span>
+                          <span class="ZUI-radio-txt">否</span>
+                      </label>
+                    </span>
+                </div>
+              </div>
+            </div>
+            {{/isCp}}
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-2 control-label">用户描述</label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="UserInfo" value="{{UserInfo}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">联系方式</label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="Phone" value="{{Phone}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">E-mail</label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="Email" value="{{Email}}"/>
+              </div>
+            </div>
+            <div class="form-group">
+            <label class="col-sm-2 control-label">用户状态</label>
+            <div class="col-sm-10">
+              <div class="form-control radioBox">
+                  <span>
+                    <input type="radio" class="ZUI-radio" name="Status" checked="checked" value="1" id="sys-status1">
+                    <label for="sys-status1">
+                        <span class="ZUI-radio-btn"></span>
+                        <span class="ZUI-radio-txt">启用</span>
+                    </label>
+                  </span>
+                  <span>
+                    <input type="radio" class="ZUI-radio" name="Status" value="0" id="sys-status2">
+                    <label for="sys-status2">
+                        <span class="ZUI-radio-btn"></span>
+                        <span class="ZUI-radio-txt">停用</span>
+                    </label>
+                  </span>
+              </div>
+            </div>
+          </div>
+            
+
+
+          </fieldset>
+          {{/each}}
+          <div class="sys-btns">
+            <a href="javascript:;" class="btn btn-primary btn-submit" role="button" id="sys-editUser-sub">确定</a>
+            <a href="javascript:;" class="btn btn-default" role="button" id="sys-editUser-cancle" data-menu="system">取消</a>
+          </div>
+      </form>
+    </div>
+    
+  </script>
+    <!-- end 添加用户 -->
+    <script type="template" id="sys-addHtmlTpl">
+      <div class="form-group">
+          <label class="col-sm-2 control-label">CP</label>
+          <div class="col-sm-10">
+            <select name="CPId" class="ZUI-select">
+            {{{global_show_select "" "/ApiDomainGroup/listDomainGroup" "GroupName" "Id" CPId}}}
+          </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">是否激活</label>
+        <div class="col-sm-10">
+          <div class="form-control radioBox">
+              <span>
+                <input type="radio" class="ZUI-radio" name="CPAct"  value="1" id="sys-CPAct1" checked="checked">
+                <label for="sys-CPAct1">
+                    <span class="ZUI-radio-btn"></span>
+                    <span class="ZUI-radio-txt">是</span>
+                </label>
+              </span>
+              <span>
+                <input type="radio" class="ZUI-radio" name="CPAct" value="0" id="sys-CPAct2" checked="checked">
+                <label for="sys-CPAct2">
+                    <span class="ZUI-radio-btn"></span>
+                    <span class="ZUI-radio-txt">否</span>
+                </label>
+              </span>
+          </div>
+        </div>
+      </div>
+    </script>
+    </div>
+  </div>
+  
+
+</div>

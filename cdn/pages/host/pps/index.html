@@ -1,0 +1,303 @@
+<div class="host_pps FUI" id="host_pps_list">
+	<div class="col-sm-12">
+		设备配置 -&gt; PPS白名单配置 
+	</div>
+	<div class="col-sm-12 pps_list">
+		<ul class="nav nav-tabs" id="myTab"> 
+          <li class="active"><a href="#webPPCGroup" class="active" >WEB PPC 分组</a></li> 
+          <li><a href="#webPPCCfg" >WEB PPC配置</a></li>
+          <li><a href="#whiteList" >白名单管理</a></li> 
+        </ul> 
+		<div class="panel">
+			<div class="tab-content">
+			 	<div id="webPPCGroup" class="tab-pane active clearfix">
+			 		<div class="row FUI-title ppc-group">
+						<div class="col-sm-10">
+							<a href="javascript:;" class="btn btn-primary pps_list-add" data-menu="host_pps_add">添加设备组</a>
+							<a href="javascript:;" class="btn btn-primary pps_list-del">删除设备组</a>
+						</div>
+						<div class="col-sm-2 FUI-text-right">
+							<form id="host_pps_form">
+								<input type="hidden" name="Pagesize" value="15">
+							</form>
+						</div>
+					</div>
+				 	<div class="table-holder" data-list data-url="/ApiPPSWhiteList/listHostGroup" data-pager="#pager-pps_list" data-method="post" data-form="#host_pps_form" data-totalshow="#pps_list-total"></div>
+					<script type="template">
+					<table class="table table-hover">
+						<tr>
+							<th>
+							<input type="checkbox" class="ZUI-checkbox" id="host_pps_list-check" data-check-all=".delCheck">
+				            <label for="host_pps_list-check">
+				                <span class="ZUI-checkbox-btn"></span>
+				                <span class="ZUI-checkbox-txt"></span>
+				            </label>
+							</th>
+							<th>设备组名称</th>
+							<th>设备组描述</th>
+							<th>设备组列表</th>
+							<th>序列号</th>
+							<th>操作</th>
+						</tr>
+						{{#each rows}}
+						<tr>
+							<td>
+								<input type="checkbox" class="ZUI-checkbox delCheck" id="host_pps_list-check{{Id}}" data-id="{{Id}}">
+					            <label for="host_pps_list-check{{Id}}">
+					                <span class="ZUI-checkbox-btn"></span>
+					                <span class="ZUI-checkbox-txt"></span>
+					            </label>
+							</td>
+							<td>
+							{{group_name}}
+							</td>
+							<td>
+							{{group_desc}}
+							</td>
+							<td>
+							{{host_names}}
+							</td>
+							<td>
+							{{group_order}}
+							</td>
+							<td data-id="{{Id}}">
+							<a href="javascript:;" class="ZUI-operate edit" data-menu="host/pps/edit:group_id={{Id}}"><span class="iconfont">&#xe602;</span>
+                  			</a>
+                  			<a href="javascript:;" class="ZUI-operate delete"><span class="iconfont">&#xe603;</span>
+							</td>
+						</tr>
+						{{/each}}
+					</table>
+					</script>
+					<div class="pager row">
+						<div class="col-sm-4">共<span id="pps_list-total">0</span>条记录</div>
+						<div id="pager-pps_list" class="col-sm-8"></div>
+					</div>
+
+			 	</div>
+			 	<div id="webPPCCfg" class="tab-pane clearfix webPPCCfg">
+			 		
+					<div class="table-holder form-horizontal" data-list data-url="/ApiPPSCache/getPpsConfig" data-method="post" data-form="#host_webPPCCfg_form" ></div>
+					<script type="template">
+					<div class="row FUI-title">
+						<div class="col-sm-10">
+							<strong>PPC服务器：</strong>
+						</div>
+						<div class="col-sm-2 FUI-text-right">
+							<a href="javascript:void(0);" class="btn btn-primary btn-autoCalc">自动计算</a>
+						</div>
+					</div>
+					<table class="table table-hover ppc-block">
+						<tbody>
+						<tr>
+							<th>
+								<input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+								<label for="host-distribute-check-all">
+									<span class="ZUI-checkbox-btn"></span>
+									<span class="ZUI-checkbox-txt"></span>
+								</label>
+							</th>
+							<th>Id</th>
+							<th>所在组</th>
+							<th>PPC</th>
+							<th>起始范围</th>
+							<th>结束范围</th>
+						</tr>
+						{{{host_pps_ppcList info.pps}}}
+						</tbody>
+					</table>
+					<div class="row FUI-title">
+						<div class="col-sm-12">
+						<strong>用户网段：</strong>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<select class="ZUI-select clientpool-list" multiple="multiple" size="10">
+							{{{host_pps_clientpoolOption info.client_pool}}}
+							</select>
+						</div>
+					</div>
+					<div class="form-group clientpool-block">
+						<div class="col-sm-12">
+							<span>起始地址：</span><input type="text" class="ZUI-input clientpool-start" /><span>结束地址：</span><input type="text" class="ZUI-input clientpool-end" />规则：<select class="ZUI-select clientpool-reg">{{{global_show_select '' 'Reg' '' ''}}}</select><a href="javascript:void(0);" class="btn btn-primary btn-add-clientpool">添加</a><a href="javascript:void(0);" class="btn btn-primary btn-del-clientpool">删除</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<a href="javascript:;" class="btn btn-primary btn-set" role="button">保存</a>
+							<a href="javascript:;" class="btn btn-default conf-xf btn-send" role="button">下发</a>
+							<a href="javascript:;" class="btn btn-default conf-hg btn-rollback" role="button">回滚</a>
+						</div>
+					</div>
+					</script>
+					<script type="template/html" id="ppclist-template">
+					{{#each data}}
+					<tr data-ID="{{id}}" data-group="{{group_id}}">
+						<td>
+							<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{id}}" id="host-distribute-check{{id}}" data-id="{{id}}"{{#if checked}} checked="checked"{{/if}}>
+							<label for="host-distribute-check{{id}}">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</td>
+						<td>{{id}}</td>
+						<td>{{group_name}}</td>
+						<td>{{ppc_name}}</td>
+						<td><input type="text" class="ZUI-input ZUI-w140 ppc-start" value="{{start}}" /></td>
+						<td><input type="text" class="ZUI-input ZUI-w140 ppc-end" value="{{end}}" /></td>
+					</tr>
+					{{/each}}
+					</script>
+					<script type="template/html" id="clientpooloption-template">
+					{{#each data}}
+					<option value="{{start_ip}}--{{end_ip}}--{{reg}}">{{start_ip}}--{{end_ip}}--{{host_pps_Reg reg}}</option>
+					{{/each}}
+					</script>
+			 	</div>
+			 	<div id="whiteList" class="tab-pane clearfix">
+					<div class="row FUI-title ppc-group">
+						<div class="col-sm-10">
+							<strong>白名单域名：</strong>
+							<a href="javascript:;" class="btn btn-primary whiteList-add">添加</a>
+							<a href="javascript:;" class="btn btn-primary whiteList-del">删除</a>
+							<a href="javascript:;" class="btn btn-primary whiteList-fx">放行</a>
+							<a href="javascript:;" class="btn btn-primary whiteList-xf btn-send">下发</a>
+							<a href="javascript:;" class="btn btn-primary whiteList-hg btn-rollback">回滚</a>
+							<a href="javascript:;" class="btn btn-primary" data-menu="host_white_history">查看放行历史</a>
+						</div>
+						<div class="col-sm-2 FUI-text-right">
+							<form id="whiteList_form">
+								<div class="input-group">
+									<input type="text" class="form-control" name="domain" placeholder="请输入域名">
+									<a class="input-group-addon btn-submit" href="javascript:;">查询</a>
+								</div>
+								<input type="hidden" name="Pagesize" value="15">
+							</form>
+						</div>
+					</div>
+				 	<div class="table-holder" data-list data-url="/ApiPPSWhiteList/listWhiteList" data-pager="#pager-whiteList" data-method="post" data-form="#whiteList_form" data-totalshow="#whiteList-total"></div>
+					<script type="template">
+					<table class="table table-hover">
+						<tr>
+							<th>
+							<input type="checkbox" class="ZUI-checkbox" id="whiteList-check" data-check-all=".delWhiteListCheck">
+				            <label for="whiteList-check">
+				                <span class="ZUI-checkbox-btn"></span>
+				                <span class="ZUI-checkbox-txt"></span>
+				            </label>
+							</th>
+							<th>流水号</th>
+							<th>白名单</th>
+							<th>设备名称</th>
+							<th>分组名称</th>
+						</tr>
+						{{#each info}}
+						<tr>
+							<td>
+								<input type="checkbox" class="ZUI-checkbox delWhiteListCheck" id="whiteList-check{{indexwhite}}" data-domainIds="{{indexwhite}}" data-domainname="{{namewhite}}">
+					            <label for="whiteList-check{{indexwhite}}">
+					                <span class="ZUI-checkbox-btn"></span>
+					                <span class="ZUI-checkbox-txt"></span>
+					            </label>
+							</td>
+							<td>
+							{{indexwhite}}
+							</td>
+							<td>
+							{{namewhite}}
+							</td>
+							<td>
+							{{ipidwhite_name}}
+							</td>
+							<td>
+							{{ppc_group_name}}
+							</td>
+						</tr>
+						{{/each}}
+					</table>
+					</script>
+					<div class="pager row">
+						<div class="col-sm-4">共<span id="whiteList-total">0</span>条记录</div>
+						<div id="pager-whiteList" class="col-sm-8"></div>
+					</div>
+					<div class="row FUI-title ppc-group">
+						<div class="col-sm-10">
+							<strong>下发状态：</strong>
+						</div>
+						<div class="col-sm-2 FUI-text-right">
+							<form id="whilteXf_form">
+								<input type="hidden" name="Pagesize" value="15">
+							</form>
+						</div>
+					</div>
+					<div class="table-holder" data-list data-url="/ApiPPSWhiteList/listWhiteListStatus" data-pager="#pager-whilteXf" data-method="post"  data-totalshow="#whilteXf-total" data-form="#whilteXf_form"></div>
+					<script type="template">
+					<table class="table table-hover">
+						<tr>
+							<th>ip</th>
+							<th>状态</th>
+							<th>时间</th>
+						</tr>
+						{{#each info}}
+						<tr>
+							<td>
+							{{ppsip}}
+							</td>
+							<td>
+							{{message}}
+							</td>
+							<td>
+							{{addtime}}
+							</td>
+						</tr>
+						{{/each}}
+					</table>
+					</script>
+					<div class="pager row">
+						<div class="col-sm-4">共<span id="whilteXf-total">0</span>条记录</div>
+						<div id="pager-whilteXf" class="col-sm-8"></div>
+					</div>
+
+					<script type="template/html" id="white-form-add">
+						<div class="col-sm-10">
+							<input type="hidden" name="host_id" value="{{id}}">
+							<div class="input-group pd15">
+								<label class="input-group-addon">域名<span class="ZUI-require"></span></label>
+								<textarea type="text" class="ZUI-textarea" name="domains">{{domains}}</textarea>
+							</div>
+							<div class="input-group pd15">
+								<label class="input-group-addon">设备&nbsp;&nbsp;&nbsp;</label>
+								<select name="device_id" class="ZUI-select">
+									<option value="">请选择</option>
+									{{{global_show_select '' '/ApiHost/listHost' 'HostName' 'Id' device_id}}}
+								</select>
+							</div>
+							<div class="input-group pd15">
+								<label class="input-group-addon">分组&nbsp;&nbsp;&nbsp;</label>
+								<select name="group_id" class="ZUI-select">
+									<option value="">请选择</option>
+									{{{global_show_select '' '/ApiPPSWhiteList/listHostGroup' 'group_name' 'Id' group_id}}}
+								</select>
+							</div>
+						</div>
+					</script>
+					<script type="template/html" id="white-form-del">
+						<div class="col-sm-10">
+							<div class="input-group pd15">
+								<label class="input-group-addon">域名<span class="ZUI-require"></span></label>
+								<textarea type="text" class="ZUI-textarea" name="domain_names">{{domain_names}}</textarea>
+							</div>
+						</div>
+					</script>
+			 	</div>
+			 	<!-- whiteList end -->
+
+			</div>
+			
+		</div>
+		<!-- panel  -->
+	</div>
+
+
+</div>

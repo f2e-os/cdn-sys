@@ -1,0 +1,112 @@
+<div class="system-userAuth" id="sys-userAuth">
+    <div class="col-sm-12">
+        系统设置 -&gt; 用户权限管理 
+    </div>
+    <div class="col-sm-12 sys-userAuth">
+        <div class="panel">
+
+            <div class="sys-top">
+                <form id="system-searchUser" class="form-inline">
+                    <div class="form-group">
+                        <label for="groupSearch">所属用户组</label>
+                        <div class="input-group sysMl10">
+                            <select class="ZUI-select" id="groupSearch"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- end -->
+             <div class="sys-authBox" id="groupAuthBox">
+                 
+             </div>
+        </div>
+        <!--panel  end -->
+        
+    </div>
+    <script type="template/html" id="groupSelect">
+        {{#each rows}}
+        <option value="{{Id}}">{{LevelName}}</option>
+        {{/each}}
+    </script>
+    <script type="template/html" id="authBoxTpl">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>功能名称</td>
+                <td>功能描述</td>
+                <td>
+                
+                <input type="checkbox" class="ZUI-checkbox" id="sys-allViews-check" data-check-all=".auth-views">
+                <label for="sys-allViews-check">
+                    <span class="ZUI-checkbox-btn"></span>
+                    <span class="ZUI-checkbox-txt">查看</span>
+                </label>
+                </td>
+                <td>
+                
+                <input type="checkbox" class="ZUI-checkbox" id="sys-allAdds-check" data-check-all=".auth-adds">
+                <label for="sys-allAdds-check">
+                    <span class="ZUI-checkbox-btn"></span>
+                    <span class="ZUI-checkbox-txt">添加</span>
+                </label>
+                </td>
+                <td>
+                
+                <input type="checkbox" class="ZUI-checkbox" id="sys-allUpdates-check" data-check-all=".auth-updates">
+                <label for="sys-allUpdates-check">
+                    <span class="ZUI-checkbox-btn"></span>
+                    <span class="ZUI-checkbox-txt">修改</span>
+                </label>
+                </td>
+                <td>
+                
+                <input type="checkbox" class="ZUI-checkbox" id="sys-allDeletes-check" data-check-all=".auth-deletes">
+                <label for="sys-allDeletes-check">
+                    <span class="ZUI-checkbox-btn"></span>
+                    <span class="ZUI-checkbox-txt">删除</span>
+                </label>
+                </td>
+            </tr>
+        </thead>
+        {{#each rows}}
+        <tr data-id="{{MenuId}}" class="auth-tr">
+            <td>{{MenuName}}</td>
+            <td>{{MenuDesc}}</td>
+            <td>
+            <input type="checkbox" class="ZUI-checkbox authInput auth-views" data-type="Views" {{hasAuth View}} id="menu_{{MenuId}}_1">
+            <label for="menu_{{MenuId}}_1">
+                <span class="ZUI-checkbox-btn"></span>
+                <span class="ZUI-checkbox-txt"></span>
+            </label>
+            </td>
+            <td>
+            <input type="checkbox" class="ZUI-checkbox authInput auth-adds" data-type="Adds" {{hasAuth Add}} id="menu_{{MenuId}}_2">
+            <label for="menu_{{MenuId}}_2">
+                <span class="ZUI-checkbox-btn"></span>
+                <span class="ZUI-checkbox-txt"></span>
+            </label>
+            </td>
+            <td>
+            <input type="checkbox" class="ZUI-checkbox authInput auth-updates" data-type="Updates" {{hasAuth Update}} id="menu_{{MenuId}}_3">
+            <label for="menu_{{MenuId}}_3">
+                <span class="ZUI-checkbox-btn"></span>
+                <span class="ZUI-checkbox-txt"></span>
+            </label>
+            </td>
+            <td>
+            <input type="checkbox" class="ZUI-checkbox authInput auth-deletes" data-type="Deletes" {{hasAuth Delete}} id="menu_{{MenuId}}_4">
+            <label for="menu_{{MenuId}}_4">
+                <span class="ZUI-checkbox-btn"></span>
+                <span class="ZUI-checkbox-txt"></span>
+            </label>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+    <div class="sys-btns" style="text-align:center;">
+         <a href="javascript:;" class="btn btn-primary btn-submit save-sysAuth">保存修改</a>
+     </div>
+    </script>
+
+    <!-- sys-userAuth end -->
+</div>

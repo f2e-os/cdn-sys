@@ -1,0 +1,140 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "³É¹¦",
+	"total":22,
+    "rows": [
+        {
+            "WebsiteName": "tp-link",
+            "Flow": "242424571",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "news.cn",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "tp-link1",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "tp-link2",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "tp-link3",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "tp-link4",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "tp-link5",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "tp-link6",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "tp-link7",
+            "Flow": "24242457",
+            "Visit": "2135",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        },
+        {
+            "WebsiteName": "baidu",
+            "Flow": "54242457",
+            "Visit": "2100",
+            "Percent": "60"
+        }
+    ]
+}

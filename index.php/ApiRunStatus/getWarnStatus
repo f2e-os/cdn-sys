@@ -1,0 +1,12 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "info": {
+        "total_warn_num": 16,
+        "high_warn_num": 2,
+        "mid_warn_num": 3,
+        "low_warn_num": 5,
+        "unconfirm_warn_num": 6
+    }
+}

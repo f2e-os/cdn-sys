@@ -1,0 +1,87 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; 内容管理 -&gt;<span class="detail">域名视图</span>
+    </div>
+    <div class="col-sm-12 source pdt15" id="source">
+    	<ul class="nav nav-tabs" id="myTab"> 
+
+	      <li class="active"><a  href="#packing" data-menu="source/sub/dismanage" class="active">域名视图</a></li>
+	      <li><a  href="#packing" data-menu="source/sub/content_search">内容查询</a></li>  
+	      <li><a href="#sub" data-menu="source/sub/conmanage">用户行为分析</a></li> 
+	    </ul> 
+	   	<div class="tab-content"> 
+	      <div class="panel" id="dismanage">
+	      	<div class="row">
+	                <div class="col-sm-4">
+	                    
+	                </div>
+	                <div class="col-sm-8 text-right">
+	         
+	                    <form id="source-searchUser-dismanage" class="row form-inline">
+	                    	<input type="hidden" name="Pagesize" value="15">
+	                    	<!--
+	                        <input type="hidden" name="Pagesize" value="15">
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                        -->
+							<div class="col-sm-2">
+								 <select name="Cp_Id" class="form-control" data-list>
+						 		</select>
+        						<script type="template"><option value="">请选择CP</option>{{{global_show_select "Cp_Id" "/ApiDomainGroup/listDomainGroup" "GroupName" "Id" Cp_Id}}}</script>
+							</div>
+							<div class="col-sm-3">
+								 <input type="text" class="form-control" id="Url" name="Url" placeholder="域名">
+							</div>
+							<div class="col-sm-2">
+								<select name="Area" id="Area" class="form-control" value="{{Area}}" data-list>
+	                            </select>
+	                            <script type="template"><option value="">区域</option>{{{global_show_select "Area" "/ApiArea/listArea" "name" "Id" Name}}}</script>
+							</div>
+						    <div class="col-sm-2">
+								<select name="DepartName" id="DepartName" class="form-control" value="{{DepartName}}" data-list>
+	                            </select>
+	                            <script type="template"><option value="">节点</option>{{{global_show_select "DepartName" "/ApiDepartment/listDepartment" "DepartName" "Id" DepartName}}}</script>
+							</div>
+							<div class="col-sm-3">
+						    	<div class="btn-dismanagemit btn btn-default btn-submit">搜索</div>
+							</div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="table-holder" data-list data-url="/ApiListContentDistribution/listContentDistribution" data-pager="#pager-source-dismanage" data-method="get" data-form="#source-searchUser-dismanage" data-totalshow="#source-total-dismanage"></div>
+	            <script type="template">
+	            	<form id="source-listC">
+		                <table class="table table-hover">
+		                    <tr>
+		                        <th>序列</th>
+		                        <th>CP</th>
+		                        <th>域名</th>
+		                        <th>区域</th>
+		                        <th>节点</th>
+		                        
+		                    </tr>
+		                    {{#each rows}}
+		                    <tr data-id="{{Id}}">
+		                        <td class="Id">{{{_ @index}}}</td>
+		                        <td class="CP" data-value="{{url}}">{{CP}}</td>
+		                        <td class="url">{{url}}</td>
+		                        <td class="AreaName">{{AreaName}}</td>
+		                        <td class="DepartName">{{DepartName}}</td>
+		                    </tr>
+		                    {{/each}}
+		                </table>	
+	                </form>																				
+	            </script>
+	            <div class="pager row">
+	                <div class="col-sm-4">共<span id="source-total-dismanage">0</span>条记录</div>
+	                <div id="pager-source-dismanage" class="col-sm-8"></div>
+	            </div>
+	      </div> 
+	    </div> 
+    </div>
+</div>

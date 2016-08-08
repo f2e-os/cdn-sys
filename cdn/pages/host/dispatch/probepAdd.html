@@ -1,0 +1,109 @@
+<div class="hostDispatch hostDispatch_add" id="hostDispatch_add">
+    <div class="col-sm-12">
+        设备配置 -&gt; 调度策略管理 -&gt; 添加探测策略
+    </div>
+    <div class="col-sm-12 hostDispatch_addBody">
+        <div class="panel clearfix" style="padding-bottom:20px;">
+          <form class="form-horizontal col-sm-12" action="/ApiProbe/addProbeStrategy" method="post" data-target="host_dispatch" id="addHostDispath_form">
+            <div class="form-group">
+              <label class="col-sm-2 control-label dispatchName">策略名称<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                <input type="text" class="ZUI-input forSub" name="name"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label dispatchName">运算方式<span class="ZUI-require"></span></label>
+              <div class="col-sm-10">
+                
+                <select name="operator" class="ZUI-select forSub" style="float:left">
+                    <option value="1">or</option>
+                    <option value="0">and</option>
+              </select>
+        
+              </div>
+            </div>
+            <div class="col-sm-6 topBar">
+              <a href="javascript:;" class="btn btn-primary hostDispatchAdd-add">+ 添加</a>
+              <a href="javascript:;" class="btn btn-primary hostDispatchAdd-del">- 删除</a>
+            </div>
+            <div class="form-group">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>
+                    <input type="checkbox" class="ZUI-checkbox" id="sys-allUser-check" data-check-all=".delCheck">
+                    <label for="sys-allUser-check" >
+                        <span class="ZUI-checkbox-btn"></span>
+                        <span class="ZUI-checkbox-txt">全选</span>
+                    </label>
+                    </th>
+                    <th>序列号</th>
+                    <th>衡量公式</th>
+                    <th>探测项</th>
+                    <th>探测域名</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="table_body" class="host_tbody">
+                 
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="sys-btns">
+              <a href="javascript:;" class="btn btn-primary" role="button" id="hostDispatchAdd-sub">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="host_dispatch:index=4">取消</a>
+            </div>
+          </form>
+        </div>
+        <!-- panel end -->
+    </div>
+    <!-- col-sm-12 end -->
+
+    <!-- 增加策略下级  -->
+    <script type="template/html" id="add_dispatchTpl">
+      <tr data-status="false">
+        <td>
+        <input type="checkbox" class="ZUI-checkbox delCheck" id="sys-user-check{{index}}">
+        <label for="sys-user-check{{index}}">
+            <span class="ZUI-checkbox-btn"></span>
+            <span class="ZUI-checkbox-txt"></span>
+        </label>
+        </td>
+        <td>{{index}}</td>
+          <div class="notInput_host_dispatch" data-type="radio">
+            {{{global_show_radio (concat 'ProbeType_' index) "ProbeTypeData"}}}
+          </div>
+
+        </td>
+       
+        <td>
+              <div>
+              <select name="metrics_sym[]" class="ZUI-select forSub" style="float:left">
+                    <option value="">衡量方式</option>
+                    <option value=">">  > </option>
+                    <option value="<">  < </option>
+                    <option value="=">  = </option>
+                    <option value="!="> != </option>
+                    <option value=">="> >= </option>
+                    <option value="<="> <= </option>
+              </select>
+                  <input type="text" class="ZUI-input forSub" name="metrics_val[]"  />
+           
+              </div>
+
+        </td>
+        <td><select name="probe_item[]" class="ZUI-select forSub">{{{global_show_select "" "/ApiProbe/listProbe" "probe_name" "probe_id" "" "rows"}}}</select></td>
+       
+        <td>
+         <input type="text"  class="ZUI-input forSub" name="arg[]"/>
+        </td>
+        <td>
+        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn editTr">修改</a>
+        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn subTr">保存</a>
+        <a href="javascript:;" class="ZUI-btn ZUI-noneicon-btn deleteTr">删除</a>
+        </td>
+      </tr>
+    </script>
+</div>

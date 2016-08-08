@@ -1,0 +1,71 @@
+<div class="host">
+    <div class="col-sm-12">
+        设备配置 -&gt; ruler配置
+    </div>
+    <div class="col-sm-12 host">
+        <div class="panel">
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-6 text-right">
+                    <a href="javascript:;" class="btn btn-primary Device-selector" data-name="device_ids" data-type="5" data-url="/ApiRuler/sendRuler" data-title="下发设备(pps)">下发</a>
+                    <a href="javascript:;" class="btn btn-primary host-rollback">回滚</a>
+                    <a href="javascript:;" class="btn btn-primary" data-menu="host/ruler/add">添加</a>
+                </div>
+                <div class="col-sm-3">
+                    <form id="search-bar" class="row">
+                        <div class="input-group">
+                          <input type="hidden" name="Pagesize" value="15">  
+                          <input type="text" class="form-control" name="host_name" placeholder="请输入域名搜索">
+                          <div class="input-group-addon btn-submit">搜索</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-holder" data-list data-url="/ApiRuler/listRuler" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+            <script type="template">
+                <table class="table table-hover">
+                    <tr>
+                        <th>序列号</th>
+                        <th>域名</th>
+                        <th>状态</th>
+                        <th>Hash算法</th>
+                        <th>是否重定向</th>
+                        <th>代理模式</th>
+                        <th>PPC分组</th>
+                        <th>操作</th>
+                    </tr>
+                    {{#each rows}}
+                    <tr>
+                        <td>{{_ @index}}</td>
+                        <td>{{host_name}}</td>
+                        <td>{{global_show "" "host_type" "" "" host_type}}</td>
+                        <td>{{hashtype}}</td>
+                        <td>{{global_show "" "Yes_No" "" "" redirect}}</td>
+                        <td>{{global_show "" "agent_type" "" "" proxy}}</td>
+                        <td>{{ppc_gname}}</td>
+                        <td>
+
+                            <a href="javascript:;" class="ZUI-operate ruler-conf" data-id="{{id}}">参数配置</a>
+                            <a href="javascript:;" class="ZUI-operate region-edit" data-menu="host/ruler/edit:id={{id}}"><span class="iconfont">&#xe602;</span>修改</a>
+                            <a href="javascript:;" class="ZUI-operate region-del" data-id="{{id}}" data-delete="ids" data-url="/ApiRuler/deleteRuler" ><span class="iconfont">&#xe603;</span>删除</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+            <div class="pager row">
+                <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+                <div id="pager-bar" class="col-sm-8"></div>
+            </div>
+              <script type="template" id="ruler-conf-dialog">
+                <div class="row ruler-conf-list">
+                {{#each info}}
+                <label class="col-sm-2 control-label" style="height:32px;overflow:hidden;">{{par_name}}：</label>
+                <div class="col-sm-4" style="margin-bottom:5px;">
+                  <input type="text" class="form-control ruler-item" name="{{par_name}}" value="{{per_value}}">
+                </div>
+                {{/each}}
+                </div>
+              </script>
+        </div>
+    </div>
+</div>

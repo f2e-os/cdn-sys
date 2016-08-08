@@ -1,0 +1,43 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "rows": [
+		{
+			"resource_type": "视频1",
+			"CompanyName": "得分",
+			"nodeId": "3"
+			"duration": "5",
+			"resource_flow": "55515",
+			"percent": "50",
+		},{
+			"resource_type": "辅导费",
+			"CompanyName": "上海缓存",
+			"nodeId": "4"
+			"duration": "5",
+			"resource_flow": "455515",
+			"percent": "40",
+		},{
+			"resource_type": "等等",
+			"CompanyName": "上海缓存",
+			"nodeId": "56"
+			"duration": "5",
+			"resource_flow": "255515",
+			"percent": "40",
+		},{
+			"resource_type": "方法",
+			"CompanyName": "是",
+			"nodeId": "37"
+			"duration": "8",
+			"resource_flow": "155515",
+			"percent": "60",
+		},{
+			"resource_type": "通过",
+			"CompanyName": "个人",
+			"nodeId": "3"
+			"duration": "5",
+			"resource_flow": "155515",
+			"percent": "20",
+		}
+    ]
+}

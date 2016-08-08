@@ -1,0 +1,78 @@
+<div class="host">
+	<div class="col-sm-12">
+		设备配置 -&gt; 重定向黑名单管理 -&gt; 添加黑名单
+	</div>
+	<div class="col-sm-12">
+		<div class="panel">
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiRedirectBlacklist/addblacklist" method="post" data-target="host_blacklist" >
+	          <div class="form-group">
+	            <label class="col-sm-2 control-label"><span class="ZUI-require"></span>配置区分</label>
+	            <div class="col-sm-10">
+	            	<div data-list> </div>
+			      	 <script type="template">
+	            	 	<div class="radioBox config-dis-radio">{{{global_show_radio "checkmethod" "config_dis" "" "" checkmethod}}}</div>
+	            	 </script>
+	            </div>
+	          </div>
+	          <div class="form-group config-dis-common config-dis-infohash">
+	            <label class="col-sm-2 control-label"><span class="ZUI-require"></span>索引</label>
+	            <div class="col-sm-10">
+	              <input type="text" class="ZUI-input" name="infohash"  require/>
+	            </div>
+	          </div>
+	          <div class="form-group config-dis-common config-dis-keyword">
+	            <label class="col-sm-2 control-label"><span class="ZUI-require"></span>关键字</label>
+	            <div class="col-sm-10">
+	              <input type="text" class="ZUI-input" name="infohash"  require/>
+	            </div>
+	          </div>
+	          <div class="form-group config-dis-common config-dis-host">
+	            <label class="col-sm-2 control-label"><span class="ZUI-require"></span>host</label>
+	            <div class="col-sm-10">
+	              <input type="text" class="ZUI-input" name="infohash"  require/>
+	            </div>
+	          </div>
+	          <div class="form-group config-dis-common config-dis-refer">
+	            <label class="col-sm-2 control-label">refer</label>
+	            <div class="col-sm-10">
+	              <input type="text" class="ZUI-input" name="refer"  require/>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-sm-2 control-label"><span class="ZUI-require"></span>访问类型</label>
+	            <div class="col-sm-10">
+	            	<div data-list> </div>
+	            	 <script type="template">
+		            	<select name="protocol" id="protocol" class="ZUI-select" value="{{protocol}}" data-list>
+		            		{{{global_show_select "protocol" "protocol" "" "" protocol}}}
+		        		</select>
+	        		</script>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-sm-2 control-label"><span class="ZUI-require"></span>策略</label>
+	            <div class="col-sm-10">
+	            	<div data-list> </div>
+	            	<script type="template">
+		            	<select name="strategy" id="strategy" class="ZUI-select" value="{{strategy}}" data-list>
+		            		{{{global_show_select "strategy" "strategy" "" "" strategy}}}
+		        		</select>
+	        		</script>
+	            </div>
+	          </div>
+	          <div class="form-group con-RedirUrl">
+	            <label class="col-sm-2 control-label">重定向URL</label>
+	            <div class="col-sm-10">
+	              <input type="text" class="ZUI-input" id="RedirUrl" name="RedirUrl" require/>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <div class="col-sm-offset-2 col-sm-10">
+	              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+	              <a href="javascript:;" class="btn btn-default" role="button" data-menu="host_blacklist">取消</a>
+	            </div>
+	          </div>
+      </form>
+		</div>
+	</div>
+</div>

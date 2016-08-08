@@ -1,0 +1,47 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "获取成功！",
+    "info": {
+        "ppc": [
+            {
+                "id": 1,
+                "ppc_name": "aaa",
+                "start": "0",
+                "end": "127",
+                "group_id": "1",
+                "group_name": "1234567"
+            },
+            {
+                "id": 2,
+                "ppc_name": "bbb",
+                "start": "128",
+                "end": "255",
+                "group_id": "28",
+                "group_name": "PPC分组别删"
+            }
+        ],
+        "limit": [
+            {
+                "start": "0:0:25",
+                "end": "23:59:25",
+                "single_task_limit": "222",
+                "total_limit": "333",
+                "single_user_limit": "222",
+                "service_total_limit": "333"
+            }
+        ],
+        "client_pool": [
+            {
+                "start_ip": "10.0.0.1",
+                "end_ip": "10.0.0.3",
+                "reg": "0"
+            },
+            {
+                "start_ip": "10.0.0.11",
+                "end_ip": "10.0.0.33",
+                "reg": "1"
+            }
+        ]
+    }
+}

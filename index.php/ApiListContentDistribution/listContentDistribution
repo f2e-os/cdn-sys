@@ -1,0 +1,15 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "搜索内容注入成功",
+    "total": "3",
+    "rows": [
+        {
+			"Id": "66",
+			"CP": "test",
+			"url": "testdesc",
+			"AreaName": null,
+			"DepartName": null
+		}
+    ]
+}

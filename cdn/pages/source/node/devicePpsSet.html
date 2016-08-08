@@ -1,0 +1,35 @@
+<div class="source">
+	<div class="col-sm-12">
+		资源配置 -&gt; 节点管理 -&gt;设备管理 -&gt;<span class="detail">PPS配置</span>
+	</div>
+	<div class="col-sm-12">
+		<div class="panel">      
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiPpsSet/savePpsData" method="post" data-target="source/node/device" data-list="param" data-url="/ApiPpsSet/getPpsConfig">        
+      </form>
+      <script type="template">
+       
+        <div class="table-holder" >
+          <table class="table table-hover">
+              <tr>
+                <th>监控端口</th>
+                <th>流量类型</th>
+                <th>链路描述</th>
+              </tr>
+              {{#each rows}}
+              <tr>
+                <td class="if_name"><input type="hidden" name="id[]" value="{{id}}">{{if_name}}</td>
+                <td class="flow_type"><input type="edit" name="flow_type[]" value="{{flow_type}}" /></td>
+                <td class="if_desc"><input type="edit" name="if_desc[]" value="{{if_desc}}" /></td>
+                
+              </tr>
+               {{/each}}
+          </table>
+        </div>
+        <div class="row">
+          <a href="#" class="btn btn-primary btn-submit pps-save">- 保存</a>
+          <a href="#" class="btn btn-default pps-save" data-menu="source/node/device" >- 取消</a>
+        </div>
+      </script>
+		</div>
+	</div>
+</div>

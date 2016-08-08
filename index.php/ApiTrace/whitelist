@@ -1,0 +1,22 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "total": 5,
+    "rows": [
+        {
+            "CacheSysID": "5",
+            "CompanyName": "重庆缓存",
+            "url": "alanly.com",
+            "extentype": "..zip",
+            "FileType": "zip"
+        },
+        {
+            "CacheSysID": "10",
+            "CompanyName": "河南缓存",
+            "url": "cabal.iccgame.com",
+            "extentype": "..mp3",
+            "FileType": "mp3"
+        }
+    ]
+}

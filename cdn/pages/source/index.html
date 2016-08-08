@@ -1,0 +1,112 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; 节点管理 -&gt;<span class="detail">区域管理</span>
+    </div>
+    <div class="col-sm-12 source pdt15">
+    	<ul class="nav nav-tabs" id="myTab"> 
+	      <li class="active"><a href="#region" class="active" data-menu="source">区域管理</a></li> 
+	      <li><a href="#packing" data-menu="source/node/packing">节点管理</a></li> 
+	      <li><a href="#device" data-menu="source/node/device">设备管理</a></li> 
+	      <li><a href="#structure" data-menu="source/node/structure">拓扑结构</a></li> 
+	    </ul> 
+	   	<div class="tab-content"> 
+	        <div class="panel" id="region">
+	            <div class="row">
+	                <div class="col-sm-6">
+	                    <script type="template/html" id="region-addInfo" data-method="get">
+		                        <div class="col-sm-10">
+		                        	<div class="form-group clearfix">
+									    <label for="inputPassword" class="col-sm-4 control-label">名称<span class="ZUI-require"></span></label>
+									    <div class="col-sm-8">
+									      <input type="text" class="form-control" name="addName" placeholder="" value="{{name}}">
+									    </div>
+								    </div>
+								    <div class="form-group clearfix">
+									    <label for="inputPassword" class="col-sm-4 control-label">描述</label>
+									    <div class="col-sm-8">
+									      <input type="text" class="form-control" name="Content" placeholder="" value="{{content}}">
+									    </div>
+								    </div>
+								     <div class="form-group clearfix">
+									    <label for="inputPassword" class="col-sm-4 control-label">区域状态</label>
+									    <div class="col-sm-6">
+									    	<input type="checkbox" class="ZUI-switch ZUI-switch-text " name="Status" {{start-no status}} id="ID23">
+								            <label for="ID23" style="float:left;">
+								                <span class="ZUI-switch-btn"></span>
+								                <span class="ZUI-switch-info"></span>
+								            </label>
+									    </div>
+								    </div>
+		                        </div>
+						</script>
+	                    <a href="#" class="btn btn-primary region-add" data-menu="source/node/regionAdd">+ 添加</a>
+	                  <a href="#" class="btn btn-primary region-delM">- 批量删除</a>
+	                </div>
+	                <div class="col-sm-6 text-right">
+	                    <form id="system-searchUser-region" class="row">
+	                        <input type="hidden" name="Pagesize" value="15">
+	                    	<!--
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                       -->
+	                        <div class="col-sm-8">
+                              	<input type="text" class="form-control" name="Name" placeholder="区域名称">
+                            </div>
+                        	<div class="col-sm-2">
+						    	<div class="btn-submit btn btn-default">搜索</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="table-holder" data-list data-url="/ApiArea/listArea" data-pager="#pager-system-region" data-method="post" data-form="#system-searchUser-region" data-totalshow="#systemUser-total-region"></div>
+	            <script type="template">
+	            	<form id="source-listC">
+		                <table class="table table-hover">
+		                    <tr>
+		                    	<th>
+		                    		<input type="checkbox" class="ZUI-checkbox" id="packing-all" data-check-all=".host-source">
+						            <label for="packing-all">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+		                    	</th>
+		                        <th>区域名称</th>
+		                        <th>区域描述</th>
+		                        <th>状态</th>
+		                        <th>操作</th>
+		                    </tr>
+		                    {{#each rows}}
+		                    <tr data-id="{{Id}}">
+		                    	<td>
+									<input type="checkbox" name="Id" class="ZUI-checkbox host-source" id="region{{Id}}" data-id="{{Id}}" value="{{Id}}">
+						            <label for="region{{Id}}">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+								</td>
+		                        <td class="regionName">{{name}}</td>
+		                        <td class="regionContent">{{content}}</td>
+		                       <td class="status" data-value="{{status}}">{{system_user_status status}}</td>
+		                       <!-- <td>{{system_user_status Status}}</td>-->
+		                        <td> 
+						            <a href="#" class="ZUI-operate region-edit" data-menu="source/node/regionEdit:Id={{Id}}"><span class="iconfont">&#xe602;</span>修改</a>
+		                        	<a href="#" class="ZUI-operate region-del"><span class="iconfont">&#xe603;</span>删除</a>
+		                        </td>
+		                    </tr>
+		                    {{/each}}
+		                </table>
+	                </form>
+	            </script>
+	            <div class="pager row">
+	                <div class="col-sm-4">共<span id="systemUser-total-region">0</span>条记录</div>
+	                <div id="pager-system-region" class="col-sm-8"></div>
+	            </div>
+	        </div>
+	    </div> 
+    </div>
+</div>

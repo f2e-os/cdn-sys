@@ -1,0 +1,150 @@
+<div class="FUI source-cp">
+	<div class="col-sm-12">
+		资源配置 -&gt; CP管理 -&gt; <span id="subTabDetail"></span>
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="source_cp"><a href="javascript:void(0);">CP配置</a></li>
+			<li data-menu="source_cp_domain" class="active"><a href="javascript:void(0);">域名配置</a></li>
+			<li data-menu="source_cp_domaingroup"><a href="javascript:void(0);">域名组配置</a></li>
+		</ul>
+		<div class="panel">
+			<form class="form-horizontal col-sm-12">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">域名</label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="DomainName" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">所属CP</label>
+					<div class="col-sm-10" data-list data-url="/ApiDomainGroup/listDomainGroup"></div>
+					<script type="template">
+						<select name="CPId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id'}}}
+						</select>
+					</script>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">域名类型</label>
+					<div class="col-sm-10" data-list data-url="/ApiDomain/listDomainType"></div>
+					<script type="template">
+						<select name="DomainTypeId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomain/listDomainType' 'type' 'id'}}}
+						</select>
+					</script>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">工作模式</label>
+					<div class="col-sm-10">
+						<span>
+							<input type="radio" class="ZUI-radio" name="DomainSign"	value="1" id="form-DomainSign1">
+							<label for="form-DomainSign1">
+								<span class="ZUI-radio-btn"></span>
+								<span class="ZUI-radio-txt">签约合作加速模式</span>
+							</label>
+						</span>
+						<span>
+							<input type="radio" class="ZUI-radio" name="DomainSign" value="0" id="form-DomainSign2" checked="checked">
+							<label for="form-DomainSign2">
+								<span class="ZUI-radio-btn"></span>
+								<span class="ZUI-radio-txt">非签约强制加速模式</span>
+							</label>
+						</span>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">调度策略</label>
+					<div class="col-sm-10" data-list data-url="/ApiDomain/listDomainType"></div>
+					<script type="template">
+						<select name="DomainDispatchId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomain/listDomainType' 'type' 'id'}}}
+						</select>
+					</script>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">回源策略</label>
+					<div class="col-sm-10" data-list data-url="/ApiDomain/listDomainType"></div>
+					<script type="template">
+						<select name="DomainTraceId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomain/listDomainType' 'type' 'id'}}}
+						</select>
+					</script>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">鉴权方式</label>
+					<div class="col-sm-10">
+						<span>
+							<input type="radio" class="ZUI-radio" name="DomainAuth"	value="1" id="form-DomainAuth1">
+							<label for="form-DomainAuth1">
+								<span class="ZUI-radio-btn"></span>
+								<span class="ZUI-radio-txt">本地鉴权</span>
+							</label>
+						</span>
+						<span>
+							<input type="radio" class="ZUI-radio" name="DomainAuth"	value="2" id="form-DomainAuth2">
+							<label for="form-DomainAuth2">
+								<span class="ZUI-radio-btn"></span>
+								<span class="ZUI-radio-txt">二次鉴权</span>
+							</label>
+						</span>
+						<span>
+							<input type="radio" class="ZUI-radio" name="DomainAuth" checked="checked" value="0" id="form-DomainAuth3">
+							<label for="form-DomainAuth3">
+								<span class="ZUI-radio-btn"></span>
+								<span class="ZUI-radio-txt">不鉴权</span>
+							</label>
+						</span>
+					</div>
+				</div>
+				<div id="DomainAuthInput" class="form-group">
+					<label id="DomainAuthInputName1" class="col-sm-2 control-label">密钥</label>
+					<label id="DomainAuthInputName2" class="col-sm-2 control-label">URL</label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="AuthPwd"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否防盗链</label>
+					<div class="col-sm-10">
+						<span>
+							<input type="radio" class="ZUI-radio" name="GuardChain" value="1" id="form-GuardChain1">
+							<label for="form-GuardChain1">
+								<span class="ZUI-radio-btn"></span>
+								<span class="ZUI-radio-txt">是</span>
+							</label>
+						</span>
+						<span>
+							<input type="radio" class="ZUI-radio" name="GuardChain" checked="checked" value="0" id="form-GuardChain2">
+							<label for="form-GuardChain2">
+								<span class="ZUI-radio-btn"></span>
+								<span class="ZUI-radio-txt">否</span>
+							</label>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">域名状态</label>
+					<div class="col-sm-10">
+						<input type="checkbox" class="ZUI-switch ZUI-switch-text" name="Status" checked="checked" id="form-Status" />
+						<label for="form-Status">
+							<span class="ZUI-switch-btn"></span>
+							<span class="ZUI-switch-info"></span>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a href="javascript:;" class="btn btn-primary btn-submit" role="button" id="form-submit">确定</a>
+						<a href="javascript:;" class="btn btn-default" role="button" id="form-cancle">取消</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

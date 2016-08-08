@@ -1,0 +1,57 @@
+<div class="record" id="record">
+    <div class="col-sm-12">
+        日志系统 -&gt; 访问日志上传历史
+    </div>
+    <div class="col-sm-12 record-inner">
+        <div class="panel">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form id="record-searchUser" class="row  form-inline form-style">
+                        <input type="hidden" name="Pagesize" value="15">
+							<span data-list>
+							</span>
+                        <script type="template">
+                            <input type="text" class="form-control" name="start_time" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date -1 'yy-MM-dd hh:mm:ss'}}">
+                            <span>至</span>
+                            <input type="text" class="form-control" name="end_time" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date 0 'yy-MM-dd hh:mm:ss'}}">
+                        </script>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <input type="text" class="form-control" name="host_name" placeholder="请填写设备名称">
+                        <input type="text" class="form-control" name="host_ip" placeholder="请填写设备ip">
+                        <a href="javascript:void(0);" class="btn btn-primary btn-submit">查询</a>
+                    </form>
+                </div>
+            </div>
+            <div class="table-holder" data-list data-url="/ApiServerLog/listUploadLog" data-pager="#pager-record" data-method="post" data-form="#record-searchUser" data-totalshow="#recordUser-total"></div>
+            <script type="template">
+                <table class="table table-hover">
+                    <tr>
+
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="upload_time">时间</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="HostName">设备名称</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="host_ip">设备IP</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="upload_file_name">文件名</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="upload_path">目录</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="ftp_ip">日志服务器IP</a></th>
+                    </tr>
+                    {{#each rows}}
+                    <tr>
+
+                        <td>{{upload_time}}</td>
+                        <td>{{HostName}}</td>
+                        <td>{{host_ip}}</td> 
+                        <td><a href={{href}} target="_blank">{{upload_file_name}}</a></td>
+                        <td>{{upload_path}}</td>
+                        <td>{{ftp_ip}}</td>
+
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+            <div class="pager row">
+                <div class="col-sm-4">共<span id="recordUser-total">0</span>条记录</div>
+                <div id="pager-record" class="col-sm-8"></div>
+            </div>
+        </div>
+    </div>
+</div>

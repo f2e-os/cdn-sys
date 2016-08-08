@@ -1,0 +1,436 @@
+<div class="hostDispatch" id="hostDispatch">
+    <div class="col-sm-12 mbx">
+        设备配置 -&gt; <span class="detail">调度策略管理</span>
+    </div>
+    <div class="navBox">
+      <ul class="nav nav-tabs" id="myTab" style="border:none;"> 
+        <li class="active"><a href="#dispatch_list" class="active" >调度策略列表</a></li> 
+        <li><a href="#dispatch_list1" >territory设置</a></li>
+        <li><a href="#dispatch_list2" >ipset</a></li> 
+         <li><a href="#disprobe_list">探测类型</a></li>
+          <li><a href="#disprobe_list1">探测策略</a></li>
+        <li><a href="#dispatch_healthy">健康度检查阀值设置</a></li>  
+      </ul> 
+    </div>
+    <div class="col-sm-12">
+        <div class="panel">
+
+          
+          <div class="tab-content" style="border:none;">
+            <div id="dispatch_list" class="tab-pane active clearfix">
+              <div class="col-sm-6 topBar">
+                <a href="javascript:;" class="btn btn-primary hostDispatch-add" data-menu="host_dispatch_add">+ 添加</a>
+                <a href="javascript:;" class="btn btn-primary hostDispatch-del">- 删除</a>
+              </div>
+              <form id="host-dispatch-form">
+                <input type="hidden" name="Pagesize" value="15">
+              </form>
+              <div class="table-holder" data-list data-url="/ApiScheduleStrategy/listSchStrategy" data-pager="#pager-system" data-method="post"  data-totalshow="#systemUser-total" data-form="#host-dispatch-form"></div>
+              <script type="template">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>
+                    <input type="checkbox" class="ZUI-checkbox" id="sys-allUser-check" data-check-all=".delCheck">
+                    <label for="sys-allUser-check">
+                        <span class="ZUI-checkbox-btn"></span>
+                        <span class="ZUI-checkbox-txt">全选</span>
+                    </label>
+                    </th>
+                    <th>策略名称</th>
+                    <th>DNS域</th>
+                    <th>探测方式</th>
+                    <th>策略</th>
+                    <th>ip返回个数</th>
+                    <th>ttl</th>
+                    <th>ip</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{#each info}}
+                {{#noLocation location}}
+                <tr>
+                  
+                  <td>
+                  {{#isFirst @index}}
+                  <input type="checkbox" class="ZUI-checkbox delCheck" id="sys-user-check{{../../Id}}" data-id="{{../../Id}}">
+                  <label for="sys-user-check{{../../Id}}">
+                      <span class="ZUI-checkbox-btn"></span>
+                      <span class="ZUI-checkbox-txt"></span>
+                  </label>
+                  {{/isFirst}}
+                  </td>
+                  
+                  <td>{{../Name}}</td>
+                  <td>{{TerritoryName}}</td>
+                  <td>{{probeTypeToCN ProbeType}}</td>
+                  <td>{{strategyTypeToCN StrategyType}}</td>
+                  <td>{{max_ip_num}}</td>
+                  <td>{{ttl}}</td>
+                  <td>{{#each ip_pripory}}{{host_name}} {{/each}}</td>
+                  <td data-id="{{../Id}}">
+                  {{#isFirst @index}}
+                  <a href="javascript:;" class="ZUI-operate edit" data-menu="host/dispatch/edit:Id={{../../Id}}"><span class="iconfont">&#xe602;</span>
+                  </a>
+                  <a href="javascript:;" class="ZUI-operate delete"><span class="iconfont">&#xe603;</span>
+                  </a>
+                  {{/isFirst}}
+                  </td>
+                </tr>
+                {{else}}
+                {{#each location}}
+                <tr>
+                  
+                  <td>
+                  {{#isFirst @index}}
+                  <input type="checkbox" class="ZUI-checkbox delCheck" id="sys-user-check{{../../Id}}" data-id="{{../../Id}}">
+                  <label for="sys-user-check{{../../Id}}">
+                      <span class="ZUI-checkbox-btn"></span>
+                      <span class="ZUI-checkbox-txt"></span>
+                  </label>
+                  {{/isFirst}}
+                  </td>
+                  
+                  <td>{{../Name}}</td>
+                  <td>{{TerritoryName}}</td>
+                  <td>{{probeTypeToCN ProbeType}}</td>
+                  <td>{{strategyTypeToCN StrategyType}}</td>
+                  <td>{{max_ip_num}}</td>
+                  <td>{{ttl}}</td>
+                  <td>{{#each ip_pripory}}{{host_name}} {{/each}}</td>
+                  <td data-id="{{../Id}}">
+                  {{#isFirst @index}}
+                  <a href="javascript:;" class="ZUI-operate edit" data-menu="host/dispatch/edit:Id={{../../Id}}"><span class="iconfont">&#xe602;</span>
+                  </a>
+                  <a href="javascript:;" class="ZUI-operate delete"><span class="iconfont">&#xe603;</span>
+                  </a>
+                  {{/isFirst}}
+                  </td>
+                </tr>
+                {{/each}}
+                {{/noLocation}}
+                {{/each}}
+                </tbody>
+              </table>
+              </script>
+              <div class="pager row">
+                <div class="col-sm-4">共<span id="systemUser-total">0</span>条记录</div>
+                <div id="pager-system" class="col-sm-8"></div>
+              </div>
+            </div>
+            <!-- part1 end -->
+            <div id="dispatch_list1" class="tab-pane">
+              <div class="col-sm-6 topBar">
+                <a href="javascript:;" class="btn btn-primary territory-add" data-menu="host_territory_add">+ 添加</a>
+                <a href="javascript:;" class="btn btn-primary territory-del">- 删除</a>
+              </div>
+              <form id="host-territory-form">
+                <input type="hidden" name="Pagesize" value="15">
+              </form>
+              <div class="table-holder" data-list data-url="/ApiScheduleStrategy/listTerritoryStrategy" data-pager="#pager-territory" data-method="post"  data-totalshow="#territory-total" data-form="#host-territory-form"></div>
+              <script type="template">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>
+                    <input type="checkbox" class="ZUI-checkbox" id="territory-check" data-check-all=".delTCheck">
+                    <label for="territory-check">
+                        <span class="ZUI-checkbox-btn"></span>
+                        <span class="ZUI-checkbox-txt">全选</span>
+                    </label>
+                    </th>
+                    <th>名称</th>
+                    <th>权重</th>
+                    <th>父节点</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{#each info}}
+                <tr>
+                  <td>
+                  <input type="checkbox" class="ZUI-checkbox delTCheck" id="territory-check{{id}}" data-id="{{id}}">
+                  <label for="territory-check{{id}}">
+                      <span class="ZUI-checkbox-btn"></span>
+                      <span class="ZUI-checkbox-txt"></span>
+                  </label>
+                  </td>
+                  <td>{{name}}</td>
+                  <td>{{weight}}</td>
+                  <td>{{father_name}}</td>
+                  <td data-id="{{id}}">
+                  <a href="javascript:;" class="ZUI-operate edit" data-menu="host/territory/edit:id={{id}}"><span class="iconfont">&#xe602;</span>
+                  </a>
+                  <a href="javascript:;" class="ZUI-operate delete"><span class="iconfont">&#xe603;</span>
+                  </a>
+                  </td>
+                </tr>
+                {{/each}}
+                </tbody>
+              </table>
+              </script>
+              <div class="pager row">
+                <div class="col-sm-4">共<span id="territory-total">0</span>条记录</div>
+                <div id="pager-territory" class="col-sm-8"></div>
+              </div>
+
+            </div>
+            <div id="dispatch_list2" class="tab-pane">
+              <div class="col-sm-6 topBar">
+                <a href="javascript:;" class="btn btn-primary ipset-add" data-menu="host_ipset_add">+ 添加</a>
+                <a href="javascript:;" class="btn btn-primary ipset-del">- 删除</a>
+              </div>
+              <form id="host-ipset-form">
+                <input type="hidden" name="Pagesize" value="15">
+              </form>
+              <div class="table-holder" data-list data-url="/ApiScheduleStrategy/listIPStrategy" data-pager="#pager-ipset" data-method="post"  data-totalshow="#ipset-total" data-form="#host-ipset-form"></div>
+              <script type="template">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>
+                    <input type="checkbox" class="ZUI-checkbox" id="ipset-check" data-check-all=".delIPCheck">
+                    <label for="ipset-check">
+                        <span class="ZUI-checkbox-btn"></span>
+                        <span class="ZUI-checkbox-txt">全选</span>
+                    </label>
+                    </th>
+                    <th>名称</th>
+                    <th>是否回源</th>
+                    <th>ip段</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{#each info}}
+                <tr>
+                  <td>
+                  <input type="checkbox" class="ZUI-checkbox delIPCheck" id="ipset-check{{id}}" data-id="{{id}}">
+                  <label for="ipset-check{{id}}">
+                      <span class="ZUI-checkbox-btn"></span>
+                      <span class="ZUI-checkbox-txt"></span>
+                  </label>
+                  </td>
+                  <td>{{territory_name}}</td>
+                  <td>{{is_traceToCN is_trace}}</td>
+                  <td>{{ip}}</td>
+                  <td data-id="{{id}}">
+                  <a href="javascript:;" class="ZUI-operate delete"><span class="iconfont">&#xe603;</span>
+                  </a>
+                  </td>
+                </tr>
+                {{/each}}
+                </tbody>
+              </table>
+              </script>
+              <div class="pager row">
+                <div class="col-sm-4">共<span id="ipset-total">0</span>条记录</div>
+                <div id="pager-ipset" class="col-sm-8"></div>
+              </div>
+
+            </div>
+          <!--********************************************************探测************************************** -->
+
+             
+               
+            
+              
+                
+            
+            
+             
+           
+           <div id="disprobe_list" class="tab-pane">
+              <div class="col-sm-6 topBar">
+                <a href="javascript:;" class="btn btn-primary probe-add" data-menu="host_probe_add">+ 添加</a>
+                <a href="javascript:;" class="btn btn-primary probe-del">- 删除</a>
+              </div>
+              <form id="host-probe-form">
+                <input type="hidden" name="Pagesize" value="15">
+              </form>
+              <div class="table-holder" data-list data-url="/ApiProbe/listProbe" data-pager="#pager-probe" data-method="post"  data-totalshow="#probe-total" data-form="#host-probe-form"></div>
+              <script type="template">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                     <th>
+                    <input type="checkbox" class="ZUI-checkbox" id="probe-check" data-check-all=".delProbeCheck">
+                    <label for="probe-check">
+                        <span class="ZUI-checkbox-btn"></span>
+                        <span class="ZUI-checkbox-txt">全选</span>
+                    </label>
+                    </th>
+                    <th>探测类型名称</th>
+                    <th>shell命令</th>
+                    <th>是否主动探测</th>
+                    <th>被动超时时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{#each rows}}
+                <tr>
+                 <td>
+                  <input type="checkbox" class="ZUI-checkbox delProbeCheck" id="probe-check{{probe_id}}" data-id="{{probe_id}}">
+                  <label for="probe-check{{probe_id}}">
+                      <span class="ZUI-checkbox-btn"></span>
+                      <span class="ZUI-checkbox-txt"></span>
+                  </label>
+                  </td>
+                  <td>{{probe_name}}</td>
+                  <td>{{cmdline}}</td>
+                  <td>{{is_probe_active}}</td>
+                  <td>{{probe_active_timeout}}</td>
+                  <td data-id="{{probe_id}}">
+                  <a href="javascript:;" class="ZUI-operate delete"><span class="iconfont">&#xe603;</span>
+                  </a>
+                  </td>
+                </tr>
+                {{/each}}
+                </tbody>
+              </table>
+              </script>
+              <div class="pager row">
+                <div class="col-sm-4">共<span id="probep-total">0</span>条记录</div>
+                <div id="pager-probep" class="col-sm-8"></div>
+              </div>
+
+            </div>
+          
+              <!-- **********************************************************探测类型******************************************* -->
+               <!-- 探测策略-->
+              <div id="disprobe_list1" class="tab-pane">
+              <div class="col-sm-6 topBar">
+                <a href="javascript:;" class="btn btn-primary probep-add" data-menu="host_probep_add">+ 添加</a>
+                <a href="javascript:;" class="btn btn-primary hostDispatch1-del">- 删除</a>
+              </div>
+              <form id="host-probep-form">
+                <input type="hidden" name="Pagesize" value="15">
+              </form>
+              <div class="table-holder" data-list data-url="/ApiProbe/listProbeStrategy" data-pager="#pager-probep" data-method="post"  data-totalshow="#probep-total" data-form="#host-probep-form"></div>
+               <script type="template">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>
+                    <input type="checkbox" class="ZUI-checkbox" id="probep-check" data-check-all=".delProbePCheck">
+                    <label for="probep-check">
+                        <span class="ZUI-checkbox-btn"></span>
+                        <span class="ZUI-checkbox-txt">全选</span>
+                    </label>
+                    </th>
+                    <th>探测策略名称</th>
+                    <th>运算方式</th>
+                    <th>衡量公式</th>
+                    <th>探测项</th>
+                    <th>探测域名</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{#each rows}}
+                <tr>
+                  <td rowspan="{{item_total}}" style="vertical-align:middle; text-align:center;">
+                  <input type="checkbox" class="ZUI-checkbox delProbePCheck" id="probep-check{{id}}" data-id="{{id}}">
+                  <label for="probep-check{{id}}">
+                      <span class="ZUI-checkbox-btn"></span>
+                      <span class="ZUI-checkbox-txt"></span>
+                  </label>
+                  </td>
+                  <td  rowspan="{{item_total}}">{{name}}</td>
+                  <td  rowspan="{{item_total}}">{{operator_type}}</td>
+                  <td>{{metrics}}</td>
+                  <td>{{probe_item_name}}</td>
+                  <td>{{arg}}</td>
+                  <td rowspan="{{item_total}}" data-id="{{id}}" style="vertical-align:middle; text-align:center;">
+                  <a href="javascript:;" class="ZUI-operate delete"><span class="iconfont">&#xe603;</span>
+                  </a>
+                  </td>
+                </tr>
+
+                  {{#each items}}
+                    <tr>
+                      <td> {{metrics}}</td>
+                      <td> {{probe_item_name}}</td>
+                      <td> {{arg}}</td>
+                    </tr>
+
+
+                  {{/each}}
+                {{/each}}
+                </tbody>
+              </table>
+              </script>
+              <div class="pager row">
+                <div class="col-sm-4">共<span id="probep-total">0</span>条记录</div>
+                <div id="pager-probep" class="col-sm-8"></div>
+              </div>
+            </div>
+
+                <!-- *************************探测策略 **************************************************-->
+             
+
+            <div id="dispatch_healthy" class="tab-pane clearfix">
+              <form class="form-horizontal col-sm-12 auto-submit" action="/ApiScheduleStrategy/updateHealthCheck" method="post" data-target="host_dispatch:index=5" data-list="param" data-url="/ApiScheduleStrategy/getHealthCheck"></form>
+              <script type="template">
+              {{#with info}}
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">是否探测80端口<span class="ZUI-require"></span></label>
+                  <div class="col-sm-10">
+                    {{{global_show_radio "probe" "health80" "" "" probe}}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">系统负载<span class="ZUI-require"></span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="ZUI-input" name="load" value="{{load}}"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">连接数<span class="ZUI-require"></span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="ZUI-input" name="connect" value="{{connect}}"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">磁盘<span class="ZUI-require"></span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="ZUI-input" name="disk" value="{{disk}}"/>
+                  </div>
+                </div>
+
+
+                <div class="sys-btns">
+                  <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+                  <a href="javascript:;" class="btn btn-default" role="button" data-menu="host_dispatch:index=5">取消</a>
+                  <a href="javascript:;" class="btn btn-primary" role="button" id="sendHeath" >下发</a>
+                </div>
+                {{/with}}
+              </script>
+              <script type="template/html" id="sendHeathTpl">
+                  <form id="sendTpl-form" class="row">
+                      <div class="form-group clearfix ">
+                        <label for="" class="col-sm-4 control-label">下发设备(gslb)</label>
+                        <div class="col-sm-8" style="text-align: left">
+                          <input type="checkbox" class="ZUI-checkbox" id="sendHeath-check-all" onclick="$('#gslbInputBox :checkbox').prop({checked:this.checked});">
+                            <label for="sendHeath-check-all">
+                                <span class="ZUI-checkbox-btn"></span>
+                                <span class="ZUI-checkbox-txt">全选</span>
+                            </label>
+                            <span class="new-checks" id="gslbInputBox">
+                                {{{global_show_checkbox "" "/ApiCommon/getHostByType?type=4" "HostName" "Id" "" "info"}}}
+                            </span>
+                        </div>
+                      </div>
+                    </form>   
+            </script>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- panel end -->
+    </div>
+    <!-- col-sm-12 end -->
+</div>

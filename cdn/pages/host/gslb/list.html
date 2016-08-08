@@ -1,0 +1,69 @@
+<div class="host">
+    <div class="col-sm-12">
+        设备配置 -&gt; GSLB黑名单列表
+    </div>
+    <div class="col-sm-12 host">
+        <div class="panel">
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="javascript:;" class="btn btn-primary" data-menu="host/gslb/add">+ 添加</a>
+                    <a href="javascript:;" class="btn btn-primary" data-delete-batch=".host-gslb" data-url="/ApiGSLBBlacklist/deleteGSLBBlacklist">- 删除</a>
+                    <a href="javascript:;" class="btn btn-primary Device-selector" data-type="4" data-url="/ApiGSLBBlacklist/sendGSLBBlacklist" data-title="下发设备(gslb)">下发</a>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <form id="search-bar" class="row">
+                        <input type="hidden" name="Pagesize" value="15">
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="MatchMsg" placeholder="请输入匹配内容搜索">
+                              <div class="input-group-addon btn-submit">搜索</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-holder" data-list data-url="/ApiGSLBBlacklist/listGSLBBlacklist" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+            <script type="template">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="ZUI-checkbox" id="host-gslb-check-all" data-check-all=".host-gslb">
+                            <label for="host-gslb-check-all">
+                                <span class="ZUI-checkbox-btn"></span>
+                                <span class="ZUI-checkbox-txt"></span>
+                            </label>
+                        </th>
+                        <th>序列号</th>
+                        <th>匹配方式</th>
+                        <th>匹配内容</th>
+                        <th>操作</th>
+                    </tr>
+                    {{#each rows}}
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="ZUI-checkbox host-gslb" value="{{Id}}" id="host-gslb-check{{Id}}" data-id="{{Id}}">
+                            <label for="host-gslb-check{{Id}}">
+                                <span class="ZUI-checkbox-btn"></span>
+                                <span class="ZUI-checkbox-txt"></span>
+                            </label>
+                        </td>
+                        <td>{{_ @index}}</td>
+                        <td>{{host_matchway MatchWay}}</td>
+                        <td>{{MatchMsg}}</td>
+                        <td>
+                            <a href="javascript:;" class="ZUI-operate region-edit" data-menu="host/gslb/edit:Id={{Id}}"><span class="iconfont">&#xe602;</span>修改</a>
+                            <a href="javascript:;" class="ZUI-operate region-del" data-id="{{Id}}" data-delete data-url="/ApiGSLBBlacklist/deleteGSLBBlacklist" ><span class="iconfont">&#xe603;</span>删除</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+            <div class="pager row">
+                <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+                <div id="pager-bar" class="col-sm-8"></div>
+            </div>
+        </div>
+    </div>
+</div>

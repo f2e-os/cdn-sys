@@ -1,0 +1,109 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+		资源配置 -&gt; 内容管理 -&gt;<span class="detail">主动分发</span>
+    </div>
+    <div class="col-sm-12 source pdt15" id="source">
+	      <div class="" id="handoutDcon">
+	      	<div class="">
+	      		<ul class="nav nav-tabs" id="myTab"> 
+			      <li class="active"><a href="#handoutDhas" class="active" >选择已有策略</a></li> 
+			      <li><a href="#handoutDAdd" class="handoutD-add">添加策略</a></li> 
+			    </ul> 
+            </div>
+	    		<div class="tab-content"> 
+	    			<div class="tab-pane panel active" id="handoutDhas">
+			       		<div class="table-holder" data-list data-url=""  data-method="post" data-form="#source-searchUser-handoutD"></div>
+			            <script type="template">
+			            	<form id="source-searchUser-handoutD" class="row">
+			            		<!--<div class="form-group clearfix">
+			            			<label for="" class="col-sm-1 control-label">节点:</label>
+									<div class="col-sm-11">
+								    	{{{global_show_checkbox "inject_id" "/ApiDepartment/listDepartment" "DepartName" "Id" DepartId}}}
+								    </div>
+			            		</div>-->
+						       	<input type="hidden" id="userId" name="inject_id">
+			            		<div class="form-group clearfix">
+			            			<label for="" class="col-sm-1 control-label">策略:</label>
+									<div class="col-sm-11">
+								    	{{{global_show_radio "strategy_id" "/ApiDispatchStrategy/listDisStrategy" "StrategyName" "Id" StrategyName}}}
+								    </div>
+			            		</div>
+				               <div class="sys-btns">
+					            <a href="javascript:;" class="btn btn-primary" role="button" id="source-handoutD-sub">确定</a>
+					            <a href="javascript:;" class="btn btn-default" role="button" id="source-handoutD-cancle">取消</a>
+					          </div>
+		                	</form>																				
+			            </script>
+				    </div>
+		    		<div class="tab-pane panel" id="handoutDAdd">
+		    			<div class="handoutD-formBox clearfix">
+						    <form id="handoutD-addstrategy-form" class="form-inline col-sm-12">
+						        <fieldset>
+						          <div class="input-group clearfix">
+						            <span>名称<span class="ZUI-require"></span>：</span>
+						            <input type="text" class="ZUI-input" name="StrategyName" require/>
+						          </div>
+						          <div class="input-group clearfix">
+						            <span>内容热度阈值</span>
+						            <input type="text" class="ZUI-input" name="HotThr" require/>
+						          </div>
+						           <div class="input-group clearfix">
+						            <span>节点</span>
+						            <label data-title="请选择节点" data-param="type=1" data-url="/ApiCommon/getNodeByType?type=1" class="ZUI-input Node-selector"></label>
+              						<input type="hidden" name="Node" value="" require/>
+						          </div>
+						          <div class="input-group clearfix">
+						            <span>优先级</span>
+						            <select name="Priority" class="ZUI-select" value="{{Level}}">
+		                                <option value="1">1</option>
+		                                <option value="2">2</option>
+		                                <option value="3">3</option>
+		                                <option value="4">4</option>
+		                                <option value="5">5</option>
+		                            </select>
+						          </div>
+				
+						          <div class="input-group clearfix">
+						            <span>分发方式</span>
+						            <div class="form-control radioBox">
+						                <span>
+						                  <input type="radio" class="ZUI-radio" name="DisWay"  value="0" id="sys-handoutD1" checked="checked">
+						                  <label for="sys-handoutD1">
+						                      <span class="ZUI-radio-btn"></span>
+						                      <span class="ZUI-radio-txt">即时分发</span>
+						                  </label>
+						                </span>
+						                <span>
+						                  <input type="radio" class="ZUI-radio" name="DisWay" value="1" id="sys-handoutD2" >
+						                  <label for="sys-handoutD2">
+						                      <span class="ZUI-radio-btn"></span>
+						                      <span class="ZUI-radio-txt">定时分发</span>
+						                  </label>
+						                </span>
+						            </div>
+						          </div>
+						          <div class="input-group clearfix addstrategy-date">
+						            <span>定时分发时间</span>
+						            <input type="text" class="ZUI-input" id="addstrategy-date" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" name="DisTime" />
+						            
+						             <script type="text/javascript">
+										var curDate = new Date();  
+										var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes();
+										var cd =  y+"-"+m+"-"+d+" "+h+":"+mm
+										$("input[name='DisTime']").val(cd);
+									 </script>
+						          </div>
+						        </fieldset>
+						
+						        <div class="sys-btns">
+						          <a href="javascript:;" class="btn btn-primary" role="button" id="source-addstrategy-sub">确定</a>
+						          <a href="javascript:;" class="btn btn-default" role="button" id="source-addstrategy-cancle">取消</a>
+						        </div>
+						    </form>
+						    </div>
+			      </div>
+			     
+		      </div> 
+	      </div>  
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "rows": [
+        {
+            "terminal_name": "XP",
+            "flow": "6556"
+        },
+        {
+            "terminal_name": "WIN7",
+            "flow": "10032"
+        },
+        {
+            "terminal_name": "WIN8",
+            "flow": "7344"
+        },
+        {
+            "terminal_name": "IOS",
+            "flow": "3222"
+        },
+        {
+            "terminal_name": "Android",
+            "flow": "1234"
+        }
+    ]
+}

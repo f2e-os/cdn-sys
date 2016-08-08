@@ -1,0 +1,24 @@
+{
+	"code": 1,
+	"status": "success",
+	"message": "获取成功",
+	"info": [{
+		"Id": "122",
+		"DomainName": "新建域名",
+		"DomainSign": "0",
+		"DomainAuth": "2",
+		"AuthPwd": "测试密钥",
+		"CreateTime": "2015-09-05 11:36:26",
+		"Status": "1",
+		"seq": null,
+		"GuardChain": "1",
+		"CPId": "32",
+		"CPName": "测试CP别删",
+		"DomainTypeId": "1",
+		"DomainType": "图片",
+		"DomainDispatchId": "60",
+		"DomainDispatch": null,
+		"DomainTraceId": "80",
+		"DomainTrace": null
+	}]
+}

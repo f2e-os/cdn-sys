@@ -1,0 +1,12 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "rows": [
+				{
+					"date_time":"2015-08-25 17:50",
+					"upstream":"80000",
+					"downstream":"350000"
+				}
+			]
+}

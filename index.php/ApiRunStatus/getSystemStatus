@@ -1,0 +1,13 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "info":  {
+        "host_num": 100,
+        "err_host_num": 1,
+        "total_disk": 100,
+        "flow_ability": 100,
+        "up_flow": 100,
+        "redirect_num": 100
+    }
+}

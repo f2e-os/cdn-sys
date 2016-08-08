@@ -1,0 +1,122 @@
+<div class="source">
+	<div class="col-sm-12">
+		资源配置 -&gt; 节点管理 -&gt;设备管理 -&gt;<span class="detail">修改</span>
+	</div>
+	<div class="col-sm-12">
+		<div class="panel">
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiHost/updateHost" method="post" data-target="source/node/device" data-list="param" data-url="/ApiHost/getHost">
+          
+      </form>
+      <script type="template">
+        {{#with info}}
+        <input type="hidden" name="Id" value="{{Id}}">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">主机名称<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+              <input type="text" class="ZUI-input" name="HostName" value="{{HostName}}" require/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">主机说明</label>
+            <div class="col-sm-10">
+              <input type="text" class="ZUI-input" name="HostDesc" value="{{HostDesc}}" require/>
+            </div>
+          </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">IPV6地址</label>
+            <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="IPV6"   value="{{IPV6}}"require/><span id="ipv6" style=" position:absolute;  top:4px; left:420px;color:red;font-size:16px;display:none;">*请填写合法的IVP6地址</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">端口<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="Port" value="{{Port}}" require/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">主机IP<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="IP" value="{{IP}}" require/>
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">设备类型<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+                <span data-title="请选择设备类型" data-url="/ApiHost/lstHostType" class="ZUI-input Node-selector">{{{global_show "" "//ApiHost/lstHostType" "DepartName" "Id" Type "rows"}}}</span>
+                <input type="hidden" name="Type" value="{{Type}}" require/>
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">所属节点<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+            	<select name="DepartId" class="ZUI-select" data-list>
+	            	<option value="">请选择</option>{{{global_show_select "DepartId" "/ApiDepartment/listDepartment" "DepartName" "Id" DepartId}}}
+                </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">协议类型<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+            	<select name="ProtocalId" class="ZUI-select" value="{{ProtocalId}}">
+            		<option value="">请选择</option>
+                    {{{global_show_select "ProtocalId" "ProtocalId" "" "" ProtocolId}}}
+                </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">是否骨干<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+            	<select name="Backbone" class="ZUI-select" value="{{Backbone}}">
+            		<option value="">请选择</option>
+            		{{{global_show_select "Backbone" "Backbone" "" "" Backbone}}}
+                </select>
+            </div>
+          </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">采集密码</label>
+            <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="SnmpGetPassword" require value="{{SnmpGetPassword}}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">配置密码</label>
+            <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="SnmpSetPassword" require value="{{SnmpSetPassword}}"/>
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">设备组标识</label>
+            <div class="col-sm-10">
+              <input type="text" class="ZUI-input" name="Group" value="{{Group}}" require/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">厂商名称</label>
+            <div class="col-sm-10">
+              <input type="text" class="ZUI-input" name="FacName" value="{{FacName}}" require/>
+            </div>
+          </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">硬盘容量</label>
+            <div class="col-sm-10">
+                <input type="text" class="ZUI-input" name="DiskSize" value="{{DiskSize}}" require/>
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">系统版本</label>
+            <div class="col-sm-10">
+              <input type="text" class="ZUI-input" name="SysVersion" value="{{SysVersion}}" require/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="source/node/device">取消</a>
+            </div>
+          </div>
+        {{/with}}
+      </script>
+		</div>
+	</div>
+</div>

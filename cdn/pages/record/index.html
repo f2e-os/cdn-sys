@@ -1,0 +1,58 @@
+<div class="record" id="record">
+	<div class="col-sm-12">
+		日志系统 -&gt; 用户访问日志 
+	</div>
+	<div class="col-sm-12 record-inner">
+			<div class="panel">
+				<div class="row">
+					<div class="col-sm-12">
+						<form id="record-searchUser" class="row  form-inline form-style">
+							<input type="hidden" name="Pagesize" value="15">
+							<span data-list>
+							</span>
+							<script type="template">
+								<input type="text" class="form-control" name="start_time" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date -1 'yy-MM-dd hh:mm:ss'}}">
+								<span>至</span>
+								<input type="text" class="form-control" name="end_time" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date 0 'yy-MM-dd hh:mm:ss'}}">
+							</script>
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					    	<input type="text" class="form-control" name="url" placeholder="请填写url">
+					    	<input type="text" class="form-control" name="ip" placeholder="请填写ip">
+					    	<a href="javascript:void(0);" class="btn btn-primary btn-submit">查询</a>
+						</form>
+					</div>
+				</div>
+			<div class="table-holder" data-list data-url="/ApiServerLog/listAccessLog" data-pager="#pager-record" data-method="post" data-form="#record-searchUser" data-totalshow="#recordUser-total"></div>
+			<script type="template">
+				<table class="table table-hover">
+					<tr>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="start_time">开始时间</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="end_time">结束时间</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="access_type">访问方式</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="url">URL</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="clientip">用户ip</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="file_size">文件大小</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="flow">下载流量</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="hit_type">状态</a></th>
+					</tr>
+					{{#each rows}}
+					<tr>
+						<td>{{start_time}}</td>
+						<td>{{end_time}}</td>
+						<td>{{access_type}}</td>
+						<td><span class="ZUI-url" title="{{url}}">{{url}}</span></td>
+						<td>{{clientip}}</td>
+						<td>{{file_size}}</td>
+						<td>{{flow}}</td>
+						<td>{{hit_type}}</td>
+					</tr>
+					{{/each}}
+				</table>
+			</script>
+			<div class="pager row">
+				<div class="col-sm-4">共<span id="recordUser-total">0</span>条记录</div>
+				<div id="pager-record" class="col-sm-8"></div>
+			</div>
+		</div>
+	</div>
+</div>

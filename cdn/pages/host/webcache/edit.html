@@ -1,0 +1,38 @@
+<div class="host clearfix">
+	<div class="col-sm-12">
+		设备配置 -&gt; WebCache配置管理 -&gt; 修改
+	</div>
+	<div class="col-sm-12">
+		<div class="panel">
+      <div class="row">
+          <div class="col-sm-2">
+              <a href="javascript:;" class="btn btn-primary btn-synWebConfig">同步设备配置</a>
+          </div>
+      </div>
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiWebConfig/updateWebConfig" method="post" data-target="host/webcache/list" data-list="param" data-url="/ApiWebConfig/getWebConfig">
+      </form>
+      <script type="template">
+        {{#each info}}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">设备<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+              <select name="Host_Id" class="ZUI-select">{{{global_show_select "" "/ApiHost/listHost" "HostName" "Id" HostId}}}</select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">配置信息<span class="ZUI-require"></span></label>
+            <div class="col-sm-10">
+              <textarea name="Content" id="webcache-content" class="ZUI-textarea" style="height: 300px;">{{Content}}</textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="host/webcache/list">取消</a>
+            </div>
+          </div>
+        {{/each}}
+      </script>
+		</div>
+	</div>
+</div>

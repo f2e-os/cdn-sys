@@ -1,0 +1,69 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "total": 40,
+    "rows": [
+        {
+            "start_time": "start_time",
+            "end_time": "end_time",
+            "access_type": "access_type",
+            "url": "url",
+            "file_size": "file_size",
+            "flow": "flow",
+            "hit_type": "hit_type",
+            "clientip": "clientip"
+        },
+        {
+            "start_time": "start_time",
+            "end_time": "end_time",
+            "access_type": "access_type",
+            "url": "url",
+            "file_size": "file_size",
+            "flow": "flow",
+            "hit_type": "hit_type",
+            "clientip": "clientip"
+        },
+        {
+            "start_time": "start_time",
+            "end_time": "end_time",
+            "access_type": "access_type",
+            "url": "url",
+            "file_size": "file_size",
+            "flow": "flow",
+            "hit_type": "hit_type",
+            "clientip": "clientip"
+        },
+        {
+            "start_time": "start_time",
+            "end_time": "end_time",
+            "access_type": "access_type",
+            "url": "url",
+            "file_size": "file_size",
+            "flow": "flow",
+            "hit_type": "hit_type",
+            "clientip": "clientip"
+        },
+        {
+            "start_time": "start_time",
+            "end_time": "end_time",
+            "access_type": "access_type",
+            "url": "url",
+            "file_size": "file_size",
+            "flow": "flow",
+            "hit_type": "hit_type",
+            "clientip": "clientip"
+        },
+        {
+            "start_time": "start_time",
+            "end_time": "end_time",
+            "access_type": "access_type",
+            "url": "url",
+            "file_size": "file_size",
+            "flow": "flow",
+            "hit_type": "hit_type",
+            "clientip": "clientip"
+        }
+
+    ]
+}

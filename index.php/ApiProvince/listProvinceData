@@ -1,0 +1,94 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "rows": {
+        "id": "1",
+        "name": "北京",
+        "fork": [
+            {
+                "label": "江西",
+                "node": {
+                    "name": "nrzx.jpg",
+                    "id": "1",
+                    "fork": [
+                        {
+                            "label": "FAS",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "3"
+                            }
+                        },
+                        {
+                            "label": "PPCache",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "2"
+                            }
+                        },
+                        {
+                            "label": "NECACHE",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "1"
+                            }
+                        },
+                        {
+                            "label": "PPS",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "5"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "label": "黑龙江",
+                "node": {
+                    "name": "nrzx.jpg",
+                    "id": "2",
+                    "fork": [
+                        {
+                            "label": "PPS",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "5"
+                            }
+                        },
+                        {
+                            "label": "NECACHE",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "1"
+                            }
+                        },
+                        {
+                            "label": "NECACHE",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "1"
+                            }
+                        },
+                        {
+                            "label": "PPS",
+                            "node": {
+                                "name": "sblx.jpg",
+                                "fork": "[]",
+                                "id": "5"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "total": null
+}

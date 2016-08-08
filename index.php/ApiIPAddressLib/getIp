@@ -1,0 +1,15 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "info": {
+        "Id": "1",
+        "ProvCachId": "2",
+        "StartIP": "1",
+        "EndIP": "2,2,3",
+        "ProvinceId": "1",
+        "CityId": "11",
+        "ProviderId": "0",
+        "AccessModeId": "11"
+    }
+}

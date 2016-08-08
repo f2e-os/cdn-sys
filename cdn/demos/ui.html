@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache管理系统</title>
+
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/combine.css">
+
+    <!-- HTML5 shim IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+        body{padding:0 0 300px 0;}
+        .demo{
+            padding:20px;
+            border-bottom:1px solid #ddd;
+            background:#fff;
+        }
+        h2{
+            font-size:18px;padding:0 10px 20px;margin:0;
+            line-height:30px;color:#08c;
+        }
+        h2 span{font-size:14px;padding:0 10px;}
+        h2 em{font-size:14px;color:red;padding:0 10px;}
+        .icon_lists{overflow:hidden;padding:0;}
+        .icon_lists li{
+            list-style:none;
+            float:left;
+            width: 100px;
+            text-align: center;
+        }
+        .icon_lists .icon{
+            cursor:pointer;
+            font-size: 25px;
+            line-height: 40px;
+            margin: 10px 0;
+            color:#666;
+            -webkit-transition: font-size 0.25s ease-out 0s;
+            -moz-transition: font-size 0.25s ease-out 0s;
+            transition: font-size 0.25s ease-out 0s;
+
+        }
+        .icon_lists .icon:hover{
+            font-size: 30px;color:#333;
+        }
+
+    </style>
+</head>
+<body>
+        <span class="ZUI-position"></span>
+        <div class="demo">
+            <h2><span>url长度限制,注意些上title</span><em>&lt;span class=&quot;ZUI-url&quot; title=&quot;url&quot;&gt;http://234123412341234123412341234&lt;/span&gt;</em></h2>
+            <span class="ZUI-url">http://234123412341234123412341234</span>
+        </div>
+        <div class="demo">
+            <h2><span>必填字段标识符</span><em>在label中添加&lt;span class=&quot;ZUI-require&quot;&gt;&lt;/span&gt;</em></h2>
+            <span class="ZUI-require"></span>
+        </div>
+        <div class="demo">
+            <!-- 单选框 -->
+            <input type="radio" class="ZUI-radio" name="radio" id="ID00">
+            <label for="ID00">
+                <span class="ZUI-radio-btn"></span>
+                <span class="ZUI-radio-txt">自定义文本</span>
+            </label>
+
+            <input type="radio" class="ZUI-radio" name="radio" checked="checked" id="ID01">
+            <label for="ID01">
+                <span class="ZUI-radio-btn"></span>
+                <span class="ZUI-radio-txt">单选框</span>
+            </label>
+            <!-- 复选框 -->
+            <input type="checkbox" class="ZUI-checkbox" id="ID02">
+            <label for="ID02">
+                <span class="ZUI-checkbox-btn"></span>
+                <span class="ZUI-checkbox-txt">自定义文本</span>
+            </label>
+
+            <input type="checkbox" class="ZUI-checkbox" checked="checked" id="ID03">
+            <label for="ID03">
+                <span class="ZUI-checkbox-btn"></span>
+                <span class="ZUI-checkbox-txt">自定义文本</span>
+            </label>
+        </div>
+        <div class="demo">
+            <input type="text" class="ZUI-input" value="display:block;建议浮动"/>
+        </div>
+        <div class="demo">
+            <input type="text" class="ZUI-input ZUI-w140" value="ZUI-w140"/>
+        </div>
+        <div class="demo">
+            <select class="ZUI-select">
+                <option>自定义内容</option>
+                <option>display:block;</option>
+                <option>建议浮动</option>
+                <option>选项卡1</option>
+            </select>
+        </div>
+        <div class="demo">
+            <select class="ZUI-select ZUI-w240">
+                <option>使用class ZUI-w240 设置宽度</option>
+                <option>display:block;</option>
+                <option>建议浮动</option>
+                <option>选项卡1</option>
+            </select>
+        </div>
+        <div class="demo">
+            <textarea class="ZUI-textarea"></textarea>
+        </div>
+        <div class="demo">
+            <input type="checkbox" class="ZUI-switch" checked="checked" id="ID22">
+            <label for="ID22">
+                <span class="ZUI-switch-btn"></span>
+                <span class="ZUI-switch-icon"></span>
+            </label>
+
+            <input type="checkbox" class="ZUI-switch ZUI-switch-text" checked="checked" id="ID23">
+            <label for="ID23">
+                <span class="ZUI-switch-btn"></span>
+                <span class="ZUI-switch-info"></span>
+            </label>
+        </div>
+        <div class="demo">
+            <a href="" class="ZUI-operate"><span class="iconfont">&#xe603;</span>删除</a>
+            <a href="" class="ZUI-operate"><span class="iconfont">&#xe601;</span>列表</a>
+            <a href="" class="ZUI-operate"><span class="iconfont">&#xe602;</span>编辑</a>
+            <a href="" class="ZUI-operate"><span class="iconfont">&#xe600;</span>下发</a>
+        </div>
+         <div class="demo">
+            <a href="" class="ZUI-operate" title="列表"><span class="iconfont">&#xe601;</span></a>
+            <a href="" class="ZUI-operate" title="编辑"><span class="iconfont">&#xe602;</span></a>
+            <a href="" class="ZUI-operate" title="删除"><span class="iconfont">&#xe603;</span></a>
+            <a href="" class="ZUI-operate" title="重置密码"><span class="iconfont">&#xe60a;</span></a>
+        </div>
+        <div class="demo">
+            <h2>按钮<span>icon按钮</span><em>使用说明:加入类"mr10"表示margin-right:10px; "mr20"表示margin-right:20px;</em></h2>
+            <h2><em>如果有文本，文本请放在span标签内。</em></h2>
+
+
+            <a href="#" class="ZUI-btn ZUI-noneicon-btn"><span>无icon按钮</span></a>
+            <a href="#" class="ZUI-btn btnicon00"><span>文本</span></a>
+            <a href="#" class="ZUI-btn btnicon01"><span>文本</span></a>
+            <a href="#" class="ZUI-btn btnicon02 mr10"><span>文本</em></a>
+            <a href="#" class="ZUI-btn btnicon03"><span>文本</span></a>
+            <a href="#" class="ZUI-btn btnicon04"><span>文本</span></a>
+            <a href="#" class="ZUI-btn btnicon05"><span>文本</span></a>
+            <a href="#" class="ZUI-btn btnicon06"><span>文本</span></a>
+
+
+            <h2 style="padding-top:20px;"><em>如果没有文本，需设置为"&amp;nbsp;"。注意没有span标签。</em></h2>
+
+
+            <a href="#" class="ZUI-btn btnicon00">&nbsp;</a>
+            <a href="#" class="ZUI-btn btnicon01">&nbsp;</a>
+            <a href="#" class="ZUI-btn btnicon02 mr20">&nbsp;</a>
+            <a href="#" class="ZUI-btn btnicon03">&nbsp;</a>
+            <a href="#" class="ZUI-btn btnicon04">&nbsp;</a>
+            <a href="#" class="ZUI-btn btnicon05">&nbsp;</a>
+            <a href="#" class="ZUI-btn btnicon06">&nbsp;</a>
+
+
+        </div>
+        <div class="demo">
+            <h2>图标<span>(图片icon)</span><em>使用说明：左侧a标签中加入一个span,class为“ZUI-icon icon32”,注意icon所对应的数字</em></h2>
+            <span class="ZUI-icon icon00"></span>
+            <span class="ZUI-icon icon01"></span>
+            <span class="ZUI-icon icon02"></span>
+            <span class="ZUI-icon icon03"></span>
+            <span class="ZUI-icon icon04"></span>
+            <span class="ZUI-icon icon05"></span>
+            <span class="ZUI-icon icon06"></span>
+            <span class="ZUI-icon icon07"></span>
+            <span class="ZUI-icon icon08"></span>
+            <span class="ZUI-icon icon09"></span>
+            <span class="ZUI-icon icon10"></span>
+            <span class="ZUI-icon icon11"></span>
+            <span class="ZUI-icon icon12"></span>
+            <span class="ZUI-icon icon13"></span>
+            <span class="ZUI-icon icon14"></span>
+            <span class="ZUI-icon icon15"></span>
+            <span class="ZUI-icon icon16"></span>
+            <span class="ZUI-icon icon17"></span>
+            <span class="ZUI-icon icon18"></span>
+            <span class="ZUI-icon icon19"></span>
+            <span class="ZUI-icon icon20"></span>
+            <span class="ZUI-icon icon21"></span>
+            <span class="ZUI-icon icon22"></span>
+            <span class="ZUI-icon icon23"></span>
+            <span class="ZUI-icon icon24"></span>
+            <span class="ZUI-icon icon25"></span>
+            <span class="ZUI-icon icon26"></span>
+            <span class="ZUI-icon icon27"></span>
+            <span class="ZUI-icon icon28"></span>
+            <span class="ZUI-icon icon29"></span>
+            <span class="ZUI-icon icon30"></span>
+            <span class="ZUI-icon icon31"></span>
+            <span class="ZUI-icon icon32"></span>
+            <span class="ZUI-icon icon33"></span>
+            <span class="ZUI-icon icon34"></span>
+            <span class="ZUI-icon icon35"></span>
+            <span class="ZUI-icon icon36"></span>
+            <span class="ZUI-icon icon37"></span>
+            <span class="ZUI-icon icon38"></span>
+            <span class="ZUI-icon icon39"></span>
+            <span class="ZUI-icon icon40"></span>
+            <span class="ZUI-icon icon41"></span>
+            <span class="ZUI-icon icon42"></span>
+            <span class="ZUI-icon icon43"></span>
+            <span class="ZUI-icon icon44"></span>
+            <span class="ZUI-icon icon45"></span>
+
+        </div>
+        <div class="demo">
+            <h2>图标<span>(iconfont)</span></h2>
+             <ul class="icon_lists clear">
+            
+                <li>
+                <i class="icon iconfont">&#xe603;</i>
+                    <div class="name">删除</div>
+                    <div class="code">&amp;#xe603;</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe605;</i>
+                    <div class="name">设置</div>
+                    <div class="code">&amp;#xe605;</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe606;</i>
+                    <div class="name">个人中心</div>
+                    <div class="code">&amp;#xe606;</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe604;</i>
+                    <div class="name">退出</div>
+                    <div class="code">&amp;#xe604;</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe601;</i>
+                    <div class="name">查询</div>
+                    <div class="code">&amp;#xe601;</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe602;</i>
+                    <div class="name">编辑</div>
+                    <div class="code">&amp;#xe602;</div>
+                </li>
+                
+                <li>
+                    <i class="icon iconfont">&#xe60b;</i>
+                    <div class="name">位置</div>
+                    <div class="code">&amp;#xe60b;</div>
+                </li>
+        </ul>
+        </div>
+
+    
+</body>
+</html>

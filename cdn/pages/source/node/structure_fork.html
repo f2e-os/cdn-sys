@@ -1,0 +1,52 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; 节点管理 -&gt;<span class="detail">拓扑结构</span>
+    </div>
+    <div class="col-sm-12 source pdt15">
+        <ul class="nav nav-tabs" id="myTab"> 
+            <li><a href="#region" data-menu="source">区域管理</a></li> 
+            <li><a href="#packing" data-menu="source/node/packing">节点管理</a></li> 
+            <li><a href="#device" data-menu="source/node/device">设备管理</a></li> 
+            <li class="active"><a class="active" href="#structure" data-menu="source/node/structure">拓扑结构</a></li> 
+        </ul> 
+           <div class="tab-content structure-fork-holder"> 
+            <div class="panel" id="structure-fork">
+              
+            </div>
+            <form id="structure-device-form">
+                <input type="hidden" name="Pagesize" value="10">
+            </form>
+            <div class="table-holder" id="structure-device-list" data-url="/ApiProvince/listProvinceDataAll" data-form="#structure-device-form" data-pager="#pager-structure-device" data-totalshow="#structure-total-device"></div>
+            <script type="template">
+                <form id="source-listC">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>序号</th>
+                            <th>主机名称</th>
+                            <th>IP</th>
+                            <th>类型</th>
+                            <th>硬盘容量</th>
+                            <th>状态</th>
+                            <th>备注</th>
+                        </tr>
+                        {{#each rows}}
+                        <tr>
+                            <td>{{_ @index}}</td>
+                            <td>{{HostName}}</td>
+                            <td>{{IP}}</td>
+                            <td>{{Type}}</td>
+                            <td>{{Datadisknum}}</td>
+                            <td>{{State}}</td>
+                            <td>{{hostStatus}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </form>                                                                                    
+            </script>
+            <div class="pager row">
+                <div class="col-sm-4">共<span id="structure-total-device">0</span>条记录</div>
+                <div id="pager-structure-device" class="col-sm-8"></div>
+            </div>
+        </div> 
+    </div>
+</div>

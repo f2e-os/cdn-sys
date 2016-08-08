@@ -1,0 +1,96 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; IP地址管理 
+    </div>
+    <div class="col-sm-12 source pdt15" id="source">
+    	<ul class="nav nav-tabs" id="myTab"> 
+	      <li class="active"><a href="#region" data-menu="source_ipmanage" class="active">IP地址管理</a></li> 
+	    </ul> 
+	   	<div class="tab-content"> 
+	      <div class="panel" id="ipmanage">
+	      	<div class="row">
+	                <div class="col-sm-5">
+	                	 <a href="#" data-menu="source/ip/ip_add" class="btn btn-primary ipmanage-add">+ 添加</a>
+	                	 <a href="#" class="btn btn-primary ipmanage-size-add" id="frame-upload">批量导入</a>
+	                    <a href="#" class="btn btn-primary ipmanage-delM">- 批量删除</a>
+	                </div>
+	                <div class="col-sm-7 text-right">
+	         
+	                    <form id="source-searchUser-ipmanage" class="row form-inline">
+	                    	<input type="hidden" name="Pagesize" value="15">
+	                    	<!--
+	                        <input type="hidden" name="Pagesize" value="15">
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                        -->
+							<div class="col-sm-4">
+						    	<input type="text" class="form-control" id="IP" name="IP" placeholder="IP">
+							</div>
+							<div class="col-sm-2">
+								<select name="ProvCachId" id="ProvCachId" class="form-control" value="{{CacheSysName}}" data-list>
+	                            </select>
+	                            <script type="template"><option value="">省缓存</option>{{{global_show_select "ProvCachId" "/ApiCommon/getCacheSysList" "DepartName" "Id" CacheSysName }}}</script>
+							</div>
+						    <div class="col-sm-4">
+						    	<div class="btn-ipmanagemit btn btn-default btn-submit">搜索</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="table-holder" data-list data-url="/ApiIPLib/listIP" data-pager="#pager-source-ipmanage" data-method="get" data-form="#source-searchUser-ipmanage" data-totalshow="#source-total-ipmanage"></div>
+	            <script type="template">
+	            	<form id="source-listC">
+		                <table class="table table-hover">
+		                    <tr>
+		                    	<th>
+		                    		<input type="checkbox" class="ZUI-checkbox" id="packing-all" data-check-all=".host-source">
+						            <label for="packing-all">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+		                    	</th>
+		                        <th>省缓存</th>
+		                        <th>起始ip</th>
+		                        <th>结束ip</th>
+		                        <th>所属市</th>
+		                        <th>运营商</th>
+		                        <th>接入方式</th>
+		                        <th>操作</th>
+		                    </tr>
+		                    {{#each rows}}
+		                    <tr data-id="{{Id}}">
+		                    	<td>
+									<input type="checkbox" class="ZUI-checkbox host-source" id="ipmanage123{{Id}}" data-id="{{Id}}">
+						            <label for="ipmanage123{{Id}}">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+								</td>
+		                        <td class="CompanyName ">{{CompanyName }}</td>
+		                        <td class="startip " data-value="{{startip }}">{{startip }}</td>
+		                        <td class="endip ">{{endip }}</td>
+		                        <td class="city">{{city}}</td>
+		                        <td class="Provider">{{Provider}}</td>
+		                        <td class="accessmode">{{accessmode}}</td>
+		                       <td>
+						            <a href="#" data-menu="source/ip/ip_edit:Id={{Id}}" class="ZUI-operate ipmanage-edit"><span class="iconfont">&#xe602;</span>修改</a>
+		                        	<a href="#" class="ZUI-operate ipmanage-del"><span class="iconfont">&#xe603;</span>删除</a>
+		                        </td>
+		                    </tr>
+		                    {{/each}}
+		                </table>	
+	                </form>																				
+	            </script>
+	            <div class="pager row">
+	                <div class="col-sm-4">共<span id="source-total-ipmanage">0</span>条记录</div>
+	                <div id="pager-source-ipmanage" class="col-sm-8"></div>
+	            </div>
+	      </div> 
+	    </div> 
+    </div>
+</div>

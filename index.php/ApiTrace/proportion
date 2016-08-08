@@ -1,0 +1,152 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "total": 183,
+    "rows": [
+        {
+            "SUM_sum_num_log": 6,
+            "SUM_sum_flow_in": 601.16,
+            "SUM_sum_flow_out": 582.21,
+            "tm_insert": "2015-09-16 08:45:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 856.93,
+            "SUM_sum_flow_out": 856.93,
+            "tm_insert": "2015-09-16 08:50:00"
+        },
+        {
+            "SUM_sum_num_log": 15,
+            "SUM_sum_flow_in": 962.51,
+            "SUM_sum_flow_out": 110375,
+            "tm_insert": "2015-09-16 08:55:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 818.52,
+            "SUM_sum_flow_out": 834.99,
+            "tm_insert": "2015-09-16 09:00:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 566.66,
+            "SUM_sum_flow_out": 566.66,
+            "tm_insert": "2015-09-16 09:05:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 519.79,
+            "SUM_sum_flow_out": 12512.64,
+            "tm_insert": "2015-09-16 09:10:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 719.26,
+            "SUM_sum_flow_out": 12712.11,
+            "tm_insert": "2015-09-16 09:15:00"
+        },
+        {
+            "SUM_sum_num_log": 15,
+            "SUM_sum_flow_in": 119610.32,
+            "SUM_sum_flow_out": 235880.29,
+            "tm_insert": "2015-09-16 09:20:00"
+        },
+        {
+            "SUM_sum_num_log": 14,
+            "SUM_sum_flow_in": 256246.51,
+            "SUM_sum_flow_out": 834259.04,
+            "tm_insert": "2015-09-16 09:25:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 53613.24,
+            "SUM_sum_flow_out": 211760.12,
+            "tm_insert": "2015-09-16 09:30:00"
+        },
+        {
+            "SUM_sum_num_log": 14,
+            "SUM_sum_flow_in": 15170.61,
+            "SUM_sum_flow_out": 1155672.92,
+            "tm_insert": "2015-09-16 09:35:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 7384.01,
+            "SUM_sum_flow_out": 1185186.56,
+            "tm_insert": "2015-09-16 09:40:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 927.15,
+            "SUM_sum_flow_out": 77308.37,
+            "tm_insert": "2015-09-16 09:45:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 569.85,
+            "SUM_sum_flow_out": 569.85,
+            "tm_insert": "2015-09-16 09:50:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 53613.24,
+            "SUM_sum_flow_out": 211760.12,
+            "tm_insert": "2015-09-16 09:30:00"
+        },
+        {
+            "SUM_sum_num_log": 14,
+            "SUM_sum_flow_in": 15170.61,
+            "SUM_sum_flow_out": 1155672.92,
+            "tm_insert": "2015-09-16 09:35:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 7384.01,
+            "SUM_sum_flow_out": 1185186.56,
+            "tm_insert": "2015-09-16 09:40:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 927.15,
+            "SUM_sum_flow_out": 77308.37,
+            "tm_insert": "2015-09-16 09:45:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 569.85,
+            "SUM_sum_flow_out": 569.85,
+            "tm_insert": "2015-09-16 09:50:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 53613.24,
+            "SUM_sum_flow_out": 211760.12,
+            "tm_insert": "2015-09-16 09:30:00"
+        },
+        {
+            "SUM_sum_num_log": 14,
+            "SUM_sum_flow_in": 15170.61,
+            "SUM_sum_flow_out": 1155672.92,
+            "tm_insert": "2015-09-16 09:35:00"
+        },
+        {
+            "SUM_sum_num_log": 13,
+            "SUM_sum_flow_in": 7384.01,
+            "SUM_sum_flow_out": 1185186.56,
+            "tm_insert": "2015-09-16 09:40:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 927.15,
+            "SUM_sum_flow_out": 77308.37,
+            "tm_insert": "2015-09-16 09:45:00"
+        },
+        {
+            "SUM_sum_num_log": 12,
+            "SUM_sum_flow_in": 569.85,
+            "SUM_sum_flow_out": 569.85,
+            "tm_insert": "2015-09-16 09:50:00"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "内容列表",
+    "total": "1",
+    "rows": [
+        {
+            "Id": "2",
+            "CompanyName": "北京缓存",
+            "startip": "10.0.0.42",
+            "endip": "10.0.89",
+            "country ": "中国",
+            "province ": "广东",
+            "city": "韶关",
+            "district": "曲江",
+            "street": "大宝山",
+            "Provider": "test",
+            "accessmode": "无线"
+        }
+    ]
+}

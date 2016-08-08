@@ -1,0 +1,137 @@
+<div id="storage" class="storage">
+	<div class="col-sm-12">
+		数据统计 -&gt; 分级存储统计 
+	</div>                                                           
+	<div class="col-sm-12 storage mgt15">
+		 <div class="">
+		  <!-- Nav tabs aria-controls属性用于 tab切换、生成href和及显示模块 请求接口-->
+		  <ul class="nav nav-tabs" role="tablist">
+			  <li role="presentation" class="active"><a href="#storage-memory" aria-controls="storage-memory" role="tab" data-toggle="tab">内存存储</a></li>
+			  <li role="presentation" id="disk-tab"><a href="#storage-disk" aria-controls="storage-disk" role="tab" data-toggle="tab">磁盘存储</a></li>
+		  </ul>
+		  <!-- Tab panes -->
+		  <div class="tab-content storage-cont show-area">						  
+      <div role="tabpanel" class="tab-pane active" id="storage-memory">
+        <form class="tab-formtab-form form-container position-left clearfix" id="search-bar">
+            <input type="text" name="urlhash" class="d-input ZUI-input" placeholder="urlhash">
+            <input type="text" name="url" class="d-input ZUI-input" placeholder="url">
+            <input type="text" name="ppcip" class="d-input ZUI-input" placeholder="ppc ip">
+            <a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+            <input type="hidden" name="Pagesize" value="15">
+        </form>
+        <div class="table-holder" data-list data-url="/ApiGradeStorage/listMemoryResource" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+        <script type="template">
+        <table class="table table-hover">
+          <tr>
+            <th>序列号</th>
+              <th style="width: 200px"><a href="javascript:void(0);" class="t-sort-item" data-sort="urlhash">urlhash</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="url">url</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="ppcip">ppc ip</a></th>
+            <th><a href="javascript:void(0);" class="t-sort-item" data-sort="size">文件大小(KB)</a></th>
+          </tr>
+          {{#each rows}}
+            <tr>
+              <td>{{_ @index}}</td>
+              <td style="word-wrap:break-word;">
+                <span class="ZUI-url" title="{{urlhash}}">{{urlhash}}</span>
+              </td>
+              <td style="word-wrap:break-word;">
+                <span class="ZUI-url" title="{{url}}">{{url}}</span>
+              </td>
+              <td style="word-wrap:break-word;">
+                <span class="ZUI-url" title="{{ppcip}}">{{ppcip}}</span>
+              </td>
+                <td style="word-wrap:break-word;">
+                    <span class="ZUI-url" title="{{size}}">{{size}}</span>
+                </td>
+            </tr>
+          {{/each}}
+        </table>
+        </script>
+        <div class="pager row">
+          <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+          <div id="pager-bar" class="col-sm-8"></div>
+        </div>
+      </div>
+
+       <div role="tabpanel" class="tab-pane" id="storage-disk">
+				<form class="tab-formtab-form form-container position-left clearfix" id="search-bar2">
+						<input type="text" name="urlhash" class="d-input ZUI-input" placeholder="urlhash">
+            <input type="text" name="url" class="d-input ZUI-input" placeholder="url">
+						<input type="text" name="ppcip" class="d-input ZUI-input" placeholder="ppc ip">
+						<a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+            <input type="hidden" name="Pagesize" value="100">
+            <a class="ZUI-btn ZUI-noneicon-btn del-storage"><span>- 删除</span></a>
+
+				</form>
+				<div class="table-holder" data-list data-url="/ApiGradeStorage/listDiskResource" data-pager="#pager-bar2" data-method="post" data-form="#search-bar2" data-totalshow="#total-bar2"></div>
+        
+        <script type="template">
+				<table class="table table-hover disk-table">
+					<tr>
+            <th>
+              <input type="checkbox" class="ZUI-checkbox" id="storage-disk-check-all" data-check-all=".storage-disk">
+              <label for="storage-disk-check-all">
+                  <span class="ZUI-checkbox-btn"></span>
+                  <span class="ZUI-checkbox-txt"></span>
+              </label>
+            </th>
+						<th>序列号</th>
+                        <th style="width:100px "><a href="javascript:void(0);" class="t-sort-item" data-sort="urlhash">urlhash</a></th>
+						<th style="width:100px "><a href="javascript:void(0);" class="t-sort-item" data-sort="infohash">infohash</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="ppcip">ppc ip</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="directory">存储路径</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="download_url">url</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="length">文件大小（KB）</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="hit">命中次数</a></th>
+            <th style="min-width:85px;">内容更新</th>
+					</tr>
+					{{#each rows}}
+						<tr data-id="{{Id}}" class="storage-disk-tr">
+							<td>
+                <input type="checkbox" name="Id" class="ZUI-checkbox storage-disk" id="disk{{Id}}" data-id="{{Id}}" value="{{infohash}}|{{ppcip}}"/>
+                <label for="disk{{Id}}">
+                    <span class="ZUI-checkbox-btn"></span>
+                    <span class="ZUI-checkbox-txt"></span>
+                </label>
+              </td>
+              <td>{{_ @index}}</td>                 
+							<td style="word-break: break-word;">
+                <span class="ZUI-url urlhash" title="{{urlhash}}" >{{urlhash}}</span>  
+              </td>
+              <td style="word-break: break-word;">
+                <span class="ZUI-url infohash" title="{{infohash}}" >{{infohash}}</span>
+              </td>
+              <td style="word-break: break-word;">
+                <span class="ZUI-url ppcip" title="{{ppcip}}">{{ppcip}}</span>
+              </td>
+              <td style="word-break: break-word;">
+                <span class="ZUI-url directory" title="{{directory}}">{{directory}}</span>
+              </td>
+							<td style="word-break: break-word;">
+                <span class="ZUI-url download_url" title="{{download_url}}">{{download_url}}</span>
+              </td>
+              <td style="word-break: break-word;">
+                <span class="ZUI-url length" title="{{length}}">{{length}}</span>
+              </td>
+             <td style="word-break: break-word;">
+                 <span class="ZUI-url length" title="{{hit}}">{{hit}}</span>
+              </td>
+
+
+              <td style="word-break: break-word;" >
+                <a class="ZUI-btn ZUI-noneicon-btn storage-update"><span>更新</span></a>
+              </td>
+						</tr>
+					{{/each}}
+				</table>
+			  </script>
+			  <div class="pager row">
+				  <div class="col-sm-4">共<span id="total-bar2">0</span>条记录</div>
+				  <div id="pager-bar2" class="col-sm-8"></div>
+			  </div>
+			 </div>
+		  </div>
+		</div>
+	</div>
+</div>

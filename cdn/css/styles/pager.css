@@ -1,0 +1,13 @@
+.pager{
+    line-height: 30px;
+}
+.pager span, .pager a{
+    padding: 4px 6px;
+    margin: 0 4px;
+    cursor: pointer;
+    color: #777;
+    text-decoration: none;
+}
+.pager .pagination-curr{
+    color: #0666b6;
+}

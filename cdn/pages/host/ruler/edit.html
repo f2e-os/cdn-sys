@@ -1,0 +1,55 @@
+<div class="host">
+	<div class="col-sm-12">
+		设备配置 -&gt; ruler配置 -&gt; 修改
+	</div>
+	<div class="col-sm-12">
+		<div class="panel">
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiRuler/updateRuler" method="post" data-target="host/ruler/list" data-list="param" data-url="/ApiRuler/getRuler">
+      </form>
+      <script type="template">
+        {{#each info}}
+        <input type="hidden" name="id" value="{{id}}">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">域名：<span class="ZUI-require"></span></label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" name="host_name" value="{{host_name}}">
+            </div>
+            <label class="col-sm-2 control-label">状态：</label>
+            <div class="col-sm-4">
+              <select name="host_type" class="form-control">{{{global_show_select "" "host_type" "" "" host_type}}}</select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Hash算法：</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" name="hashtype" value="{{hashtype}}">
+            </div>
+            <label class="col-sm-2 control-label">是否定向：</label>
+            <div class="col-sm-4">
+              <select name="redirect" class="form-control">{{{global_show_select "" "Yes_No" "" "" redirect}}}</select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">代理模式：</label>
+            <div class="col-sm-4">
+              {{{global_show_radio "proxy" "agent_type" "" "" proxy}}}
+            </div>
+            <label class="col-sm-2 control-label">PPC分组：</label>
+            <div class="col-sm-4">
+              <select name="ppc_gid" class="form-control">{{{global_show_select "" "/ApiHttpCache/listHostGroup" "GroupName" "Id" ppc_gid}}}</select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="host/ruler/list">取消</a>
+            </div>
+          </div>
+          {{/each}}
+      </script>
+		</div>
+	</div>
+</div>

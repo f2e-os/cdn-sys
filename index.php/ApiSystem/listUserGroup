@@ -1,0 +1,44 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "total": "15",
+    "rows": [
+        {
+            "Id": "5",
+            "LevelName": "testbbb",
+            "LevelDesc": "aa",
+            "Seq": null
+        },
+        {
+            "Id": "10",
+            "LevelName": "sdf43",
+            "LevelDesc": "sesffa5",
+            "Seq": null
+        },
+        {
+            "Id": "65",
+            "LevelName": "test",
+            "LevelDesc": "aaaaaa",
+            "Seq": null
+        },
+        {
+            "Id": "67",
+            "LevelName": "1",
+            "LevelDesc": "",
+            "Seq": "0"
+        },
+        {
+            "Id": "68",
+            "LevelName": "levelname",
+            "LevelDesc": "leveldesc",
+            "Seq": "5"
+        },
+        {
+            "Id": "69",
+            "LevelName": "test826",
+            "LevelDesc": "qqq",
+            "Seq": "123"
+        }
+    ]
+}

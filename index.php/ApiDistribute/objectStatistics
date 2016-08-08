@@ -1,0 +1,20 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "内容列表",
+    "total": "1",
+    "rows": [
+       {
+            "DepartName": "全部",
+            "SUM_sum_flow_out": "25.00"
+        },
+        {
+            "DepartName": "全网",
+            "SUM_sum_flow_out": "15.00"
+        },
+        {
+            "DepartName": "澳门特别行政区",
+            "SUM_sum_flow_out": "25.00"
+        }
+    ]
+}

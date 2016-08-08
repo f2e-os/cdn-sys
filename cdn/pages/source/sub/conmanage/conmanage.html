@@ -1,0 +1,104 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; 内容管理 -&gt;<span class="detail">用户行为分析</span>
+    </div>
+    <div class="col-sm-12 source pdt15" id="source">
+    	<ul class="nav nav-tabs" id="myTab"> 
+
+	      <li><a  href="#packing" data-menu="source/sub/dismanage">域名视图</a></li>
+	      <li><a  href="#packing" data-menu="source/sub/content_search">内容查询</a></li> 
+	      <li class="active"><a href="#sub" data-menu="source/sub/conmanage" class="active">用户行为分析</a></li> 
+	    </ul> 
+	   	<div class="tab-content"> 
+	      <div class="panel" id="conmanage">
+	      	<div class="row">
+                <div class="col-sm-12" style="padding-bottom: 20px;">
+                    <a href="#" class="btn btn-primary conmanage-delM">-批量删除</a>
+                </div>
+	        </div>
+	      	<div class="row">
+	                <div class="col-sm-12 text-right">
+	         
+	                    <form id="source-searchUser-conmanage" class="row form-inline">
+	                    	<input type="hidden" name="Pagesize" value="15">
+	                    	<!--
+	                        <input type="hidden" name="Pagesize" value="15">
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                        -->
+	                        <div class="col-sm-2">
+							    <input type="text" class="form-control" id="Date_Start" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" name="Date_Start" placeholder="开始时间">
+							</div>
+							<div class="col-sm-2">
+							    <input type="text" class="form-control" id="Date_End" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" name="Date_End" placeholder="结束时间">
+							</div>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" id="url_hash" name="url_hash" placeholder="内容标识">							
+							</div>
+							<div class="col-sm-3">
+								 <input type="text" class="form-control" id="Url" name="Url" placeholder="url">
+							</div>
+							<div class="col-sm-1">
+						    	<div class="btn-conmanagemit btn btn-default btn-submit">搜索</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="table-holder" data-list data-url="/ApiContentSearch/searchContent" data-pager="#pager-source-conmanage" data-method="get" data-form="#source-searchUser-conmanage" data-totalshow="#source-total-conmanage"></div>
+	            <script type="template">
+	            	<form id="source-listC">
+		                <table class="table table-hover">
+		                    <tr>
+		                    	<th>
+		                    		<input type="checkbox" class="ZUI-checkbox" id="packing-all" data-check-all=".host-source">
+						            <label for="packing-all">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+		                    	</th>
+		                        <th>时间</th>
+		                        <th width="150px" style="word-wrap:break-word;">URL</th>
+		                        <th width="120px">内容标识</th>
+		                        <th>文件名称</th>
+		                        <th>文件大小</th>
+		                        <th>内容状态</th>
+		                        <th>服务流量</th>
+		                        <th>访问次数</th>
+		                        <th>设备IP</th>
+		                    </tr>
+		                    {{#each rows}}
+		                    <tr data-id="{{id}}">
+		                    	<td>
+									<input type="checkbox" class="ZUI-checkbox host-source" id="conmanage{{id}}" data-id="{{id}}">
+						            <label for="conmanage{{id}}">
+						                <span class="ZUI-checkbox-btn"></span>
+						                <span class="ZUI-checkbox-txt"></span>
+						            </label>
+								</td>
+		                        <td class="tm_insert">{{tm_insert}}</td>
+		                        <td class="url" data-value="{{url}}" width="150px" style="word-wrap:break-word;"><span class="ZUI-url" title="{{url}}">{{url}}</span></td>
+		                        <td class="url_hash" width="120px"><span class="ZUI-url" title="{{url_hash}}">{{url_hash}}</span></td>
+		                        <td class="content_name">{{content_name}}</td>
+		                        <td class="filesize">{{filesize}}</td>
+		                        <td class="status">{{status}}</td>
+		                        <td class="flow_count">{{flow_count}}</td>
+		                        <td class="visit_count">{{visit_count}}</td>
+		                        <td class="ip">{{ip}}</td>
+		                    </tr>
+		                    {{/each}}
+		                </table>
+	                </form>																					
+	            </script>
+	            <div class="pager row">
+	                <div class="col-sm-4">共<span id="source-total-conmanage">0</span>条记录</div>
+	                <div id="pager-source-conmanage" class="col-sm-8"></div>
+	            </div>
+	      </div> 
+	    </div> 
+    </div>
+</div>

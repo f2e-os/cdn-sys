@@ -1,0 +1,13 @@
+{
+    "message": "成功",
+    "code": 1,
+    "status": "success",
+    "info": {
+            "Id": "20",
+            "UrlIp": "testt1.com",
+            "RedirStop": "1",
+            "RedirUrl": "testredirect.com",
+            "Status": "1",
+            "IsIp": "0"
+        }
+}

@@ -1,0 +1,26 @@
+.account .panel{
+	padding: 15px;
+	min-height: 400px;
+	margin-top: 15px;
+}
+
+.account .form-style{
+	padding: 0 16px;
+}
+
+.account .form-horizontal{
+	margin-top: 30px;
+}
+.account .ZUI-input{
+	display: inline-block;
+}
+.account input,.account a,.account select{
+	margin-bottom: 10px;
+}
+.account .btn{
+	background:#3E9BDF;
+	color: #fff;
+}
+.account .form-control{
+  	padding: 6px 5px;
+}

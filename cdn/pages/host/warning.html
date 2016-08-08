@@ -1,0 +1,43 @@
+<div class="system-alert">
+	<div class="col-sm-12">
+		设备配置 -&gt; 告警配置
+	</div>
+	<div class="col-sm-12 system">
+		<div class="panel">
+			 <form class="container-fluid table-holder" data-url="/ApiMonitor/getMonitorConfigure"  data-list action="/ApiMonitor/setMonitorConfigure"  data-method="post" ></form>
+        <script type="template">
+          <table class="table table-hover">
+            <tr>                                          
+            <th>告警描述</th>
+            <th>告警类型</th>
+            <th>告警级别</th>
+            <th>故障分类</th>
+            </tr>
+            {{#each info}}
+            <tr id="{{idx}}" oid="{{oid}}" class="tr">
+              <td >{{warnMold}}</td>
+              <td>
+                <span>{{oid}}</span>
+                <input type="hidden" name="maxvalue" class="maxvalue"  value="{{maxvalue}}">
+              </td>
+              <td>
+              <select name="WarnLevelId" class="ZUI-select ZUI-w140 d-select WarnLevelId">
+                {{{global_show_select '' '/ApiMonitor/listWarnLevel' 'WarnLevel' 'Id' warnLevel }}}
+              </select>
+              </td>
+              <td>
+              <select name="warnType" class="ZUI-select ZUI-w140 d-select WarnTypeId">
+                {{{global_show_select '' '/ApiMonitor/getAlarmType' 'WarnType' 'Id' warnType }}}
+              </select>
+              </td>
+            </tr>
+            {{/each}}
+          </table>
+          <div class="" style="height:50px;padding-top:20px;">
+            <a class="ZUI-btn ZUI-noneicon-btn btn-submit-alert" style="float:right;"><span>保存</span></a>
+            <a class="ZUI-btn ZUI-noneicon-btn" id="btn-submit-cancle" style="float:right;margin-right:10px;"><span>取消</span></a>
+          </div>
+        </script>
+		</div>
+	</div>
+</div>

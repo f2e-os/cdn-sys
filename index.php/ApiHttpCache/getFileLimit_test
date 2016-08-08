@@ -1,0 +1,9 @@
+{
+	"code": 1,
+	"status": "success",
+	"message": "获取成功",
+	"info": [{
+		"file_min": "1000",
+		"file_max": "8888"
+	}]
+}

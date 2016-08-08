@@ -1,0 +1,288 @@
+<div id="other" class="other">
+	<div class="col-sm-12">
+		数据分析 -&gt; 其他统计 
+	</div>
+	<div class="col-sm-12 other mgt15">
+		 <div class="">
+		  <!-- Nav tabs aria-controls属性用于 tab切换、生成href和及显示模块 请求接口-->
+		  <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#fileType" aria-controls="fileType" role="tab" data-toggle="tab">文件类型统计</a></li>
+        <li role="presentation"><a href="#objSize" aria-controls="objSize" role="tab" data-toggle="tab">请求对象大小统计</a></li>
+		  </ul>
+		  <!-- Tab panes -->
+		  <div class="tab-content other-cont">
+        <!--文件类型统计-->
+				<div role="tabpanel" class="tab-pane active" id="fileType">
+          <form class="tab-formtab-form form-container clearfix" id="search-bar">
+            <!--<a class="ZUI-btn btnicon03"><span>统计</span></a>-->
+            <a class="ZUI-btn btnicon01 trend-export" data-href="/ApiStatisAnaly/fileTypeStatisExport"><span>导出</span></a>                            
+            <span class="float-r clearfix">
+              <input type="text" name="StartTime" class="start-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">  至
+              <input type="text" name="EndTime" class="end-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+              <script type="text/javascript">
+              var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+              var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+              var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm = preDate.getMinutes()-(curDate.getMinutes())%5;
+              mm=(mm<10)?('0'+mm):mm;pmm=(pmm<10)?('0'+pmm):pmm;
+              var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+              $(".start-date").val(pd);
+              $(".end-date").val(cd);
+              </script>
+              <span class="select-area">
+                <select name="ScheduleId" class="ZUI-select d-select">
+                  <option value="3">请选择调度方式</option>
+                  <option value="2">全局调度</option>
+                  <option value="1">本地调度</option>
+                </select>
+              </span>
+              <span class="select-area">
+                <select name="SignId" class="ZUI-select d-select">
+                  <option value="3">请选择签约方式</option>
+                  <option value="1">签约</option>
+                  <option value="0">非签约</option>
+                </select>
+              </span>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="CPId" class="ZUI-select d-select">
+                  <option value="">请选择CP</option>
+                  {{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id'}}}
+                </select>
+              </script>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="DomainGroupId" class="ZUI-select d-select">
+                  <option value="">请选择域名组</option>
+                  {{{global_show_select '' '/ApiDomainChannel/listDomainChannel' 'DomainGName' 'id'}}}
+                </select>
+              </script>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="DomainId" class="ZUI-select d-select">
+                  <option value="">请选择域名</option>
+                  {{{global_show_select '' '/ApiDomain/listDomain' 'DomainName' 'Id'}}}
+                </select>
+              </script>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="FileTypeId" class="ZUI-select d-select">
+                  <option value="">请选择文件类型</option>
+                  {{{global_show_select '' '/ApiStatisAnaly/getFileType' 'name' 'id'}}}
+                </select>
+              </script>
+              <span class="select-area">
+                <select name="Order" id="" class="ZUI-select d-select">
+                  <!--<option value="0">网站排行榜</option>-->
+                  <option value="1">按流量排行</option>
+                  <option value="2">按点击次数排行</option>
+                </select>
+              </span>
+              <a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+              <input type="hidden" name="Pagesize" value="15">
+            </span>
+          </form>
+          <div class="clearfix">                                   
+            <div class="table-holder col-sm-8" data-list data-url="/ApiStatisAnaly/fileTypeStatis" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+            <script type="template">
+              <table class="table table-hover">
+                {{#if byType}}
+                  <tr>
+                    <th>排序</th>
+                    <th>文件内容</th>
+                    <th>文件类型</th>
+                    <th>流量</th>
+                    <th>点击次数(次)</th>
+                    <th>百分比(%)</th>
+                  </tr>
+                  {{#each rows}}
+                    <tr>
+                      <td>{{{_ @index}}}</td>
+                      <td>  
+                        <span class="ZUI-url" title="{{content}}">{{content}}</span>
+                      </td>
+                      <td>{{type}}</td>
+                      <td>{{flow}}</td>
+                      <td>{{visit}}</td>
+                      <td>{{percent}}</td>
+                    </tr>
+                  {{/each}}
+                {{else}}
+                  <tr>
+                    <th>排序</th>
+                    <th>文件类型</th>
+                    <th>流量</th>
+                    <th>点击次数 (次)</th>
+                    <th>百分比 (%)</th>
+                  </tr>
+                  {{#each rows}}
+                    <tr>
+                      <td>{{{_ @index}}}</td>
+                      <td>{{type}}</td>
+                      <td>{{flow}}</td>
+                      <td>{{visit}}</td>
+                      <td>{{percent}}</td>
+                    </tr>
+                  {{/each}}
+                {{/if}}
+              </table>
+            </script>
+            <div class="table-holder col-sm-4" style="height:400px;">
+              <div class="other-chart other-chart1"></div>
+            </div>
+            <div  data-list data-url="/ApiStatisAnaly/fileTypeStatisPie" data-method="post" data-form="#search-bar" ></div>
+            <script type="template">
+              {{_fileTypePie rows ".other-chart1"}}
+            </script>
+          </div>
+          <div class="clearfix">
+            <div class="pager row">
+              <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+              <div id="pager-bar" class="col-sm-8"></div>
+            </div>
+          </div>
+				</div>
+        <!--请求对象大小统计-->
+        <div role="tabpanel" class="tab-pane" id="objSize">
+          <form class="tab-formtab-form form-container clearfix" id="search-bar2">
+            <a class="ZUI-btn btnicon01 trend-export" data-href="/ApiStatisAnaly/fileSizeStatisExport"><span>导出</span></a>
+            <span class="float-r clearfix">
+              <span class="select-area">
+                <select name="ScheduleId" class="ZUI-select d-select">
+                  <option value="3">请选择调度方式</option>
+                  <option value="2">全局调度</option>
+                  <option value="1">本地调度</option>
+                </select>
+              </span>
+              <span class="select-area">
+                <select name="SignId" class="ZUI-select d-select">
+                  <option value="3">请选择签约方式</option>
+                  <option value="1">签约</option>
+                  <option value="0">非签约</option>
+                </select>
+              </span>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="CPId" class="ZUI-select d-select">
+                  <option value="">请选择CP</option>
+                  {{{global_show_select '' '/ApiDomainGroup/listDomainGroup' 'GroupName' 'Id'}}}
+                </select>
+              </script>
+
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="DomainGroupId" class="ZUI-select d-select">
+                  <option value="">请选择域名组</option>
+                  {{{global_show_select '' '/ApiDomainChannel/listDomainChannel' 'DomainGName' 'id'}}}
+                </select>
+              </script>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="DomainId" class="ZUI-select d-select">
+                  <option value="">请选择域名</option>
+                  {{{global_show_select '' '/ApiDomain/listDomain' 'DomainName' 'Id'}}}
+                </select>
+              </script>
+                 <span class="select-area" data-list></span>
+                <script type="template">
+                  <select name="file_type" class="ZUI-select d-select" id="file_type" >
+                      <option value="">文件类型</option>
+                      <option value="0">小文件</option>
+                      <option value="1">大文件</option>
+                      <option value="2">P2P</option>
+                  </select>
+              </script>
+              <span class="select-area" data-list></span>
+              <script type="template">
+                <select name="FileSizeId" class="ZUI-select d-select" id="FileSizeId">
+                    <option value="0" >文件大小</option>
+                    <option value="1" size="300KB"  style="display:none" >0-300KB</option>
+                    <option value="2" size="300KB2M" style="display:none" >300KB-2MB</option>
+                    <option value="3" size="2M" style="display:none" >2MB以上</option>
+                    <option value="4" size="1M" style="display:none" >1MB以下</option>
+                    <option value="5" size="1M10M" style="display:none" >1MB-10MB</option>
+                    <option value="6" size="10M" style="display:none" >10MB以上</option>
+
+                </select>
+              </script>
+
+              <input type="text" name="StartTime" class="start-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">  至
+              <input type="text" name="EndTime" class="end-date d-input data-picker ZUI-input" placeholder="请选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+              <span class="select-area">
+                <select name="Order" id=""  class="ZUI-select d-select">
+                  <!--<option value="0">网站排行榜</option>-->
+                  <option value="1">按流量排行</option>
+                  <option value="2">按点击次数排行</option>
+                </select>
+              </span>
+              <a class="ZUI-btn btnicon04 btn-submit">&nbsp;</a>
+              <input type="hidden" name="Pagesize" value="15">
+            </span>
+          </form>
+          <div class="clearfix">                                                   
+            <div class="table-holder col-sm-8" data-list data-url="/ApiStatisAnaly/fileSizeStatis" data-pager="#pager-bar2" data-method="post" data-form="#search-bar2" data-totalshow="#total-bar2"></div>
+            <script type="template">
+              <table class="table table-hover">
+                {{#if bySize}}
+                  <tr>
+                    <th>排序</th>
+
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="file_type">文件内容</a></th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="size">文件大小</a></th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="flow">流量</a></th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="visit">点击次数(次)</a> </th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="percent">百分比(%)</a> </th>
+                  </tr>
+                  {{#each rows}}
+                    <tr>
+                      <td>{{{_ @index}}}</td>
+                      <td>
+                        <span class="ZUI-url" title="{{content}}">{{content}}</span>
+                      </td>
+                      <td>{{size}}</td>
+                      <td>{{flow}}</td>
+                      <td>{{visit}}</td>
+                      <td>{{percent}}</td>
+                    </tr>
+                  {{/each}}
+                {{else}}
+                  <tr>
+                    <th>排序</th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="file_type" >文件内容</a></th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="size">文件大小</a></th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="flow">流量</a></th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="visit">点击次数 (次)</a> </th>
+                      <th><a href="javascript:void(0);" class="t-sort-item" data-sort="percent">百分比 (%)</a> </th>
+                  </tr>
+                  {{#each rows}}
+                    <tr>
+                      <td>{{{_ @index}}}</td>
+                       <td>{{{file_type}}}</td>
+                      <td>{{size}}</td>
+                      <td>{{flow}}</td>
+                      <td>{{visit}}</td>
+                      <td>{{percent}}</td>
+                    </tr>
+                  {{/each}}
+                {{/if}}
+              </table>
+            </script>
+            <div class="table-holder col-sm-4" style="height:400px;">
+              <div class="other-chart other-chart2"></div>
+            </div>
+            <div  data-list data-url="/ApiStatisAnaly/fileSizeStatisPie" data-method="post" data-form="#search-bar2" ></div>
+            <script type="template">
+              {{_fileTypePie rows ".other-chart2"}}
+            </script>
+          </div>
+          <div class="clearfix">
+            <div class="pager row">
+              <div class="col-sm-4">共<span id="total-bar2">0</span>条记录</div>
+              <div id="pager-bar2" class="col-sm-8"></div>
+            </div>
+          </div>
+				</div>
+		  </div>
+		</div>
+	</div>
+</div>
+

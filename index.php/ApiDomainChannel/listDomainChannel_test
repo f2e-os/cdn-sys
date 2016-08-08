@@ -1,0 +1,74 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "搜索频道列表成功",
+    "total": "20",
+    "rows": [
+        {
+            "id": "8",
+            "DomainGName": "新建域名组",
+            "DomainGPrefix": "新建前缀",
+            "CPName": "新建CP1",
+            "ParentDomainId": ["新建域名"],
+            "SourceStrategy": "1",
+            "AnalysisRule": "规则",
+            "CachePriorityName": "高",
+            "ServicePriorityName": "低"
+        },
+        {
+            "id": "9",
+            "DomainGName": "wotestyuming",
+            "DomainGPrefix": "aaa",
+            "CPName": "wotest",
+            "ParentDomainId": ["www.net-east.com","cpro.baidustatic.com"],
+            "SourceStrategy": "0",
+            "AnalysisRule": "规则",
+            "CachePriorityName": "中",
+            "ServicePriorityName": "中"
+        },
+        {
+            "id": "7",
+            "DomainGName": "wotestyuming",
+            "DomainGPrefix": "aaa",
+            "CPName": "wotest",
+            "ParentDomainId": ["www.net-east.com","cpro.baidustatic.com"],
+            "SourceStrategy": "1",
+            "AnalysisRule": "规则",
+            "CachePriorityName": "高",
+            "ServicePriorityName": "低"
+        },
+        {
+            "id": "6",
+            "DomainGName": "wotestyuming",
+            "DomainGPrefix": "aaa",
+            "CPName": "wotest",
+            "ParentDomainId": ["www.net-east.com","cpro.baidustatic.com"],
+            "SourceStrategy": "0",
+            "AnalysisRule": "规则",
+            "CachePriorityName": "高",
+            "ServicePriorityName": "低"
+        },
+        {
+            "id": "5",
+            "DomainGName": "wotestyuming",
+            "DomainGPrefix": "aaa",
+            "CPName": "wotest",
+            "ParentDomainId": ["www.net-east.com","cpro.baidustatic.com"],
+            "SourceStrategy": "1",
+            "AnalysisRule": "规则",
+            "CachePriorityName": "高",
+            "ServicePriorityName": "低"
+        },
+        {
+            "id": "6",
+            "DomainGName": "wotestyuming",
+            "DomainGPrefix": "aaa",
+            "CPName": "wotest",
+            "ParentDomainId": ["www.net-east.com","cpro.baidustatic.com"],
+            "SourceStrategy": "0",
+            "AnalysisRule": "规则",
+            "CachePriorityName": "高",
+            "ServicePriorityName": "低"
+        }
+    ]
+}

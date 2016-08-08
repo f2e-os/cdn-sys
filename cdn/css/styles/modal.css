@@ -1,0 +1,71 @@
+.modal-backdrop{
+	z-index: 9999;
+}
+.modal-open .modal{
+	z-index: 10000;
+}
+.modal .modal-body{
+	text-align: center;
+	font: bold 16px/2 "Microsoft Yahei";
+	padding: 2em 1em 0;
+	overflow: hidden;
+}
+.modal .modal-footer{
+	text-align: center;
+	padding-bottom: 2em;
+	border: 0;
+}
+.modal .modal-dialog{
+	padding: 30px;
+}
+.modal-header{
+	padding: 4px 15px;
+	font-size: 14px;
+	background: #1b7ed1;
+	color: #fff;
+}
+.modal-header h4{
+	font-family: "simsun";
+}
+.modal-header .close{
+	color: #fff;
+	opacity: 1;
+}
+.modal-content{
+	border-radius: 3px;
+}
+@media (min-width: 768px){
+	.modal-dialog {
+	    min-width: 400px;
+	    margin: 30px auto;
+	}
+}
+@media (max-width: 768px){
+	.modal-dialog {
+	    width: auto !important;
+	}
+}
+.modal-body .ZUI-checkbox + label{top:10px;}
+
+.modal-body .checkbox-all{
+	display: block;
+	line-height: 24px;
+	height: 24px;
+	margin-top: -20px;
+}
+.modal-body .checkbox-list{
+	display: block;
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+.device-list-department{
+	text-align: left;
+}
+.modal-body .checkbox-list > label{
+	width:40%;
+	line-height: 24px;
+	height: 24px;
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+}

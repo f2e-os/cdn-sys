@@ -1,0 +1,375 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "rows": [
+        {
+            "name": "运行状态",
+            "module": "dashboard",
+            "icon": "icon01"
+        },
+        {
+            "name": "数据分析",
+            "module": "data",
+            "icon": "icon02",
+            "children": [
+                {
+                    "name": "热点内容统计",
+                    "module": "data",
+                    "icon": "icon14",
+                    "active": "active"
+                },
+                {
+                    "name": "用户行为统计",
+                    "module": "analysis/userBehavior",
+                    "icon": "icon15"
+                },
+                {
+                    "name": "数据流量统计",
+                    "module": "analysis/dataTraffic",
+                    "icon": "icon16"
+                },
+                {
+                    "name": "趋势分析统计",
+                    "module": "analysis/trend",
+                    "icon": "icon17"
+                },
+                {
+                    "name": "其他统计",
+                    "module": "analysis/other",
+                    "icon": "icon18"
+                },
+                {
+                    "name": "分级存储统计",
+                    "module": "analysis/storage",
+                    "icon": "icon19"
+                }
+            ]
+        },
+        {
+            "name": "设备配置",
+            "module": "host",
+            "icon": "icon03",
+            "children": [
+                {
+                    "name": "分发策略管理",
+                    "module": "host",
+                    "icon": "icon24",
+                    "active": "active"
+                },
+                {
+                    "name": "缓存策略管理",
+                    "module": "host/manage/policy",
+                    "icon": "icon25"
+                },
+                {
+                    "name": "缓存规则策略管理",
+                    "module": "host_cacheRuleM",
+                    "icon": "icon26"
+                },
+                {
+                    "name": "OMS 缓存策略管理",
+                    "module": "host/omsManage/omslist",
+                    "icon": "icon26"
+                },
+                {
+                    "name": "缓存规则库配置",
+                    "module": "host/ruleconf/list",
+                    "icon": "icon26"
+                },
+                {
+                    "name": "过滤策略配置管理",
+                    "module": "host_accessStatic",
+                    "icon": "icon27"
+                },
+                {
+                    "name": "调度策略管理",
+                    "module": "host_dispatch",
+                    "icon": "icon28"
+                },
+                {
+                    "name": "回源策略管理",
+                    "module": "host_trace",
+                    "icon": "icon29"
+                },
+                {
+                    "name": "重定向黑名单管理",
+                    "module": "host_blacklist",
+                    "icon": "icon31"
+                },
+                {
+                    "name": "GSLB黑名单",
+                    "module": "host/gslb",
+                    "icon": "icon32"
+                },
+                {
+                    "name": "内容复制配置",
+                    "module": "host/content/conf",
+                    "icon": "icon33"
+                },
+                {
+                    "name": "webcache配置",
+                    "module": "host/webcache/list",
+                    "icon": "icon30"
+                },
+                {
+                    "name": "用户访问日志配置",
+                    "module": "host/record",
+                    "icon": "icon34"
+                },
+                {
+                    "name": "告警配置",
+                    "module": "host/warning",
+                    "icon": "icon06"
+                },
+                {
+                    "name": "缓存基本配置",
+                    "module": "host/cache_config",
+                    "icon": "icon35"
+                },
+                {
+                    "name": "缓存规则库配置",
+                    "module": "host/ruleconf/list",
+                    "icon": "icon35"
+                },
+                {
+                    "name": "HTTP缓存配置",
+                    "module": "host_httpcache",
+                    "icon": "icon36"
+                },
+                {
+                    "name": "ruler配置",
+                    "module": "host/ruler/list",
+                    "icon": "icon37"
+                },
+                {
+                    "name": "pps白名单配置",
+                    "module": "host_pps",
+                    "icon": "icon38"
+                },
+                {
+                    "name": "动态策略管理",
+                    "module": "host/Dynamic",
+                    "icon": "icon27"
+                }
+            ]
+        },
+        {
+            "name": "资源配置",
+            "module": "source",
+            "icon": "icon04",
+            "children": [
+                {
+                    "name": "节点管理",
+                    "module": "source",
+                    "icon": "icon03",
+                    "active": "active"
+                },
+                {
+                    "name": "CP节点查看",
+                    "module": "source/node/regionL",
+                    "icon": "icon03"
+                },
+                {
+                    "name": "CP管理",
+                    "module": "source_cp",
+                    "icon": "icon39"
+                },
+                {
+                    "name": "CP域名管理",
+                    "module": "source_cpdomain",
+                    "icon": "icon39"
+                },
+                {
+                    "name": "内容管理",
+                    "module": "source_subInto",
+                    "icon": "icon40"
+                },
+                {
+                    "name": "IP地址库管理",
+                    "module": "source_ipmanage",
+                    "icon": "icon41"
+                }
+            ]
+        },
+        {
+            "name": "监控告警",
+            "module": "monitor",
+            "icon": "icon05",
+            "children": [
+                {
+                    "name": "设备监控",
+                    "module": "monitor",
+                    "icon": "icon05",
+                    "active": "active"
+                },
+                {
+                    "name": "警告",
+                    "module": "monitor/alert",
+                    "icon": "icon06"
+                },
+                {
+                    "name": "警告123",
+                    "module": "monitor/alert123",
+                    "icon": "icon06"
+                }
+            ]
+        },
+        {
+            "name": "日志系统",
+            "module": "record",
+            "icon": "icon06",
+            "children": [
+                {
+                    "name": "操作日志",
+                    "module": "record",
+                    "icon": "icon10",
+                    "active": "active"
+                },
+                {
+                    "name": "系统日志",
+                    "module": "record/system",
+                    "icon": "icon11"
+                },
+                {
+                    "name": "安全日志",
+                    "module": "record/safety",
+                    "icon": "icon12"
+                },
+                {
+                    "name": "访问日志",
+                    "module": "record/visit",
+                    "icon": "icon13"
+                }
+            ]
+        },
+        {
+            "name": "溯源评估",
+            "module": "trace",
+            "icon": "icon07",
+            "children": [
+                {
+                    "name": "回复流量评估",
+                    "module": "trace",
+                    "icon": "icon19",
+                    "active": "active"
+                },
+                {
+                    "name": "回溯次数评估",
+                    "module": "trace/frequency",
+                    "icon": "icon20"
+                },
+                {
+                    "name": "缓存内容重复利用率",
+                    "module": "trace/cache",
+                    "icon": "icon21"
+                },
+                {
+                    "name": "回吐成功率评估",
+                    "module": "trace/backspit",
+                    "icon": "icon07"
+                },
+                {
+                    "name": "回源占比分析",
+                    "module": "trace/proportion",
+                    "icon": "icon18"
+                },
+                {
+                    "name": "各省缓存溯源白名单",
+                    "module": "trace/whitelist",
+                    "icon": "icon22"
+                },
+                {
+                    "name": "pps重定向评估",
+                    "module": "trace/redirect",
+                    "icon": "icon23"
+                }
+            ]
+        },
+        {
+            "name": "分发评估",
+            "module": "distribute",
+            "icon": "icon08",
+            "children": [
+                {
+                    "name": "分发成功率评估",
+                    "module": "distribute",
+                    "icon": "icon07",
+                    "active": "active"
+                },
+                {
+                    "name": "分发内容流量统计",
+                    "module": "distribute/conflow",
+                    "icon": "icon19"
+                },
+                {
+                    "name": "服务对象统计",
+                    "module": "distribute/service_o",
+                    "icon": "icon09"
+                }
+            ]
+        },
+        {
+            "name": "认证计费",
+            "module": "account",
+            "icon": "icon09",
+            "children": [
+                {
+                    "name": "按流量计费",
+                    "module": "account",
+                    "icon": "icon00",
+                    "active": "active"
+                },
+                {
+                    "name": "按时长计费",
+                    "module": "account/timePrice",
+                    "icon": "icon01"
+                },
+                {
+                    "name": "按带宽计费",
+                    "module": "account/widthPrice",
+                    "icon": "icon02"
+                },
+                {
+                    "name": "按节点计费",
+                    "module": "account/nodePrice",
+                    "icon": "icon03"
+                },
+                {
+                    "name": "按吞吐率计费",
+                    "module": "account/ratePrice",
+                    "icon": "icon04"
+                }
+            ]
+        },
+        {
+            "name": "系统配置",
+            "module": "system",
+            "icon": "icon10",
+            "children": [
+                {
+                    "name": "用户管理",
+                    "module": "system",
+                    "icon": "icon15",
+                    "active": "active"
+                },
+                {
+                    "name": "用户权限管理",
+                    "module": "system_user_userAuth",
+                    "icon": "icon42"
+                },
+                {
+                    "name": "用户组管理",
+                    "module": "system_user_group",
+                    "icon": "icon43"
+                },
+                {
+                    "name": "用户组权限管理",
+                    "module": "system_user_groupAuth",
+                    "icon": "icon44"
+                }
+            ]
+        }
+    ],
+    "total": "61"
+}

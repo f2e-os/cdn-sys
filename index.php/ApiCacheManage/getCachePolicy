@@ -1,0 +1,17 @@
+{
+    "message": "成功",
+    "code": 1,
+    "status": "success",
+    "info": [
+        {
+            "Id": "1",
+            "updatePeriod": "1",
+            "diskUp": "10",
+            "maxCache": "10",
+            "minCache": "10",
+            "hotThr": "10",
+            "DNSModel": "1",
+            "Compress": "1"
+        }
+    ]
+}

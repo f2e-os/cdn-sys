@@ -1,0 +1,49 @@
+.source .panel{
+	padding: 15px;
+	min-height: 600px;
+}
+.source .pdt15{padding-top:15px; }
+.modal-dialog .pd20{padding: 20px;}
+.modal-dialog .pd15{padding: 15px;}
+.source .content{padding: 30px;}
+#handoutD-addstrategy-form .input-group , #group-form .input-group{
+	position: relative;
+	display: block;
+	width: 500px;
+	padding-left: 110px;
+	margin-bottom: 10px;
+}
+#group-form .input-group{
+	width: 400px;
+	padding-left: 120px;
+}
+
+#group-form .ZUI-input{
+	width: 300px;
+}
+#handoutD-addstrategy-form .input-group > span , #group-form .input-group > span{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 34px;
+	line-height: 34px;
+}
+
+#handoutD-addstrategy-form .sys-btns, #source-searchUser-handoutD .sys-btns{
+	border-top: #ddd solid 1px;
+	padding-top: 30px;
+	margin-top: 20px;
+}
+
+#handoutD-addstrategy-form .form-control.radioBox{
+	border: none;
+	box-shadow: none;
+}
+
+#handoutD-addstrategy-form .radioBox span{
+	margin-right: 10px;
+}
+/*ip地址库管理批量上传*/
+#ipmanage .ipmanageF-size{position: absolute;top:0px;left:152px;width:90px;height: 28px;overflow: hidden }
+#ipmanage .ipmanageF-size input{position: absolute;right: 0;cursor: pointer;filter: alpha(opacity = 0);opacity: 0;}
+#ipmanage .ipmanageUpload{display: none;}

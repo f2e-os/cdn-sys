@@ -1,0 +1,79 @@
+<div class="FUI source-cp">
+	<div class="col-sm-12">
+		资源配置 -&gt; CP管理 -&gt; <span id="subTabDetail"></span>
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="source_cp" class="active"><a href="javascript:void(0);">CP配置</a></li>
+			<li data-menu="source_cp_domain"><a href="javascript:void(0);">域名配置</a></li>
+			<li data-menu="source_cp_domaingroup"><a href="javascript:void(0);">域名组配置</a></li>
+		</ul>
+		<div class="panel">
+			<div class="row">
+				<div class="col-sm-6">
+					<a href="javascript:void(0);" class="btn btn-primary btn-add">+ 添加CP</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-del">- 批量删除</a>
+				</div>
+				<div class="col-sm-6 text-right">
+					<form id="search-bar" class="row">
+						<input type="hidden" name="Pagesize" value="15">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<input type="text" class="form-control" name="CP_name" placeholder="请输入CP名称">
+								<div class="input-group-addon btn-submit">搜索</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="table-holder" data-list data-url="/ApiDomainGroup/listDomainGroup" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+			<script type="template">
+				<table class="table table-hover">
+					<tr>
+						<th>
+							<input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+							<label for="host-distribute-check-all">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</th>
+						<th width="40%">CP名称</th>
+						<th width="40%">CP描述</th>
+						<th>操作</th>
+					</tr>
+					{{#each rows}}
+					<tr data-ID="{{Id}}">
+						<td>
+							<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{Id}}" id="host-distribute-check{{Id}}" data-id="{{Id}}">
+							<label for="host-distribute-check{{Id}}">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</td>
+						<td>{{GroupName}}</td>
+						<td>{{GroupDesc}}</td>
+						<td><a href="javascript:void(0);" class="ZUI-operate list-update"><span class="iconfont">&#xe602;</span>编辑</a><a href="javascript:void(0);" class="ZUI-operate list-del"><span class="iconfont">&#xe603;</span>删除</a></td>
+					</tr>
+					{{/each}}
+				</table>
+			</script>
+			<div class="pager row">
+				<div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+				<div id="pager-bar" class="col-sm-8"></div>
+			</div>
+			<script type="template/html" id="form-template">
+				<div class="col-sm-10">
+					<input type="hidden" name="Id" value="{{Id}}">
+					<div class="input-group pd15">
+						<label class="input-group-addon" for="GroupName">CP名称<span class="ZUI-require"></span></label>
+						<input type="text" class="form-control" id="GroupName" name="GroupName" placeholder="" value="{{GroupName}}">
+					</div>
+					<div class="input-group pd15">
+						<label class="input-group-addon" for="GroupDesc">CP描述&nbsp;&nbsp;&nbsp;</label>
+						<input type="text" class="form-control" id="GroupDesc" name="GroupDesc" placeholder="" value="{{GroupDesc}}">
+					</div>
+				</div>
+			</script>
+		</div>
+	</div>
+</div>

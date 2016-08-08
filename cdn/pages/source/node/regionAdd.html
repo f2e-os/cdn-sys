@@ -1,0 +1,36 @@
+<div class="host">
+	<div class="col-sm-12">
+		资源配置 -&gt; 节点管理 -&gt;区域管理 -&gt;<span class="detail">新增</span>
+	</div>
+	<div class="col-sm-12">
+		<div class="panel handoutadd">
+      <form class="form-horizontal col-sm-12 auto-submit" action="/ApiArea/addArea" method="get" data-target="source" >
+          <div class="form-group">
+            <label class="col-sm-2 control-label">名称<span class="ZUI-require"></span>:</label>
+            <div class="col-sm-10">
+                 <input type="text" class="ZUI-input" name="Name" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">描述:</label>
+            <div class="col-sm-10">
+                 <input type="text" class="ZUI-input" name="Content" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">区域状态:</label>
+            <div class="col-sm-10">
+            	<div class="radioBox" data-list></div>
+              	<script type="template">{{{global_show_radio "Status" "Status" "" "" "1"}}}</script>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+              <a href="javascript:;" class="btn btn-default" role="button" data-menu="source">取消</a>
+            </div>
+          </div>
+      </form>
+		</div>
+	</div>
+</div>

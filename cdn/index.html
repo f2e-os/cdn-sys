@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache管理系统</title>
+    <script src="js/base.min.js"></script>
+    <script src="js/My97DatePicker/WdatePicker.js"></script>
+    <script src="js/jquery.ztree.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars.min.js"></script>
+    <script src="js/sea.min.js"></script>
+    
+    <!-- <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap_alter.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/combine.css">
+    <link rel="stylesheet" href="css/zTreeStyle.css">
+
+    <!-- HTML5 shim IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header class="navbar navbar-inverse bs-docs-nav" role="banner">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-controls="bs-navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="img/logo.jpg" alt="中国移动Cache管理系统"></a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav zTnav" data-list data-url="/ApiMenu/listMenu"></ul>  
+            <script type="template">
+                {{#each rows}}
+                <li>
+                    <a href="" class="nav-{{module}}" data-module="{{module}}">
+                        <span class="zTnav-icon zTnav-{{icon}}"><b></b></span>
+                        <strong>{{name}}</strong>
+                    </a>
+                </li>
+                {{/each}}
+            </script>
+            <ul class="nav navbar-nav navbar-right zui-unav">
+                <li class="dropdown">
+                  <a role="button" class="dropdown-toggle first" data-toggle="dropdown"><b class="iconM"></b><span id="user_name">admin</span> <b class="caret"></b></a>
+                  <ul class="dropdown-menu" >
+                    <li><a href="#" data-module="password">修改密码</a></li>
+                    <li><a href="#">-------</a></li>
+                  </ul>
+                </li>
+                <li class="zui-unav-set"><a href="" data-module="system" title="设置"></a></li>
+                <li class="zui-unav-esc"><a href="javascript:void(0)" title="退出" id="systemEsc"></a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="section">
+        <div id="menu-holder" style="display:none;">
+            <ul class="nav">
+                {{#each menu}}
+                <li><a href="#" class="{{active}}" data-menu="{{module}}"><span class="ZUI-icon {{icon}}">&nbsp;</span>{{name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        <div id="container">
+        </div>
+    </section>
+    <script src="js/combine.js?t=<%=+new Date%>"></script>
+    <!--[if lte IE 9]>
+    <script src="js/libs/placeholder.js"></script>
+    <script>
+        define('init-placeholder', function(require){
+            var T = require("T");
+            var Placeholder = require('placeholder');
+            if(Placeholder){
+                T.cfg.beforeSubmit = Placeholder.clear;
+                T.cfg.onSubmit = function (_form) {
+                    new Placeholder(_form);
+                };
+                T.cfg.callback = function (_t) {
+                    new Placeholder(_t);
+                };
+            }
+        });
+        seajs.use("init-placeholder");
+    </script>
+    <![endif]-->
+    <script>
+        seajs.use("all");
+    </script>
+</body>
+</html>

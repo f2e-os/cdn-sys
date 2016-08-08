@@ -1,0 +1,82 @@
+<div id="redirect" class="other">
+	<div class="col-sm-12">
+		溯源评估 -&gt; pps重定向评估
+	</div>
+	<div class="col-sm-12 other mgt15">
+		  <div class="tab-content redirect">
+        	<!--文件类型统计-->
+				<div class="row">
+	                <div class="col-sm-12 text-right">
+	                    <form id="redirect-form" class="row">
+	                    	<!--
+	                        <input type="hidden" name="Pagesize" value="15">
+	                        <div class="col-sm-4">
+	                            <select name="CP" class="form-control">
+	                                <option value="">是否CP</option>
+	                                <option value="1">是</option>
+	                                <option value="0">不是</option>
+	                            </select>
+	                        </div>
+	                       -->
+	                        <div class="col-sm-2">
+	                       		<input type="text" name="StartTime" class="start-date d-input data-picker form-control" placeholder="开始时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+          				    </div>
+          				    <div class="col-sm-2">
+          				   		 <input type="text" name="EndTime" class="end-date d-input data-picker form-control" placeholder="结束时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})">
+                            </div>
+                            <script type="text/javascript">
+								var curDate = new Date(),preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
+								var y = curDate.getFullYear(),m = curDate.getMonth()+1,d = curDate.getDate(),h = curDate.getHours(),mm = curDate.getMinutes()-(curDate.getMinutes())%5;
+								var py = preDate.getFullYear(),pm = preDate.getMonth()+1,pd = preDate.getDate(),ph = preDate.getHours(),pmm =preDate.getMinutes()-(preDate.getMinutes())%5;
+								mm=(mm<10)?('0'+mm):mm;
+								pmm=(pmm<10)?('0'+pmm):pmm;
+								var cd =  y+"-"+m+"-"+d+" "+h+":"+mm,pd =  py+"-"+pm+"-"+pd+" "+ph+":"+pmm;
+								$(".start-date").val(pd);
+								$(".end-date").val(cd);
+							</script>
+                         	<div class="col-sm-3">
+                        	  	<label class="col-sm-4 control-label" style="line-height: 32px;min-width: 90px;">省缓存:</label>
+                        	  	<div class="col-sm-6">
+	                            	<span data-title="选择省缓存节点"  data-param="type=2" data-url="/ApiCommon/getCacheSysList" class="form-control Node-selector" style="text-align: left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"></span>
+	              					<input type="hidden" name="CacheSysID" value="" placeholder="选择省缓存节点" require/>
+              					</div>
+                            </div>
+							
+							<div class="col-sm-2">
+								<select name="DepartName" id="HostName" class="form-control" value="{{HostName}}" data-list>
+	                            </select>
+	                            <script type="template"><option value="">设备</option>{{{global_show_select "HostName" "/ApiHost/listHost" "HostName" "Id" HostName}}}</script>
+							</div>
+                         	
+                        	<div class="col-sm-2">
+						    	<div class="btn-submit btn btn-default">查询</div>
+						    </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="show-area clearfix" style="margin-top: 15px;">
+		            <div class="table-holder col-sm-12" style="height:400px;">
+		            	<div class="other-chart redirect-chart1"></div>
+		            </div>
+		            <div class="table-holder col-sm-12" style="height:400px;">
+		            	<div class="other-chart redirect-chart2"></div>
+		            </div>
+		            <div class="table-holder col-sm-12" style="height:400px;">
+		            	<div class="other-chart redirect-chart3"></div>
+		            </div>
+		            <div  data-list data-url="/ApiTrace/frequencyRedirect" data-method="post" data-form="#redirect-form" ></div>
+		            <script type="template">
+		              {{_redirectPie rows ".redirect-chart1"}}
+		              {{_dnsredirectPie rows ".redirect-chart2"}}
+	                 </script>
+		          </div>
+		          <!--<div class="show-area clearfix">
+		              <div class="pager row">
+			              <div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+			              <div id="pager-bar" class="col-sm-8"></div>
+		              </div>
+		          </div>
+		          -->
+		  </div>
+	</div>
+</div>

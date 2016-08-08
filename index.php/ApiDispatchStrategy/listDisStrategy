@@ -1,0 +1,58 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "total": 40,
+    "rows": [
+        {
+            "Id": "1",
+            "StrategyName": "name111",
+            "HotThr": "1",
+            "Node": "2,2,3",
+            "Priority": "1",
+            "DisWay": "0",
+            "DisTime": "2015-09-01 16:30:27",
+            "NodeName": "黑龙江,吉林"
+        },
+        {
+            "Id": "2",
+            "StrategyName": "name222",
+            "HotThr": "1",
+            "Node": "2,2,3",
+            "Priority": "1",
+            "DisWay": "0",
+            "DisTime": "2015-09-01 16:30:27",
+            "NodeName": "黑龙江,吉林"
+        },
+        {
+            "Id": "3",
+            "StrategyName": "name333",
+            "HotThr": "1",
+            "Node": "2,2,3",
+            "Priority": "1",
+            "DisWay": "1",
+            "DisTime": "2015-09-01 16:30:27",
+            "NodeName": "黑龙江,吉林"
+        },
+        {
+            "Id": "4",
+            "StrategyName": "name444",
+            "HotThr": "1",
+            "Node": "2,2,3",
+            "Priority": "1",
+            "DisWay": "1",
+            "DisTime": "2015-09-01 16:30:27",
+            "NodeName": "黑龙江,吉林"
+        },
+        {
+            "Id": "5",
+            "StrategyName": "name555",
+            "HotThr": "1",
+            "Node": "2,2,3",
+            "Priority": "1",
+            "DisWay": "1",
+            "DisTime": "2015-09-01 16:30:27",
+            "NodeName": "黑龙江,吉林"
+        }
+    ]
+}

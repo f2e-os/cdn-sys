@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zTree</title>
+    <link rel="stylesheet" href="http://www.ztree.me/v3/css/demo.css">
+    <link rel="stylesheet" href="http://www.ztree.me/v3/css/zTreeStyle/zTreeStyle.css">
+    <script src="http://www.ztree.me/v3/js/jquery-1.4.4.min.js"></script>
+    <script src="http://www.ztree.me/v3/js/jquery.ztree.core-3.5.js"></script>
+</head>
+<body>
+    <h1>区域节点设备</h1>
+    <h6>[ 文件路径: core/simpleData.html ]</h6>
+        <pre style="display: block; width: 600px; position:absolute; left: 50%; margin-left: -300px;">
+[
+    { id:"qy-1", pId:0, name:"区域1", isParent:true},
+    { id:"qy-2", pId:0, name:"区域2", isParent:true},
+    { id:"qy-3", pId:0, name:"区域3", isParent:true},
+    { id:"qy-4", pId:0, name:"区域4", isParent:true},
+    { id:"qy-5", pId:0, name:"区域5", isParent:true},
+    { id:"jd-1", pId:"qy-1", name:"节点1", isParent:true},
+    { id:"jd-2", pId:"qy-1", name:"节点2", isParent:true},
+    { id:"jd-3", pId:"qy-1", name:"节点3", isParent:true},
+    { id:"jd-4", pId:"qy-1", name:"节点4", isParent:true},
+    { id:"jd-5", pId:"qy-2", name:"节点5", isParent:true},
+    { id:"jd-6", pId:"qy-2", name:"节点6", isParent:true},
+    { id:"jd-7", pId:"qy-2", name:"节点7", isParent:true},
+    { id:"jd-8", pId:"qy-2", name:"节点8", isParent:true},
+    { id:"jd-9", pId:"qy-3", name:"节点9", isParent:true},
+    { id:"jd-10", pId:"qy-4", name:"节点10", isParent:true},
+    { id:"jd-11", pId:"qy-4", name:"节点11", isParent:true},
+    { id:"jd-12", pId:"qy-4", name:"节点12", isParent:true},
+    { id:"jd-13", pId:"qy-4", name:"节点13", isParent:true},
+    { id:"jd-14", pId:"qy-5", name:"节点14", isParent:true},
+    { id:"jd-15", pId:"qy-5", name:"节点15", isParent:true},
+    { id:"jd-16", pId:"qy-5", name:"节点16", isParent:true},
+    { id:"jd-17", pId:"qy-5", name:"节点17", isParent:true},
+    { id:"sb-1", pId:"jd-1", name:"设备1"},
+    { id:"sb-2", pId:"jd-1", name:"设备2"},
+    { id:"sb-3", pId:"jd-1", name:"设备3"},
+    { id:"sb-4", pId:"jd-2", name:"设备4"},
+    { id:"sb-5", pId:"jd-2", name:"设备5"},
+    { id:"sb-6", pId:"jd-2", name:"设备6"},
+    { id:"sb-7", pId:"jd-2", name:"设备7"},
+    { id:"sb-8", pId:"jd-3", name:"设备8"},
+    { id:"sb-9", pId:"jd-3", name:"设备9"},
+    { id:"sb-10", pId:"jd-4", name:"设备10"},
+    { id:"sb-11", pId:"jd-4", name:"设备11"},
+    { id:"sb-12", pId:"jd-4", name:"设备12"},
+    { id:"sb-13", pId:"jd-4", name:"设备13"},
+    { id:"sb-14", pId:"jd-5", name:"设备14"},
+    { id:"sb-15", pId:"jd-5", name:"设备15"},
+    { id:"sb-16", pId:"jd-5", name:"设备16"},
+    { id:"sb-17", pId:"jd-5", name:"设备17"},
+    { id:"sb-18", pId:"jd-6", name:"设备18"},
+    { id:"sb-19", pId:"jd-6", name:"设备19"},
+    { id:"sb-20", pId:"jd-6", name:"设备20"},
+    { id:"sb-21", pId:"jd-6", name:"设备21"},
+    { id:"sb-22", pId:"jd-7", name:"设备22"},
+    { id:"sb-23", pId:"jd-7", name:"设备23"},
+    { id:"sb-24", pId:"jd-8", name:"设备24"},
+    { id:"sb-25", pId:"jd-8", name:"设备25"},
+    { id:"sb-26", pId:"jd-9", name:"设备26"},
+    { id:"sb-27", pId:"jd-9", name:"设备27"},
+    { id:"sb-28", pId:"jd-9", name:"设备28"},
+    { id:"sb-29", pId:"jd-10", name:"设备29"},
+    { id:"sb-30", pId:"jd-10", name:"设备30"},
+    { id:"sb-31", pId:"jd-10", name:"设备31"},
+    { id:"sb-32", pId:"jd-11", name:"设备32"},
+    { id:"sb-33", pId:"jd-12", name:"设备33"},
+    { id:"sb-34", pId:"jd-13", name:"设备34"},
+    { id:"sb-35", pId:"jd-14", name:"设备35"},
+    { id:"sb-36", pId:"jd-15", name:"设备36"},
+    { id:"sb-37", pId:"jd-16", name:"设备37"},
+    { id:"sb-38", pId:"jd-16", name:"设备38"},
+    { id:"sb-39", pId:"jd-17", name:"设备39"},
+    { id:"sb-40", pId:"jd-17", name:"设备40"}
+]
+        </pre>
+    <div class="content_wrap">
+        <div class="zTreeDemoBackground left">
+            <ul id="treeDemo" class="ztree"></ul>
+        </div>
+    </div>
+    <script>
+
+        var setting = {
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        var zNodes = [
+            { id:"qy-1", pId:0, name:"区域1", isParent:true},
+            { id:"qy-2", pId:0, name:"区域2", isParent:true},
+            { id:"qy-3", pId:0, name:"区域3", isParent:true},
+            { id:"qy-4", pId:0, name:"区域4", isParent:true},
+            { id:"qy-5", pId:0, name:"区域5", isParent:true},
+            { id:"jd-1", pId:"qy-1", name:"节点1", isParent:true},
+            { id:"jd-2", pId:"qy-1", name:"节点2", isParent:true},
+            { id:"jd-3", pId:"qy-1", name:"节点3", isParent:true},
+            { id:"jd-4", pId:"qy-1", name:"节点4", isParent:true},
+            { id:"jd-5", pId:"qy-2", name:"节点5", isParent:true},
+            { id:"jd-6", pId:"qy-2", name:"节点6", isParent:true},
+            { id:"jd-7", pId:"qy-2", name:"节点7", isParent:true},
+            { id:"jd-8", pId:"qy-2", name:"节点8", isParent:true},
+            { id:"jd-9", pId:"qy-3", name:"节点9", isParent:true},
+            { id:"jd-10", pId:"qy-4", name:"节点10", isParent:true},
+            { id:"jd-11", pId:"qy-4", name:"节点11", isParent:true},
+            { id:"jd-12", pId:"qy-4", name:"节点12", isParent:true},
+            { id:"jd-13", pId:"qy-4", name:"节点13", isParent:true},
+            { id:"jd-14", pId:"qy-5", name:"节点14", isParent:true},
+            { id:"jd-15", pId:"qy-5", name:"节点15", isParent:true},
+            { id:"jd-16", pId:"qy-5", name:"节点16", isParent:true},
+            { id:"jd-17", pId:"qy-5", name:"节点17", isParent:true},
+            { id:"sb-1", pId:"jd-1", name:"设备1"},
+            { id:"sb-2", pId:"jd-1", name:"设备2"},
+            { id:"sb-3", pId:"jd-1", name:"设备3"},
+            { id:"sb-4", pId:"jd-2", name:"设备4"},
+            { id:"sb-5", pId:"jd-2", name:"设备5"},
+            { id:"sb-6", pId:"jd-2", name:"设备6"},
+            { id:"sb-7", pId:"jd-2", name:"设备7"},
+            { id:"sb-8", pId:"jd-3", name:"设备8"},
+            { id:"sb-9", pId:"jd-3", name:"设备9"},
+            { id:"sb-10", pId:"jd-4", name:"设备10"},
+            { id:"sb-11", pId:"jd-4", name:"设备11"},
+            { id:"sb-12", pId:"jd-4", name:"设备12"},
+            { id:"sb-13", pId:"jd-4", name:"设备13"},
+            { id:"sb-14", pId:"jd-5", name:"设备14"},
+            { id:"sb-15", pId:"jd-5", name:"设备15"},
+            { id:"sb-16", pId:"jd-5", name:"设备16"},
+            { id:"sb-17", pId:"jd-5", name:"设备17"},
+            { id:"sb-18", pId:"jd-6", name:"设备18"},
+            { id:"sb-19", pId:"jd-6", name:"设备19"},
+            { id:"sb-20", pId:"jd-6", name:"设备20"},
+            { id:"sb-21", pId:"jd-6", name:"设备21"},
+            { id:"sb-22", pId:"jd-7", name:"设备22"},
+            { id:"sb-23", pId:"jd-7", name:"设备23"},
+            { id:"sb-24", pId:"jd-8", name:"设备24"},
+            { id:"sb-25", pId:"jd-8", name:"设备25"},
+            { id:"sb-26", pId:"jd-9", name:"设备26"},
+            { id:"sb-27", pId:"jd-9", name:"设备27"},
+            { id:"sb-28", pId:"jd-9", name:"设备28"},
+            { id:"sb-29", pId:"jd-10", name:"设备29"},
+            { id:"sb-30", pId:"jd-10", name:"设备30"},
+            { id:"sb-31", pId:"jd-10", name:"设备31"},
+            { id:"sb-32", pId:"jd-11", name:"设备32"},
+            { id:"sb-33", pId:"jd-12", name:"设备33"},
+            { id:"sb-34", pId:"jd-13", name:"设备34"},
+            { id:"sb-35", pId:"jd-14", name:"设备35"},
+            { id:"sb-36", pId:"jd-15", name:"设备36"},
+            { id:"sb-37", pId:"jd-16", name:"设备37"},
+            { id:"sb-38", pId:"jd-16", name:"设备38"},
+            { id:"sb-39", pId:"jd-17", name:"设备39"},
+            { id:"sb-40", pId:"jd-17", name:"设备40"}
+        ];
+        console.log( JSON.stringify(zNodes,null,4) );
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
+    </script>
+</body>
+</html>

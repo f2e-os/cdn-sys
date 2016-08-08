@@ -1,0 +1,15 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "info": {
+        "Id": "1",
+        "StrategyName": "name111",
+        "HotThr": "1",
+        "Node": "2,2,3",
+        "Priority": "1",
+        "DisWay": "0",
+        "DisTime": "2015-09-01 16:30:27",
+        "NodeName": "黑龙江,吉林"
+    }
+}

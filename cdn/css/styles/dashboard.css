@@ -1,0 +1,78 @@
+.dashboard .panel{
+    margin-bottom: 10px;
+    border: 1px solid #ebebeb;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAoCAYAAAA/tpB3AAAAEElEQVQIW2NMXv3oP+PQJwDA83WBCWmdfwAAAABJRU5ErkJggg==) repeat-x 0 -1px #fff;
+    padding-left: 15px;
+}
+.dashboard .nav-tabs{
+	background: #63abe2;
+}
+.dashboard .tab-content{
+    overflow: hidden;
+}
+.dashboard .nav-tabs > li > a{
+	background: #63abe2;
+	color: #fff;
+	border: 0;
+}
+.dashboard .nav-tabs > li.active:after{
+	display: none;
+}
+.dashboard .nav-tabs > li.active > a{
+	background: #fff;
+}
+.dashboard h4{
+    font: normal 16px/1.2 "Microsoft Yahei";
+    margin-bottom: 20px;
+    color: #fff;
+}
+.dashboard .alert-panel h4{
+	display: none;
+}
+.dashboard .alert-panel ul{
+	height: 100px;
+	margin-top: -10px;
+	width: 100%;
+	background: #f8f8f8;
+	border: 1px solid #e5e5e5;
+	border-top: 0;
+}
+.dashboard .alert-panel li{
+	float: left;
+	height: 100px;
+	width: 20%;
+}
+.alert-panel li .inner{
+	width: 100px;
+	height: 40px;
+	background: #fff;
+	margin: 30px auto;
+	box-shadow: 1px 1px 2px #ddd;
+}
+.alert-panel li .inner > *{
+	width: 50%;
+	height: 100%;
+	float: left;
+	text-align: center;
+	padding: 4px 10px;
+	font: normal 18px/30px "Arial";
+}
+.alert-panel li .inner label {
+	font: normal 14px/15px "Microsoft Yahei";
+	background: #e89365;
+	color: #fff;
+}
+.rank-panel table {
+	width: 98%;
+}
+.dashboard-browser,
+.dashboard-terminal{
+	clear: left;
+	height: 280px;float: left;width: 40%;
+	border-right: 1px solid #e4e4e4;
+}
+.dashboard-column-browser,
+.dashboard-column-terminal{
+	height: 280px;float: left;width: 60%;
+}
+

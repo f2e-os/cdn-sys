@@ -1,0 +1,72 @@
+<div class="FUI host-httpcache">
+	<div class="col-sm-12">
+		设备配置 -&gt; HTTP缓存配置 -&gt; <span id="subTabDetail"></span> -&gt; 编辑文件配置
+	</div>
+	<div class="col-sm-12">
+		<ul class="nav nav-tabs" id="subTab">
+			<li data-menu="host_httpcache"><a href="javascript:void(0);">PPC分组</a></li>
+			<li data-menu="host_httpcache_conf"><a href="javascript:void(0);">PPC配置</a></li>
+			<li data-menu="host_httpcache_file" class="active"><a href="javascript:void(0);">文件配置</a></li>
+			<li data-menu="host_httpcache_domain"><a href="javascript:void(0);">基于域名放行</a></li>
+			<li data-menu="host_httpcache_cache"><a href="javascript:void(0);">HTTP缓存文件大小</a></li>
+		</ul>
+		<div class="panel">
+			<form class="form-horizontal col-sm-12 auto-submit" action="/ApiHttpCache/updateFileExt" method="post" data-target="host_httpcache_file" data-list="param" data-url="/ApiHttpCache/getFileExt"></form>
+			<script type="template">
+			{{#with info}}
+				<input type="hidden" name="file_id" value="{{id}}">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">文件扩展名<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="file_ext" value="{{file_ext}}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">分组</label>
+					<div class="col-sm-10">
+						<select name="ppc_gid" class="ZUI-select">
+							{{{global_show_select '' '/ApiHttpCache/listHostGroup' 'GroupName' 'Id' ppc_gid}}}
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">工作方式</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio 'proxy' 'Proxy' '' '' proxy}}}</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">缺省动作</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio 'check_policy' 'CheckPolicy' '' '' check_policy}}}</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">验证refer</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio 'check_refer' 'CheckRefer' '' '' check_refer}}}</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">黑名单<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<textarea type="text" class="ZUI-textarea" name="blacklist">{{blacklist_name}}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">白名单<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<textarea type="text" class="ZUI-textarea" name="whitelist">{{whitelist_name}}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+						<a href="javascript:;" class="btn btn-default" role="button" data-menu="host_httpcache_file">取消</a>
+					</div>
+				</div>
+			{{/with}}
+			</script>
+		</div>
+	</div>
+</div>

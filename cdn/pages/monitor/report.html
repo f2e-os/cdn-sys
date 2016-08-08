@@ -1,0 +1,105 @@
+<div class="record">
+    <div class="col-sm-12">
+        监控告警 -&gt;字节命中率报表
+    </div>
+    <div class="col-sm-12 record-inner">
+        <div class="show-area">
+            <div class="row">
+                <div class="col-sm-12">
+					<br/>
+                    <!-- <form id="record-searchUser" class="row  form-inline form-style">-->
+                        <form id="record-searchUser" class="row  form-inline form-style">
+                        <input type="hidden" name="Pagesize" value="15">
+                        <div class="form-control col-sm-3" data-list>
+                        </div>
+                        <script type="template">
+						
+                            <input type="text" name="StartTime" class="ipt-style" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date -1 'yy-MM-dd hh:mm:ss'}}">
+                            <span>至</span>
+                            <input type="text" name="EndTime" class="ipt-style" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date 0 'yy-MM-dd hh:mm:ss'}}">
+						
+                        </script>
+                           
+							<div class="col-sm-3">
+                        	  	<label class="col-sm-2 control-label" style="line-height: 32px;min-width: 90px;">设备:</label>
+                        	  	<div class="col-sm-6">
+	                            	<span data-title="选择设备"  data-param="type=1,2" data-url="/ApiCommon/getHostByType?type=1,2" class="form-control Host-selector" style="text-align: left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display:block"></span>
+	              					<input type="hidden" name="device_id" value="" placeholder="选择设备" require/>
+              					</div>
+                            </div>
+                           <!-- <script type="template">
+                                <select name="device_id" class="form-control">
+                                    <option value="">选择设备</option>
+                                    {{{global_show_select '' '/ApiCommon/getHostByType' 'HostName' 'Id'}}}
+                                </select>
+                            </script>
+
+							-->
+						<div class="col-sm-2">
+							<select name="type" class="form-control" data-list></select>
+						
+                        <script type="template">
+                            
+                            <option value="1">模糊匹配</option>
+                            <option value="2">精确匹配</option>
+                        </script>
+						</div>
+                          <input type="text" class="form-control" name="host_yuming" placeholder="请输入域名"> 
+						
+                        <br/>
+                        <div class="col-sm-4">
+                        <input type="button" class="btn btn-default btn-submit" value="查询">
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                         <a class="ZUI-btn btnicon01 trend-export" data-href="/ApiStatusExport/listBytesHitExport"><span>导出</span></a>
+						</div>
+                    </form>
+                </div>
+            </div>
+              
+            <div class="table-holder col-sm-6" data-list data-url="/ApiStatusExport/listBytesHit" data-pager="#pager-record" data-method="post" data-form="#record-searchUser" data-totalshow="#recordUser-total"></div>
+            <script type="template">
+                <table class="table table-hover">
+                    <tr>
+                        <th>序号</th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="yuming">域名</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="avg">字节命中率(%)</a></th>
+                        <th><a href="javascript:void(0);" class="t-sort-item" data-sort="request">请求数</a></th>
+                    </tr>
+                    {{#each rows}}
+                    <tr>
+                        <td>{{index}}</td>
+                        <td>{{yuming}}</td>
+                        <td>{{avg}}</td>
+                        <td>{{request}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+          </script>
+                <div class="table-holder col-sm-6" style="height:400px;">
+                    <div class="other-chart other-chart1"></div>
+                </div>
+                <div  data-list data-url="/ApiStatusExport/listBytesHitPie" data-method="post" data-form="#record-searchUser" ></div>
+              <script type="template">
+                    {{_fileTypePie rows ".other-chart1"}}
+                </script>
+            </div>
+			</div>
+            <div class="pager row">
+                <div class="col-sm-2">共<span id="recordUser-total">0</span>条记录</div>
+                <div id="pager-record" class="col-sm-4"></div>
+            </div>
+                
+        
+</div>
+<!-- {
+			"time":"2015-07-31 13:40:01",
+			"userid":"103.250.226.130",
+			"username":"1",
+			"token":"",
+			"ip":"103.250.226.130",
+			"type":"1",
+			"operateDesc":"修改设备",
+			"data":"",
+			"other":""
+		}
+ -->

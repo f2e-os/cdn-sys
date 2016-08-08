@@ -1,0 +1,58 @@
+<div class="record">
+	<div class="col-sm-12">
+		日志系统 -&gt; 安全日志 
+	</div>
+	<div class="col-sm-12 record-inner">
+			<div class="panel">
+				<div class="row">
+					<div class="col-sm-12">
+						<form id="record-searchUser" class="row  form-inline form-style">
+							<input type="hidden" name="Pagesize" value="15">
+							<span data-list>
+							</span>
+							<script type="template">
+								<input type="text" class="form-control" name="start_time" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date -1 'yy-MM-dd hh:mm:ss'}}">
+								<span>至</span>
+								<input type="text" class="form-control" name="end_time" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间" value="{{global_show_date 0 'yy-MM-dd hh:mm:ss'}}">
+							</script>	
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<input type="text" class="form-control" name="ppc_ip"  placeholder="请输入ppc ip地址 ">
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<input type="text" class="form-control" name="ip" placeholder="请输入用户ip 地址">
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<button class="btn btn-default btn-submit">搜索</button>
+						</form>
+					</div>
+				</div>
+			<div class="table-holder" data-list data-url="/ApiServerLog/listSafeLog" data-pager="#pager-record" data-method="post" data-form="#record-searchUser" data-totalshow="#recordUser-total"></div>
+			<script type="template">
+				<table class="table table-hover">
+					<tr>
+						<th>序号</th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="login_time">时间</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="login_type">登陆方式</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="login_ok">是否成功</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="ppc_ip">ppc ip地址</a> </th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="client_ip">用户ip地址</a></th>
+						<th><a href="javascript:void(0);" class="t-sort-item" data-sort="desc_str">备注</a></th>
+					</tr>
+					{{#each rows}}
+					<tr>
+						<td>{{_ @index}}</td>
+						<td>{{login_time}}</td>
+						<td>{{login_type}}</td>
+						<td>{{login_ok}}</td>
+						<td>{{ppc_ip}}</td>
+						<td>{{client_ip}}</td>
+						<td>{{desc_str}}</td>
+					</tr>
+					{{/each}}
+				</table>
+			</script>
+			<div class="pager row">
+				<div class="col-sm-4">共<span id="recordUser-total">0</span>条记录</div>
+				<div id="pager-record" class="col-sm-8"></div>
+			</div>
+		</div>
+	</div>
+</div>

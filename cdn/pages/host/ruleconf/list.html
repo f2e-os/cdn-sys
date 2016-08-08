@@ -1,0 +1,75 @@
+<div class="host">
+    <div class="col-sm-12">
+        设备配置 -&gt; 缓存规则库配置
+    </div>
+    <div class="panel">
+        <a href="javascript:;" class="btn btn-primary btn-save" onclick="$('#form-regLib').submit();">保存</a>
+        <a href="javascript:;" class="btn btn-primary Device-selector btn-send" data-type="1,2,8" data-form="#form-regLib" data-url="/ApiRegLib/SynRegLib" data-title="下发设备(缓存规则库)">下发</a>
+        <!-- <a href="javascript:void(0);" class="btn btn-primary btn-send">下发</a>-->
+        <a href="#" class="btn btn-primary cacheRuleM-big-download">大文件缓存规则库下载</a>
+        <a href="#" class="btn btn-primary cacheRuleM-small-download">小文件缓存规则库下载</a>
+        <script type="template/html" id="cacheRuleM-download">
+            <div class="col-sm-10">
+                <div class="form-group clearfix">
+                    <label for="inputPassword" class="col-sm-6 control-label">当前版本<span class="ZUI-require"></span></label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control"  name="curVersion" id="curVersion" placeholder="" value="{{curVersion}}">
+                    </div>
+                </div>
+           
+                <div class="form-group clearfix">
+                    <label for="inputPassword" class="col-sm-6 control-label">最新版本<span class="ZUI-require"></span></label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control"  name="cacheRuleVersion" placeholder="" value="{{cacheRuleVersion}}">
+                      <input type="hidden" class="form-control" id="serverIP" name="serverIP" placeholder="" value="{{serverIP}}">
+                      <input type="hidden" class="form-control" id="userName" name="userName" placeholder="" value="{{userName}}">
+                      <input type="hidden" class="form-control" id="password" name="password" placeholder="" value="{{password}}">
+                      <input type="hidden" class="form-control" id="downloadPath" name="downloadPath" placeholder="" value="{{downloadPath}}">
+                      <input type="hidden" class="form-control" id="type" name="type" placeholder="" value="{{cacheRuleType}}">
+                    </div>
+                </div>
+            </div>
+        </script>
+        <div style="padding-top: 20px;">
+            <form class="form-horizontal col-sm-12 auto-submit" action="/ApiRegLib/SaveRegLib" id="form-regLib" data-list data-url="/ApiRegLib/getRegLib" method="post"  data-target="host/ruleconf/list" >
+                <!-- 如果需要后台渲染数据, 可以使用data-list 配合 data-url 获取到数据渲染到后面的模板里面，返回来填充当前标签【form,div,span都可以】 -->
+            </form>
+            <script type="template">
+                {{! 模板数据渲染的时候，要清楚当前对象就是ajax返回的json数据本身，所以需要with表示索引到指定属性，详细的模板语法可以 http://handlebarsjs.org/ }}
+                {{#with info}}
+    			<div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">大文件缓存规则库版本<span class="ZUI-require"></span></label>
+    				<div class="col-sm-2">
+    					<input type="text" class="form-control"  name="version_big" id="version_small" placeholder="" value="{{ppcache_version}}">
+    				</div>
+                   
+                </div>
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">大文件缓存规则库<span class="ZUI-require"></span></label>
+    				 <div class="col-sm-10">					
+                        <textarea name="ppcache" id="ppcache" class="ZUI-textarea" style="height: 300px;">{{ppcache}}</textarea>
+                    </div>
+    				
+    			</div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">小文件缓存规则库版本<span class="ZUI-require"></span></label>
+    				<div class="col-sm-2">
+    					<input type="text" class="form-control"  name="version_small" id="version_big" placeholder="" value="{{necache_version}}">
+    				</div>
+                 
+                </div>
+    			<div class="form-group">
+    				<label class="col-sm-2 control-label">小文件缓存规则库<span class="ZUI-require"></span></label>
+    			
+    				<div class="col-sm-10">						
+    					<textarea name="necache"  id="necache" class="ZUI-textarea" style="height: 300px;">{{necache}}</textarea>
+    				</div>
+    			</div>
+    			</div>
+                {{/with}}
+            </script>
+        </div>
+    </div>
+</div>

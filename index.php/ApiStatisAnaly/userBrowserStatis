@@ -1,0 +1,27 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "成功",
+    "rows": [
+        {
+            "browser_name": "IE",
+            "flow": "35556"
+        },
+        {
+            "browser_name": "Chrome",
+            "flow": "10032"
+        },
+        {
+            "browser_name": "Firefox",
+            "flow": "7344"
+        },
+        {
+            "browser_name": "TB",
+            "flow": "3222"
+        },
+        {
+            "browser_name": "360",
+            "flow": "1234"
+        }
+    ]
+}

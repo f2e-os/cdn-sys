@@ -1,0 +1,34 @@
+{
+    "code": 1,
+    "status": "success",
+    "message": "获取成功",
+    "info": [
+        {
+            "Id": "105",
+            "Name": "默认调度策略",
+            "location": [
+                {
+                    "TerritoryName": null,
+                    "TerritoryNameId": null,
+                    "ProbeType": "2",
+                    "StrategyType": "1",
+                    "max_ip_num": "1",
+                    "ttl": "1",
+                    "dispath_id": "105",
+                    "ip_pripory": [
+                        {
+                            "host_id": "214",
+                            "host_name": "246",
+                            "priority": "2"
+                        },
+                        {
+                            "host_id": "214",
+                            "host_name": "246",
+                            "priority": "3"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

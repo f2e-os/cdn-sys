@@ -1,0 +1,137 @@
+<div class="source" id="source">
+    <div class="col-sm-12">
+        资源配置 -&gt; 内容注入、分发
+    </div>
+    <div class="col-sm-12 source pdt15" id="source">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#region" data-menu="source_subInto" class="active">内容注入、分发</a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="panel" id="subInto">
+                <div class="row" style="padding-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <a href="#" class="btn btn-primary subInto-add"  data-menu="source/contentZ/handoutAdd">+ 添加</a>
+                        <a href="#" class="btn btn-primary subInto-delM">- 批量删除</a>
+                        <a href="#" class="btn btn-primary subInto-handoutM">主动分发</a>
+                        <a href="#" class="btn btn-primary" data-menu="source/contentZ/batchImport">批量导入</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+
+                        <form id="source-searchUser-subInto" class="row form-inline">
+                            <input type="hidden" name="Pagesize" value="15">
+                            <!--
+                            <div class="col-sm-4">
+                                <select name="CP" class="form-control">
+                                    <option value="">是否CP</option>
+                                    <option value="1">是</option>
+                                    <option value="0">不是</option>
+                                </select>
+                            </div>
+                            -->
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="Date_Start" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" name="Date_Start" placeholder="开始时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="Date_End" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" name="Date_End" placeholder="结束时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="Cp" class="form-control" data-list>
+                                </select>
+                                <script type="template"><option value="">请选择CP</option>{{{global_show_select "Cp_Id" "/ApiDomainGroup/listDomainGroup" "GroupName" "Id" Cp_Id}}}</script>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="Url" name="Url" placeholder="url">
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="subIntoStatus" id="Is_Send" class="form-control" value="{{Is_Send}}">
+                                    <option value="">主动下发</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="btn-subIntomit btn btn-default btn-submit">搜索</div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="table-holder" id="source-list-subInto" data-url="/ApiContentInject/listContentInject" data-pager="#pager-source-subInto" data-method="get" data-form="#source-searchUser-subInto" data-totalshow="#source-total-subInto" data-list></div>
+                <script type="template">
+                    <form id="source-listC">
+                        <div  style="overflow-x:auto;width:100%;">
+                            <div style="width:2000px;">
+
+                            <table class="table table-hover" style="table-layout:fixed;">
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="ZUI-checkbox" id="packing-all" data-check-all=".host-source">
+                                    <label for="packing-all">
+                                        <span class="ZUI-checkbox-btn"></span>
+                                        <span class="ZUI-checkbox-txt"></span>
+                                    </label>
+                                </th>
+                                <th width="200px" style="word-wrap:break-word;"><a href="javascript:void(0);" class="t-sort-item" data-sort="url">url/目录</a></th>
+                                <th><a href="javascript:void(0);" class="t-sort-item" data-sort="CP_name">CP</a></th>
+                                <th width="100px">内容ID</th>
+                                <th>注入方式</th>
+                                <th><a href="javascript:void(0);" class="t-sort-item" data-sort="inject_time">注入时间</a></th>
+                                <th>内容名称</th>
+                                <th><a href="javascript:void(0);" class="t-sort-item" data-sort="inject_priority">注入优先级</a></th>
+                                <th>注入中心</th>
+                                <th style="min-width:60px">注入状态</th>
+                                <th>是否已分发</th>
+                                <th>内容热度阈值</th>
+                                <th>分发节点</th>
+                                <th>分发方式</th>
+                                <th><a href="javascript:void(0);" class="t-sort-item" data-sort="send_time">分发时间</a></th>
+                                <th><a href="javascript:void(0);" class="t-sort-item" data-sort="send_priority">分发优先级</a></th>
+                                <th style="min-width:60px">分发状态</th>
+                                <th width="120px">操作</th>
+                            </tr>
+                            {{#each rows}}
+                            <tr data-id="{{id}}">
+                                <td>
+                                    <input type="checkbox" class="ZUI-checkbox host-source" id="subInto{{id}}" data-id="{{id}}">
+                                    <label for="subInto{{id}}">
+                                        <span class="ZUI-checkbox-btn"></span>
+                                        <span class="ZUI-checkbox-txt"></span>
+                                    </label>
+                                </td>
+                                <td class="url" width="150px" style="word-wrap:break-word;"><span class="ZUI-url" title="{{url}}">{{url}}</span></td>
+                                <td class="CP" data-value="{{url}}">{{CP_name}}</td>
+                                <td class="content_id" width="60px"><span class="ZUI-url" title="{{content_id}}">{{content_id}}</span></td>
+                                <td class="inject_type">{{DisWay inject_type}}</td>
+                                <td class="inject_time" width="">{{inject_time}}</td>
+                                <td class="content_name" style="word-wrap: break-word;word-break:break-all;">{{content_name}}</td>
+                                <td class="inject_priority">{{inject_priority}}</td>
+                                <td class="inject_node">{{inject_name}}</td>
+                                <td class="inject_status" data-live="正在" data-url="/ApiContentInject/statusUpdate?id={{id}}&type=0">{{inject_node_name}}</td>
+                                <td class="is_send">{{yes_no is_send}}</td>
+                                <td class="hot_num">{{hot_num hot_num}}</td>
+                                <td class="send_node_name">{{send_name}}</td>
+                                <td class="send_type">{{distribute send_type}}</td>
+                                <td class="send_time">{{send_time}}</td>
+                                <td class="subIntoStatus" data-value="{{send_priority}}">{{send_priority}}</td>
+                                <td class="send_status"  data-live="正在" data-url="/ApiContentInject/statusUpdate?id={{id}}&type=1">{{send_node_name}}</td>
+                                <td width="120px">
+                                    <a href="javascript:;" class="ZUI-operate subInto-handout"><span class="iconfont">&#xe602;</span>主动分发</a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                            </div>
+                        </div>
+                    </form>
+                </script>
+                <div class="pager row">
+                    <div class="col-sm-4">共<span id="source-total-subInto">0</span>条记录</div>
+                    <div id="pager-source-subInto" class="col-sm-8"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

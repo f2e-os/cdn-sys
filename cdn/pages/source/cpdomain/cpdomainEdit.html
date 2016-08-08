@@ -1,0 +1,85 @@
+<div class="FUI source-cp">
+	<div class="col-sm-12">
+		资源配置 -&gt; CP域名管理 -&gt; 编辑CP域名
+	</div>
+	<div class="col-sm-12">
+		<div class="panel">
+			<form class="form-horizontal col-sm-12 auto-submit" action="/ApiDomain/updateDomain" method="post" data-target="source_cpdomain" data-list="param" data-url="/ApiDomain/getDomain"></form>
+			<script type="template">
+			{{#with info.[0]}}
+				<input type="hidden" name="Id" value="{{Id}}">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">域名<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="DomainName" value="{{DomainName}}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">域名类型</label>
+					<div class="col-sm-10">
+						<select name="DomainTypeId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomain/listDomainType' 'type' 'id' DomainTypeId}}}
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">工作模式</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio "DomainSign" "DomainSign" "" "" DomainSign}}}</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">调度策略<span class="ZUI-require"></span></label>
+					<div class="col-sm-10">
+						<select name="DomainDispatchId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomain/listDomainStrategy?is_trace=0' 'StrategyName' 'id' DomainDispatchId}}}
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">回源策略</label>
+					<div class="col-sm-10">
+						<select name="DomainTraceId" class="ZUI-select">
+							<option value="">请选择</option>
+							{{{global_show_select '' '/ApiDomain/listDomainStrategy?is_trace=1' 'StrategyName' 'id' DomainTraceId}}}
+						</select>
+					</div>
+				</div>
+				<div id="DomainAuth" class="form-group">
+					<label class="col-sm-2 control-label">鉴权方式</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio "DomainAuth" "DomainAuth" "" "" DomainAuth}}}</div>
+					</div>
+				</div>
+				<div id="DomainAuthInput" class="form-group"{{{source_cpdomain_DomainAuthDisplay "" DomainAuth}}}>
+					<label id="DomainAuthInputName1" class="col-sm-2 control-label"{{{source_cpdomain_DomainAuthDisplay "pwd" DomainAuth}}}>密钥</label>
+					<label id="DomainAuthInputName2" class="col-sm-2 control-label"{{{source_cpdomain_DomainAuthDisplay "url" DomainAuth}}}>URL</label>
+					<div class="col-sm-10">
+						<input type="text" class="ZUI-input" name="AuthPwd" value="{{AuthPwd}}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否防盗链</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio "GuardChain" "GuardChain" "" "" GuardChain}}}</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">域名状态</label>
+					<div class="col-sm-10">
+						<div class="radioBox">{{{global_show_radio "Status" "Status" "" "" Status}}}</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a href="javascript:;" class="btn btn-primary btn-submit" role="button">确定</a>
+						<a href="javascript:;" class="btn btn-default" role="button" data-menu="source_cpdomain">取消</a>
+					</div>
+				</div>
+			{{/with}}
+			</script>
+		</div>
+	</div>
+</div>

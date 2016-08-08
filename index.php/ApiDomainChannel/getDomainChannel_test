@@ -1,0 +1,17 @@
+{
+	"code": 1,
+	"status": "success",
+	"message": "获取成功",
+	"info": [{
+		"Id": "8",
+		"DomainGName": "新建域名组",
+		"DomainGPrefix": "新建前缀",
+		"CPId": "32",
+		"CPName": "新建CP1",
+		"ParentDomainId": "122",
+		"SourceStrategy": "1",
+		"AnalysisRule": "解析规则",
+		"CachePriorityId": "5",
+		"ServicePriorityId": "1"
+	}]
+}

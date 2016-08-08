@@ -1,0 +1,106 @@
+<div class="FUI host-httpcache host-trace-w">
+	<div class="col-sm-12 mbx">
+		设备配置 -&gt; 回源策略管理
+	</div>
+	<div class="col-sm-12">
+		<div class="panel">
+			<div class="row">
+				<div class="col-sm-8">
+					<a href="javascript:void(0);" class="btn btn-primary btn-add" data-menu="host_trace_add">+ 添加回源策略</a>
+					<a href="javascript:void(0);" class="btn btn-primary btn-del">- 批量删除</a>
+				</div>
+				<div class="col-sm-4 text-right">
+					<form id="search-bar" class="row">
+						<input type="hidden" name="Pagesize" value="15">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<input type="text" class="form-control" name="StrategyName" placeholder="请输入策略名称">
+								<div class="input-group-addon btn-submit">搜索</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="table-holder" data-list data-url="/ApiTraceStrategy/listTraceStrategy" data-pager="#pager-bar" data-method="post" data-form="#search-bar" data-totalshow="#total-bar"></div>
+			<script type="template">
+				<table class="table table-hover">
+					<tr>
+						<th>
+							<input type="checkbox" class="ZUI-checkbox" id="host-distribute-check-all" data-check-all=".host-distribute">
+							<label for="host-distribute-check-all">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						</th>
+						<th>策略名称</th>
+						<th>DNS域</th>
+						<th>探测</th>
+						<th>策略</th>
+						<th>IP返回个数</th>
+						<th>ttl</th>
+						<th>IP</th>
+						<th>操作</th>
+					</tr>
+					{{#each info}}
+					{{#noLocation location}}
+					<tr data-ID="{{../Id}}">
+						<td>
+						{{#isFirst @index}}
+							<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{../../Id}}" id="host-distribute-check{{../../Id}}" data-id="{{../../Id}}">
+							<label for="host-distribute-check{{../../Id}}">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						{{/isFirst}}
+						</td>
+						<td>{{../Name}}</td>
+						<td>{{TerritoryName}}</td>
+						<td>{{host_trace_ProbeType ProbeType}}</td>
+						<td>{{host_trace_StrategyType StrategyType}}</td>
+						<td>{{max_ip_num}}</td>
+						<td>{{ttl}}</td>
+						<td>{{#each ip_pripory}}{{host_name}} {{/each}}</td>
+						<td>
+						{{#isFirst @index}}
+						<a href="javascript:void(0);" class="ZUI-operate list-update" data-menu="host/httpcache/edit:Id={{../../Id}}"><span class="iconfont">&#xe602;</span>编辑</a><a href="javascript:void(0);" class="ZUI-operate list-del"><span class="iconfont">&#xe603;</span>删除</a>
+						{{/isFirst}}
+						</td>
+					</tr>
+					{{else}}
+					{{#each location}}
+					<tr data-ID="{{../Id}}">
+						<td>
+						{{#isFirst @index}}
+							<input type="checkbox" class="ZUI-checkbox host-distribute" value="{{../../Id}}" id="host-distribute-check{{../../Id}}" data-id="{{../../Id}}">
+							<label for="host-distribute-check{{../../Id}}">
+								<span class="ZUI-checkbox-btn"></span>
+								<span class="ZUI-checkbox-txt"></span>
+							</label>
+						{{/isFirst}}
+						</td>
+						<td>{{../Name}}</td>
+						<td>{{TerritoryName}}</td>
+						<td>{{host_trace_ProbeType ProbeType}}</td>
+						<td>{{host_trace_StrategyType StrategyType}}</td>
+						<td>{{max_ip_num}}</td>
+						<td>{{ttl}}</td>
+						<td>{{#each ip_pripory}}{{host_name}} {{/each}}</td>
+						<td>
+						{{#isFirst @index}}
+						<a href="javascript:void(0);" class="ZUI-operate list-update" data-menu="host/httpcache/edit:Id={{../../Id}}"><span class="iconfont">&#xe602;</span>编辑</a><a href="javascript:void(0);" class="ZUI-operate list-del"><span class="iconfont">&#xe603;</span>删除</a>
+						{{/isFirst}}
+						</td>
+					</tr>
+					{{/each}}
+					{{/noLocation}}
+					
+					{{/each}}
+				</table>
+			</script>
+			<div class="pager row">
+				<div class="col-sm-4">共<span id="total-bar">0</span>条记录</div>
+				<div id="pager-bar" class="col-sm-8"></div>
+			</div>
+		</div>
+	</div>
+</div>
