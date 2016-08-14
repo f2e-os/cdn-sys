@@ -101,6 +101,33 @@ define("index",function(require, exports, module){
 		        dataType: 'json',
 		        success: function(res){
 		            if (res.code == 1){
+                        $.ajax({
+                            url: module.page + '?t=<%=+new Date%>',
+                            dataType: 'html',
+                            success: function(div){
+                                container.html(div);
+                                $(".zTnav").children().children()
+                                    .filter('[data-module="'+moduleName.replace(/[^a-zA-Z].*$/,'')+'"]')
+                                    .addClass("active");
+                                var param = query_param(mds[1]);
+                                typeof module.init === "function" && module.init( _toModule, param );
+
+                                // 预定义 template-init 调用
+                                container.find("[data-list]").each(function(){
+                                    var _t = $(this);
+                                    if( _t.data("list") === "param" ){
+                                        new T( _t, {data:param} )   
+                                    }else{
+                                        new T( $(this) );
+                                    }
+                                });
+                                
+                                typeof cbk === "function" && cbk(module);
+                                typeof module.execute === "function" && module.execute( _toModule, param );
+                                T.cfg.callback(container);
+                            }
+                        });
+                        /*
 						container.load(module.page + '?t=<%=+new Date%>', function(e){
 							zTnav.filter('[data-module="'+moduleName.replace(/[^a-zA-Z].*$/,'')+'"]').addClass("active");
 							var param = query_param(mds[1]);
@@ -120,6 +147,7 @@ define("index",function(require, exports, module){
 							typeof module.execute === "function" && module.execute( _toModule, param );
 			                T.cfg.callback(container);
 						});
+                        */
 		            }
 		            else {
 		                window.location.href = 'login.html';

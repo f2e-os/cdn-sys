@@ -24,6 +24,10 @@ define("host",function(require, exports, module){
 		setTimeout(DisTime,100);
 	}
 	DisTime();
+
+	exports.init = function (toModule, param) {
+		console.log('init');
+	}
 });
 
 define("host/policy/add", function(require, exports, module){

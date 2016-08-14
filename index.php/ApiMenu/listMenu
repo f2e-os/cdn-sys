@@ -369,6 +369,11 @@
                     "icon": "icon44"
                 }
             ]
+        },
+        {
+            "name": "自定义",
+            "module": "unassign",
+            "icon": "icon02"
         }
     ],
     "total": "61"
